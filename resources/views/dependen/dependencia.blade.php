@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="container mt-4 ">
+<div class="container mt-2 ">
     
         <livewire:dependencia>
   
