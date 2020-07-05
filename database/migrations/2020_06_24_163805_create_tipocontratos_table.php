@@ -15,6 +15,7 @@ class CreateTipocontratosTable extends Migration
     {
         Schema::create('tipocontratos', function (Blueprint $table) {
             $table->id();
+            $table->string('nombretipo');
             $table->timestamps();
         });
     }

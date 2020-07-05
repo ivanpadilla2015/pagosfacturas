@@ -5,19 +5,16 @@
 .bg-transparent:hover {
     color: #FF0000;
 }
-.esnsimasucc:hover {
-    color: #008000;
+
+.color {
+    color: #1d68a7;
 }
 </style>    
 @endsection
 
 @section('content')
-
-
 <div class="container mt-2 ">
-    
-        <livewire:dependencia>
-  
+   <livewire:proveedores>
 </div>
  @endsection
 

@@ -22,4 +22,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/admin', 'layouts.admin')->name('admin');
 
-Route::view('depen', 'dependen.dependencia');
+Route::view('depen', 'dependen.dependencia')->name('depen');
+Route::view('provee', 'provedores.proveedors')->name('provee');
+Route::view('tipocon', 'tipocontrato.tipocontra')->name('tipocon');

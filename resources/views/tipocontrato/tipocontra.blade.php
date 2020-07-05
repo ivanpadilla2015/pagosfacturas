@@ -2,12 +2,13 @@
 
 @section('style')
 <style>
-.bg-transparent:hover {
-    color: #FF0000;
-}
-.esnsimasucc:hover {
-    color: #008000;
-}
+    .bg-transparent:hover {
+        color: #FF0000;
+    }
+    
+    .color {
+        color: #1d68a7;
+    }
 </style>    
 @endsection
 
@@ -16,7 +17,7 @@
 
 <div class="container mt-2 ">
     
-        <livewire:dependencia>
+        <livewire:tipocontra>
   
 </div>
  @endsection

@@ -1,35 +1,33 @@
 <?php
 
 namespace App\Http\Livewire;
-
+use App\Tipocontrato;
 use Livewire\Component;
-use App\Dependencia as Dependen;
 use Livewire\WithPagination;
 
-class Dependencia extends Component
+class Tipocontra extends Component
 {
     use WithPagination;
-    public $nombredepen, $selected_id;
+    public $nombretipo, $selected_id;
     public $updateMode = false;
 
     public function render()
     {
-        $data = Dependen::all();
-        return view('livewire.dependencia', [ 'data' => Dependen::orderBy('id', 'desc')->paginate(5)]);
+        return view('livewire.tipocontra', [ 'data' => Tipocontrato::orderBy('id', 'desc')->paginate(5)]);
     }
     private function resetInput()
     {
-        $this->nombredepen = null;
+        $this->nombretipo = null;
         
     }
 
     public function store()
     {
         $this->validate([
-            'nombredepen' => 'required|min:5',
+            'nombretipo' => 'required|min:5',
         ]);       
-        Dependen::create([
-            'nombredepen' => ucwords($this->nombredepen)
+        Tipocontrato::create([
+            'nombretipo' => ucwords($this->nombretipo)
         ]);        
         //ucwords — Convierte a mayúsculas el primer caracter de cada palabra de una cadena
         $this->emit('alert', ['type'=> 'success', 'message' => 'Creado Correctamente']);
@@ -38,9 +36,9 @@ class Dependencia extends Component
 
     public function edit($id)
     {
-        $record = Dependen::findOrFail($id);  
+        $record = Tipocontrato::findOrFail($id);  
         $this->selected_id = $id;
-        $this->nombredepen = $record->nombredepen;
+        $this->nombretipo = $record->nombretipo;
         $this->updateMode = true;
     }
 
@@ -48,12 +46,12 @@ class Dependencia extends Component
     {
         $this->validate([
             'selected_id' => 'required|numeric',
-            'nombredepen' => 'required|min:5'
+            'nombretipo' => 'required|min:5'
             
         ]); 
          if ($this->selected_id) {
-            $record = Dependen::find($this->selected_id);
-            $record->update(['nombredepen' => ucwords($this->nombredepen)]);   
+            $record = Tipocontrato::find($this->selected_id);
+            $record->update(['nombretipo' => ucwords($this->nombretipo)]);   
             $this->emit('alert', ['type'=> 'success', 'message' => 'Actualizado Correctamente']);    
             $this->resetInput();
             $this->updateMode = false;
@@ -61,10 +59,10 @@ class Dependencia extends Component
         }   
      }
 
-     public function destroy($id)
+    public function destroy($id)
     {
         if ($id) {
-            $record = Dependen::where('id', $id);
+            $record = Tipocontrato::findOrFail($id);
             $record->delete();
             $this->emit('alert', ['type'=> 'success', 'message' => 'Eliminado Correctamente']);
             $this->resetInput();
@@ -72,4 +70,8 @@ class Dependencia extends Component
             
         }
      }
+
+
+
+
 }
