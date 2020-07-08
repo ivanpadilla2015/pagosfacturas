@@ -44,7 +44,7 @@ class Proveedores extends Component
     {
         $this->validate([
             'nombre' =>'required',
-            'nitproveedor' => 'required|integer|not_in:0',
+            'nitproveedor' => 'required|unique:proveedors|integer|not_in:0',
             'email' => 'required|email|unique:proveedors',
             'telefono' => 'required',
             'direccion' => 'required',

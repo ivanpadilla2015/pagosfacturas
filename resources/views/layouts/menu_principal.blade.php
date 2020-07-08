@@ -21,9 +21,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('contra') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Inactive Page</p>
+              <p>Contratos
+                <?php use App\Contrato; $con_count = Contrato::all()->count(); ?>
+                <span class="right badge badge-danger">{{$con_count}}</span>
+              </p>
             </a>
           </li>
         </ul>

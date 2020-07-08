@@ -21,7 +21,7 @@ class CreateContratosTable extends Migration
             $table->date('fecha_anticipo')->nullable();
             $table->float('amortizar', 5, 2)->nullable();
             $table->double('valoradicion', 20, 2)->nullable();
-            $table->string('registro_pres_inic', 50);
+            $table->string('registro_pres_inic', 50)->nullable();;
             $table->date('fechacontrato');
             $table->date('plazoejecucion');
             $table->string('interadmi', 150)->nullable();
@@ -29,6 +29,7 @@ class CreateContratosTable extends Migration
             $table->double('saldo', 20, 2);
             $table->boolean('status')->default(true);
             $table->boolean('contabla')->default(false);
+            $table->bigInteger('pagos')->nullable(); // para llevar consecutivo de pagos
             $table->timestamps();
 
             $table->foreignId('proveedor_id')->constrained();

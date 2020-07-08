@@ -14,62 +14,62 @@ class DependensTableSeeder extends Seeder
                
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Admistrativa'),
+            'nombredepen' => ucwords('Admistrativa'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Contratos'),
+            'nombredepen' => ucwords('Contratos'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Servicios Admin'),
+            'nombredepen' => ucwords('Servicios Admin'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Comedores'),
+            'nombredepen' => ucwords('Comedores'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Cads'),
+            'nombredepen' => ucwords('Cads'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Soga'),
+            'nombredepen' => ucwords('Soga'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Tesoreria'),
+            'nombredepen' => ucwords('Tesoreria'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Tecnologia'),
+            'nombredepen' => ucwords('Tecnologia'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Contabilidad'),
+            'nombredepen' => ucwords('Contabilidad'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Gestion Documental'),
+            'nombredepen' => ucwords('Gestion Documental'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Negocios Especiales'),
+            'nombredepen' => ucwords('Negocios Especiales'),
         ]);
 
         App\Dependencia::create([
 
-            'nombredepen' => strtoupper('Cartera'),
+            'nombredepen' => ucwords('Cartera'),
         ]);
     }
     

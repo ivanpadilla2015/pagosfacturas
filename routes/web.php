@@ -25,3 +25,7 @@ Route::view('/admin', 'layouts.admin')->name('admin');
 Route::view('depen', 'dependen.dependencia')->name('depen');
 Route::view('provee', 'provedores.proveedors')->name('provee');
 Route::view('tipocon', 'tipocontrato.tipocontra')->name('tipocon');
+
+Route::view('contra', 'contrato.contratos')->name('contra');
+
+Route::view('consulfa', 'facturas.consultafac')->name('consulfa');
