@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Factura extends Model
 {
     
-    public function contrato()
+   protected $fillable = ['numfac', 'fechafac', 'status', 'contrato_id', 'pago_id'];
+   
+   public function contrato()
     {
        return $this->belongsTo('App\Contrato');
     }
 
-    public function dependencia()
+    public function pago()
     {
-       return $this->belongsTo('App\Dependencia');
+       return $this->belongsTo('App\Pago');
     }
-
 }

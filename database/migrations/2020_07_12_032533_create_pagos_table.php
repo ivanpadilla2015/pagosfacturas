@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetapedidosTable extends Migration
+class CreatePagosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,6 +20,7 @@ class CreateDetapedidosTable extends Migration
             $table->timestamps();
 
             $table->foreignId('contrato_id')->constrained();
+            $table->foreignId('user_id')->constrained();
         });
     }
 

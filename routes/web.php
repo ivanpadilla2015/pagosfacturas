@@ -29,3 +29,5 @@ Route::view('tipocon', 'tipocontrato.tipocontra')->name('tipocon');
 Route::view('contra', 'contrato.contratos')->name('contra');
 
 Route::view('consulfa', 'facturas.consultafac')->name('consulfa');
+Route::view('pagosfa', 'pagos.pagosfac')->name('pagosfa');
+Route::view('pagonum', 'reportes.pagos_num')->name('pagonum');

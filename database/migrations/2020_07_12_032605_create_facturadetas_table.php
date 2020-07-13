@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFacturasTable extends Migration
+class CreateFacturadetasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateFacturasTable extends Migration
      */
     public function up()
     {
-        Schema::create('facturas', function (Blueprint $table) {
+        Schema::create('facturadetas', function (Blueprint $table) {
             $table->id();
-            $table->string('numfac')->unique();
+            $table->string('numfac');
             $table->date('fechafac');
             $table->double('valorfac', 20, 2);
             $table->boolean('status')->default(true);
@@ -35,6 +35,6 @@ class CreateFacturasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('facturas');
+        Schema::dropIfExists('facturadetas');
     }
 }

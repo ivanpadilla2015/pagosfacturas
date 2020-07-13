@@ -11,7 +11,7 @@ class Contratos extends Component
 {
     public $proved, $proveedor_id, $numcontrato, $tipoc, $tipocontrato_id, $dependencia_id, $depen,
            $fechacontrato, $valorcontrato, $registro_pres_inic, $plazoejecucion, $objetocontrato,
-           $interadmi, $saldo, $selected_id;
+           $interadmi, $saldo, $selected_id, $pagos;
     public  $createMode = false;
     public  $updateMode = false;
 
@@ -38,6 +38,8 @@ class Contratos extends Component
         $this->plazoejecucion = null;
         $this->objetocontrato = null;
         $this->interadmi = null;
+        $this->pagos = null;
+        $this->saldo = null;
         
     }
 
@@ -96,6 +98,7 @@ class Contratos extends Component
         $this->objetocontrato = $record->objetocontrato; 
         $this->saldo = $record->saldo;
         $this->interadmi = $record->interadmi;
+        $this->pagos = $record->pagos;
         $this->createMode = false;
         $this->updateMode = true;
     }
@@ -120,8 +123,8 @@ class Contratos extends Component
                 'tipocontrato_id' => $this->tipocontrato_id, 'dependencia_id' => $this->dependencia_id,
                 'fechacontrato' => $this->fechacontrato, 'valorcontrato' => $this->valorcontrato,
                 'registro_pres_inic' => $this->registro_pres_inic, 'plazoejecucion' => $this->plazoejecucion,
-                'objetocontrato' => $this->objetocontrato, 'saldo' => $this->valorcontrato, 
-                'interadmi' => $this->interadmi                
+                'objetocontrato' => $this->objetocontrato, 'saldo' => $this->saldo, 
+                'interadmi' => $this->interadmi, 'pagos' => $this->pagos                
             ]);   
             $this->emit('alert', ['type'=> 'success', 'message' => 'Actualizado Correctamente']);    
             $this->resetInput();

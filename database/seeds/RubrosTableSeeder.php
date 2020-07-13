@@ -13,6 +13,11 @@ class RubrosTableSeeder extends Seeder
     {
         App\Rubro::create([
 
+            'nombrerubro' => ucwords('SIN USO'),
+            'codigo' => '0-00-00-00-000-000'
+        ]);
+        App\Rubro::create([
+
             'nombrerubro' => ucwords('PRODUCTOS LÁCTEOS Y OVOPRODUCTOS'),
             'codigo' => 'A-05-01-01-002-002'
         ]);

@@ -29,7 +29,7 @@ class CreateContratosTable extends Migration
             $table->double('saldo', 20, 2);
             $table->boolean('status')->default(true);
             $table->boolean('contabla')->default(false);
-            $table->bigInteger('pagos')->nullable(); // para llevar consecutivo de pagos
+            $table->bigInteger('pagos')->default(0); // para llevar consecutivo de pagos
             $table->timestamps();
 
             $table->foreignId('proveedor_id')->constrained();

@@ -63,6 +63,11 @@
                 <small class="form-text text-danger">{{ $message }}</small>
               @enderror
             </div>
+            <div class="form-group col">
+              <label >Saldo</label>
+              <input wire:model="saldo" type="text" class="form-control" placeholder="saldo ">
+              
+            </div>
           </div>
 
           <div class="row ">
@@ -81,6 +86,10 @@
             <div class="form-group col">
               <label >Contrato Inter</label>  
               <input wire:model="interadmi" type="text" class="form-control" placeholder="Num Contrato Inter">
+            </div>
+            <div class="form-group col">
+              <label >Cant. Pagos</label>  
+              <input wire:model="pagos" type="text" class="form-control" placeholder="Can. Pagos">
             </div>
           </div>
 

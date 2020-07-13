@@ -218,6 +218,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 
 <livewire:scripts>
+@stack('scripts') <!-- utilizar javascrip livewire -->
 <script src="{{ asset('js/app.js') }}"></script>
 @toastr_render
 @yield('script')

@@ -55,21 +55,50 @@
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-chart-pie"></i>
           <p>
-            Charts
+            Facturas
             <i class="right fas fa-angle-left"></i>
           </p>
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="pages/charts/chartjs.html" class="nav-link">
+            <a href="{{ route('consulfa') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>ChartJS</p>
+              <p>Consultar Facturas</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/charts/flot.html" class="nav-link">
+          <a href="{{route('pagosfa')}}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Flot</p>
+              <p>Pagos</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/charts/inline.html" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Inline</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-chart-pie"></i>
+          <p>
+            Reportes
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Contratos</p>
+            </a>
+          </li>
+          <li class="nav-item">
+          <a href="{{ route('pagonum') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Pago Numero</p>
             </a>
           </li>
           <li class="nav-item">
