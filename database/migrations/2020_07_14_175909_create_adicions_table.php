@@ -15,7 +15,12 @@ class CreateAdicionsTable extends Migration
     {
         Schema::create('adicions', function (Blueprint $table) {
             $table->id();
+            $table->string('registroadicion');
+            $table->date('fechaadicion');
+            $table->double('valoradicion',20,2);
             $table->timestamps();
+
+            $table->foreignId('contrato_id')->constrained();
         });
     }
 

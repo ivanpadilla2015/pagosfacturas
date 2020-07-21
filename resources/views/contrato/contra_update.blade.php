@@ -102,7 +102,30 @@
                 @enderror
               </div>
           </div>
-          
+          <div class="row ">
+            <div class="form-group col">
+              <label >Sepervisor Cont.</label>
+              <input wire:model="supervisor" type="text" class="form-control" placeholder="Seperv. Contrato">
+            </div>
+            <div class="form-group col">
+              <label >Primer Pago</label>
+                <select wire:model="num_mes" class="form-control">
+                    <option value="0">Seleccione</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+            </div>
+          </div>
           <button wire:click="update()" type="submit" class="btn btn-primary">Actualizar</button>
           <button wire:click.prevent="cancel()" class="btn btn-danger">Cancel</button>
     </div>

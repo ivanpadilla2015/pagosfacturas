@@ -15,7 +15,8 @@ class Pagos extends Component
 {
     public $contra, $contrato_id, $data, $pagos_id, $usos, $depen, $collection;
     public  $verMode = false; 
-    public $numfac, $proveedor_id, $total, $pago_id;
+    public $numfac, $proveedor_id, $total, $pago_id, $pago_corresponde_mes, $porcentaje_cumplimiento,
+           $mes_ejecucion, $sal, $vc;
     public $fact = [
         'numfac' => '',
         'fechafac' => '',
@@ -43,6 +44,8 @@ class Pagos extends Component
         if ($id) {
             $this->data = Contrato::findOrFail($id);
             $this->proveedor_id = $this->data->proveedor_id;
+            $this->sal = $this->data->saldo;
+            $this->vc = $this->data->valorcontrato;
         }
         
     }
@@ -56,6 +59,9 @@ class Pagos extends Component
         'fact.fechafac' => 'required',
         'fact.valorfac' => 'required',
         'fact.dependencia_id' => 'required|integer|not_in:0',
+        'pago_corresponde_mes' => 'required',
+        'mes_ejecucion' => 'required|integer|not_in:0'
+
        ]);     
        
        if($this->fact['dependencia_id'])
@@ -73,15 +79,28 @@ class Pagos extends Component
        $this->fact = ['numfac' => '', 'fechafac' => '', 'valorfac' => '','dependencia_id' => '',
         'rubro_id' => '', 'nomrub' => '', 'nomdep' => ''];
 
+        $this->totalizapago();
+        
+        $this->porcentaje_cumplimiento = 100 - round((($this->sal - $this->total)*100)/$this->vc);
+
     }
 
     public function grabarfactura()
     {
         
         $this->totalizapago();
+
+        $con = Contrato::findOrFail($this->contrato_id);
+        $con->saldo = $con->saldo -= $this->total;
+        $con->pagos = $con->pagos += 1; //adicionar pagos
+        $con->save();
+
+        ////******************************************************* */
         $fe  = Carbon::now();
         $fec = $fe->format('Y-m-d');
-        $pag = Pago::create(['total'=> $this->total, 'fecha_pago' => $fec, 'contrato_id'=> $this->contrato_id, 'user_id' => \Auth::id()]);
+        $pag = Pago::create(['total'=> $this->total, 'fecha_pago' => $fec, 'contrato_id'=> $this->contrato_id,
+                 'pago_corresponde_mes' => $this->pago_corresponde_mes, 'mes_ejecucion'=> $this->mes_ejecucion,
+                 'porcentaje_cumplimiento' => $this->porcentaje_cumplimiento, 'user_id' => \Auth::id()]);
         $this->pago_id = $pag->id;
         
         foreach ($this->lisfact as $key => $f) {
@@ -92,7 +111,7 @@ class Pagos extends Component
                 Factura::create(['numfac'=> $this->numfac, 'fechafac'=> $f['fechafac'], 'contrato_id'=> $this->contrato_id,'pago_id'=> $this->pago_id ]);
             }
             Facturadeta::create(['numfac' => $f['numfac'],'fechafac' => $f['fechafac'], 'valorfac' => $f['valorfac'], 'dependencia_id' => $f['dependencia_id'], 
-                                'rubro_id'=> empty($f['rubro_id']) ? 1 : $f['rubro_id'], 'contrato_id'=> 1, 'pago_id'=> $this->pago_id ]);
+                                'rubro_id'=> empty($f['rubro_id']) ? 1 : $f['rubro_id'], 'contrato_id'=> $this->contrato_id, 'pago_id'=> $this->pago_id ]);
         }
         $this->emit('alert', ['type'=> 'success', 'message' => 'Pago No: '.$pag->id.' Creado Correctamente']);
         $this->resetInput();
@@ -105,7 +124,8 @@ class Pagos extends Component
     
     public function totalizapago()
     {
-       
+        $this->total = null;
+        
         foreach ($this->lisfact as $t) {
               
             $this->total += $t['valorfac'];

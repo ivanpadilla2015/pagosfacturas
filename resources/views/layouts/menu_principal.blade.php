@@ -29,6 +29,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('addcontra') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Adicionar Contratos
+                <?php use App\Adicion; $add_count = Adicion::all()->count(); ?>
+                <span class="right badge badge-danger">{{$add_count}}</span>
+              </p>
+            </a>
+          </li>
         </ul>
       </li> <!---   -->
       <li class="nav-item">
@@ -96,17 +105,33 @@
             </a>
           </li>
           <li class="nav-item">
-          <a href="{{ route('pagonum') }}" class="nav-link">
+            <a href="{{ route('pagonum') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Pago Numero</p>
+              <p>Pago Numero
+                <?php use App\Pago; $pag_count = Pago::all()->count(); ?>
+                <span class="right badge badge-danger">{{$pag_count}}</span>
+              </p>
             </a>
           </li>
+          
           <li class="nav-item">
             <a href="pages/charts/inline.html" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
               <p>Inline</p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{ route('repopagoxnum') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Pago Numero2
+                
+                <span class="right badge badge-danger">{{$pag_count}}</span>
+              </p>
+            </a>
+          </li>
+
+
         </ul>
       </li>
     </ul><!--- otro-->

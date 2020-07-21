@@ -37,11 +37,41 @@
                             <div class="alert alert-primary" role="alert">
                                     {{ $data->objetocontrato }}
                             </div>
+                            <div class="form-row mb-2 pb-2 bg-info">
+                                <div class="col">
+                                  <label>Pago Corresponde</label>
+                                  <input type="text" wire:model="pago_corresponde_mes" class="form-control" placeholder="Correspondiente a?">
+                                  @error('pago_corresponde_mes') <span class="text-danger">{{$message}}</span>@enderror
+                                </div>
+                                <div class="col">
+                                  <label>Mes Ejecucion</label>
+                                  <select wire:model="mes_ejecucion" class="form-control">
+                                    <option value="0">Seleccione</option>
+                                    <option value="1">Enero</option>
+                                    <option value="2">Febrero</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Mayo</option>
+                                    <option value="6">Junio</option>
+                                    <option value="7">Julio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
+                                @error('mes_ejecucion') <span class="text-danger">{{$message}}</span>@enderror
+                                </div>
+                                <div class="col">
+                                  <label>Porcentaje Cumplimiento</label>
+                                  <input type="text" wire:model="porcentaje_cumplimiento" class="form-control" placeholder="Porcentaje Cumplido">
+                                </div>
+                            </div>
                             <form wire:submit.prevent="agregarfact">
                               <div class="form-row">
                                 <div class="col">
                                   <input wire:model="fact.numfac" type="text" class="form-control" placeholder="Num Factura">
-                                @error('numfac') <span class="text-danger">{{$message}}</span>@enderror
+                                 @error('numfac') <span class="text-danger">{{$message}}</span>@enderror
                                 </div>
                                 <div class="col">
                                   <input wire:model="fact.fechafac" type="date" class="form-control" placeholder="Fecha Fac">
@@ -71,12 +101,12 @@
 
                               </div><!--  fin form-row -->
                             
-                              <button type="submit" class="btn btn-primary mt-2" >Add Fac</button>
+                              <button type="submit" class="btn btn-primary btn-sm mt-2" >Add Fac</button>
                             </form>
                             @if ($lisfact)
                             
                             <div class="float-right">
-                              <button wire:click="grabarfactura()"  class="btn btn-primary my-2 " title="Grabar pago" >Grabar Pago</button>
+                              <button wire:click="grabarfactura()"  class="btn btn-primary btn-sm my-2 " title="Grabar pago" >Grabar Pago</button>
                             </div>
                             <?php $sum = 0; ?>
                                 <table class="table table-bordered">
@@ -111,6 +141,7 @@
                                     </tr>  
                                   </tbody>
                                 </table>
+                                {{'saldpo:'. $sal.' total: '.$total.' cto. '.$vc }}
                               @endif
                             @endif
                         

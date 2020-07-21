@@ -8,7 +8,7 @@ class Contrato extends Model
 {
     protected $fillable = ['proveedor_id', 'numcontrato', 'tipocontrato_id', 'dependencia_id', 
            'fechacontrato', 'valorcontrato', 'registro_pres_inic', 'plazoejecucion', 'objetocontrato',
-           'interadmi', 'saldo', 'pagos'];
+           'interadmi', 'saldo', 'pagos', 'supervisor', 'num_mes'];
 
 
     public function proveedor()

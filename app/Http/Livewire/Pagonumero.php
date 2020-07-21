@@ -3,10 +3,11 @@
 namespace App\Http\Livewire;
 use App\Pago;
 use Livewire\Component;
+use PDF;
 
 class Pagonumero extends Component
 {
-    public $contrato_id, $contra, $pago_id;
+    public $contrato_id, $contra, $pago_id, $data, $pdf1;
 
     public function render()
     {
@@ -19,8 +20,18 @@ class Pagonumero extends Component
         //$this->resetInputsC();
         if ($id) {
             $this->data = Pago::findOrFail($id);
-            $this->proveedor_id = $this->data->proveedor_id;
+            //$this->proveedor_id = $this->data->proveedor_id;
+
         }
+        
+    }
+
+    public function Pdfxnumeropago()
+    {
+        
+        //$user = User::findOrFail($request->input('id'));
+        $this->pdf1= PDF::loadView('reportes.pdf_pago_num');
+        $this->pdf1->stream();
         
     }
 }

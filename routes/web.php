@@ -31,3 +31,10 @@ Route::view('contra', 'contrato.contratos')->name('contra');
 Route::view('consulfa', 'facturas.consultafac')->name('consulfa');
 Route::view('pagosfa', 'pagos.pagosfac')->name('pagosfa');
 Route::view('pagonum', 'reportes.pagos_num')->name('pagonum');
+
+Route::view('addcontra', 'contrato.adiciones')->name('addcontra');
+
+Route::get('repopagoxnum', 'PdfController@index')->name('repopagoxnum');
+Route::get('pagxnum', 'PdfController@Pdfpagosxnums');
+Route::get('pdfpagxnum', 'PdfController@Pdfxpagonum')->name('pdfpagxnum');
+Route::get('pdfinfosuper', 'PdfController@Pdfinformesuper')->name('pdfinfosuper');

@@ -1,0 +1,36 @@
+
+    table{
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    table {border-collapse: collapse;}
+
+    td {padding: 6px;}
+    
+   .c1 {
+        /*border: 1px solid blue;*/
+        width: 15%;
+        word-wrap: break-word;
+    }
+   .c2 {
+        /*border: 1px solid blue;*/
+        width: 35%;
+        word-wrap: break-word;
+    }
+   .c3 {
+        /*border: 1px solid blue;*/
+        width: 25%;
+        word-wrap: break-word;
+    }
+
+    .t1 {
+        border: 1px solid #000000;
+        width: 20%;
+        word-wrap: break-word;
+        font-size: 12px;
+    }
+
+    .colu {
+      border: 1px solid #000000;
+    }
