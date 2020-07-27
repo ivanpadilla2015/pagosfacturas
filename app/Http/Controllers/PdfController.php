@@ -11,11 +11,13 @@ class PdfController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $pa = 0;
     }
-
+  
     public function index()
     {
         $contra = Pago::orderBy('id', 'desc')->get();
+        //return view('reportes.pagos_pdf_num', compact('contra'));
         return view('reportes.pagosxnumero2', compact('contra'));
     }
 
@@ -30,13 +32,20 @@ class PdfController extends Controller
         }
         
     }
-    
-    public function Pdfxpagonum()
+     
+    public function Pdfxpagonum(Request $request)
     {
+       dd($request->id_php);
         $pdf= PDF::loadView('reportes.pdf_pago_num');
         $pdf->setPaper('letter', 'landscape');
         return $pdf->stream();
     }
+
+    public function Pdfpagon()
+    {
+        return view('reportes.pagos_pdf_num');
+    }
+
 
     public function Pdfinformesuper()
     {

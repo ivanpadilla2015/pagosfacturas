@@ -16,23 +16,28 @@
                               </select>
                         </div>
                         @if ($data) 
-                            <strong class="mr-2">Contrato : </strong>{{$data->numcontrato}} <strong class="mr-2 ml-5">Valor : </strong>{{number_format($data->valorcontrato) }} <strong class="mr-2 ml-5">Saldo : </strong><span>{{number_format($data->saldo)}}</span><br />
-                            <strong class="mr-2">Proveedor : </strong><span>{{$data->proveedor->nombre}}</span><br />
+                            <strong class="mr-2">Contrato : </strong>{{$data->numcontrato}} <strong class="mr-2 ml-2">Valor Cto : </strong>{{number_format($data->valorcontrato) }} <strong class="mr-2 ml-2">Adicion : </strong><span>{{number_format($data->valoradicion)}}</span> <strong class="mr-2 ml-2">Saldo : </strong><span>{{number_format($data->saldo)}}</span><br />
+                            <strong class="mr-2">Proveedor : </strong><span>{{$data->proveedor->nombre}}</span> <strong class="ml-2 mr-2">Supervidor : </strong>{{$data->supervisor}} <strong class="mr-2 ml-2">Ejecutado : </strong><span>{{($data->ejecutado).'%'}}</span><br />
                             
                             <div class="form-row">
-                                <div class="col-2">
-                                  <strong>Pago No</strong>
-                                  <input type="text" name="pagos" value="{{++$data->pagos}}" class="form-control" placeholder="Pago num">
+                                <div class="col-2 text-center">
+                                  <strong>Pago No</strong><br>
+                                  <small>{{++$data->pagos}}</small>
                                 </div>
                                 <div class="col-4">
-                                    <strong>Reg. Pres</strong>
-                                    <input name="registro_pres_inic" value="{{ $data->registro_pres_inic }}" type="text" class="form-control" placeholder="Registro Press">
+                                    <strong>Reg. Pres</strong><br>
+                                    <small>{{ $data->registro_pres_inic }}</small>
                                 </div>
                                 <div class="col">
-                                  <strong>Inter Admin</strong>
-                                  <input name="interadmi" value="{{ $data->interadmi }}" type="text" class="form-control" placeholder="Inter">
+                                  <strong>Inter Admin</strong><br>
+                                  <small>{{ $data->concargo->detalle_inter }}</small> 
                                 </div>
                               </div>
+                              @php $c=0 @endphp
+                              @foreach ($data->adicions as $item)
+                                @php $c += 1 @endphp
+                                <strong>{{'Adicion '.$c.' :'}}</strong><span class="ml-1">{{ number_format($item->valoradicion) }}</span> <strong class="ml-2">{{'Fecha :'}}</strong><span class="ml-1">{{ $item->fechaadicion }}</span> <strong class="ml-2">{{'Registro :'}}</strong><span class="ml-1">{{ $item->registroadicion }}</span>  <br>
+                              @endforeach
                             <strong >Objeto: </strong> 
                             <div class="alert alert-primary" role="alert">
                                     {{ $data->objetocontrato }}
@@ -62,9 +67,9 @@
                                 </select>
                                 @error('mes_ejecucion') <span class="text-danger">{{$message}}</span>@enderror
                                 </div>
-                                <div class="col">
-                                  <label>Porcentaje Cumplimiento</label>
-                                  <input type="text" wire:model="porcentaje_cumplimiento" class="form-control" placeholder="Porcentaje Cumplido">
+                                <div class="col text-center">
+                                  <label>Nuevo % Cumplimiento</label><br>
+                                   {{ $porcentaje_cumplimiento.'%' }} 
                                 </div>
                             </div>
                             <form wire:submit.prevent="agregarfact">
@@ -101,12 +106,12 @@
 
                               </div><!--  fin form-row -->
                             
-                              <button type="submit" class="btn btn-primary btn-sm mt-2" >Add Fac</button>
+                              <button type="submit" class="btn btn-primary btn-sm mt-2 float-right" >Add Fac</button>
                             </form>
                             @if ($lisfact)
                             
-                            <div class="float-right">
-                              <button wire:click="grabarfactura()"  class="btn btn-primary btn-sm my-2 " title="Grabar pago" >Grabar Pago</button>
+                            <div class="float-center ">
+                              <button wire:click="grabarfactura()"  class="btn btn-success btn-sm my-2 " title="Grabar pago" >Grabar Pago</button>
                             </div>
                             <?php $sum = 0; ?>
                                 <table class="table table-bordered">
@@ -141,7 +146,7 @@
                                     </tr>  
                                   </tbody>
                                 </table>
-                                {{'saldpo:'. $sal.' total: '.$total.' cto. '.$vc }}
+                                {{'saldpo:'. $sal.' total: '.$total.' cto. '.$vct }}
                               @endif
                             @endif
                         

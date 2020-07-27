@@ -14,6 +14,11 @@ class DependensTableSeeder extends Seeder
                
         App\Dependencia::create([
 
+            'nombredepen' => ucwords('Administrador'),
+        ]);
+        
+        App\Dependencia::create([
+
             'nombredepen' => ucwords('Admistrativa'),
         ]);
 

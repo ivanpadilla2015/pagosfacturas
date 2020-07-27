@@ -17,9 +17,14 @@ class CreatePagosTable extends Migration
             $table->id();
             $table->date('fecha_pago');
             $table->double('total',10,2);
+            $table->double('saldo_viene',10,2);
+            $table->double('gran_total',15,2);
             $table->string('pago_corresponde_mes');
             $table->string('porcentaje_cumplimiento');
-            $table->string('mes_ejecucion')->nullable();;
+            $table->string('mes_ejecucion')->nullable();
+            $table->string('consecu_informe');
+            $table->date('fecha_plazoeje')->nullable();
+            $table->string('registroadicion')->nullable();
             $table->timestamps();
 
             $table->foreignId('contrato_id')->constrained();

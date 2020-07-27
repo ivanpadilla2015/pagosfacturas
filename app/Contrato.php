@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Contrato extends Model
 {
     protected $fillable = ['proveedor_id', 'numcontrato', 'tipocontrato_id', 'dependencia_id', 
-           'fechacontrato', 'valorcontrato', 'registro_pres_inic', 'plazoejecucion', 'objetocontrato',
-           'interadmi', 'saldo', 'pagos', 'supervisor', 'num_mes'];
+           'fechacontrato', 'valorcontrato', 'valoradicion', 'registro_pres_inic', 'plazoejecucion', 'objetocontrato',
+           'interadmi', 'saldo', 'pagos', 'supervisor', 'num_mes', 'concargo_id', 'gran_total', 'ejecutado'];
 
 
     public function proveedor()
@@ -24,6 +24,16 @@ class Contrato extends Model
     public function dependencias()
     {
         return $this->hasMany('App\Dependencia');
+    }
+
+    public function concargo()
+    {
+        return $this->belongsTo('App\Concargo');
+    }
+
+    public function adicions()
+    {
+        return $this->hasMany('App\Adicion');
     }
 
    

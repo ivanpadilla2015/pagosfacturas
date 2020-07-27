@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Pago extends Model
 {
     protected $fillable = ['fecha_pago', 'total', 'contrato_id', 'user_id', 'pago_corresponde_mes', 'mes_ejecucion',
-                           'porcentaje_cumplimiento'];
+                           'porcentaje_cumplimiento', 'saldo_viene', 'gran_total', 'consecu_informe', 'fecha_plazoeje',
+                           'registroadicion'];
 
     public function contrato()
     {
@@ -22,6 +23,11 @@ class Pago extends Model
     public function facturadetas()
     {
       return $this->hasMany('App\Facturadeta');
+    }
+
+    public function factudetadis()
+    {
+      return $this->hasMany('App\Factudetadi');
     }
 
     public function dependencia()

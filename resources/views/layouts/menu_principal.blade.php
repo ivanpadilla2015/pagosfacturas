@@ -38,6 +38,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('interadmi') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Contratos Inter
+                <?php use App\Concargo; $car_count = Concargo::all()->count();  ?>
+                <span class="right badge badge-danger">{{$car_count}}</span>
+              </p>
+            </a>
+          </li>
         </ul>
       </li> <!---   -->
       <li class="nav-item">
@@ -82,9 +91,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/charts/inline.html" class="nav-link">
+            <a href="{{route('losusos')}}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Inline</p>
+              <p>Manejo de Usos
+                <?php use App\Rubro; $usos_count = Rubro::all()->count(); ?>
+                <span class="right badge badge-danger">{{$usos_count}}</span>
+              </p>
             </a>
           </li>
         </ul>
@@ -107,26 +119,18 @@
           <li class="nav-item">
             <a href="{{ route('pagonum') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Pago Numero
+              <p>Consulta Pago
                 <?php use App\Pago; $pag_count = Pago::all()->count(); ?>
                 <span class="right badge badge-danger">{{$pag_count}}</span>
               </p>
             </a>
           </li>
-          
           <li class="nav-item">
-            <a href="pages/charts/inline.html" class="nav-link">
+            <a href="{{ route('pdfpagos') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Inline</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="{{ route('repopagoxnum') }}" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
-              <p>Pago Numero2
-                
-                <span class="right badge badge-danger">{{$pag_count}}</span>
+              <p>Pago x Numero
+                <?php  $pag_count1 = Pago::all()->count(); ?>
+                <span class="right badge badge-danger">{{$pag_count1}}</span>
               </p>
             </a>
           </li>
@@ -134,6 +138,16 @@
 
         </ul>
       </li>
+      <li class="nav-item">
+        <a href="{{ route('users') }}" class="nav-link">
+          <i class="fas fa-circle nav-icon"></i>
+          <p>Usuarios
+            <?php use App\User; $use_count = User::all()->count(); ?>
+            <span class="right badge badge-danger">{{$use_count}}</span>
+          </p>
+        </a>
+      </li>
+
     </ul><!--- otro-->
     
   </nav>

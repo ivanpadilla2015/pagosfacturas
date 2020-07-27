@@ -50361,6 +50361,13 @@ var app = new Vue({
         sum += element.valorfac;
       });
       return sum;
+    },
+    controlpago: function controlpago(idpa) {
+      axios.get('/pdfpagxnum', {
+        params: {
+          pago_id: idpa
+        }
+      }).then(function (respo) {});
     }
   }
 });

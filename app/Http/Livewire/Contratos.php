@@ -5,13 +5,14 @@ use App\Contrato;
 use App\Proveedor;
 use App\Tipocontrato;
 use App\Dependencia;
+use App\Concargo;
 use Livewire\Component;
 
 class Contratos extends Component
 {
     public $proved, $proveedor_id, $numcontrato, $tipoc, $tipocontrato_id, $dependencia_id, $depen,
            $fechacontrato, $valorcontrato, $registro_pres_inic, $plazoejecucion, $objetocontrato,
-           $interadmi, $saldo, $selected_id, $pagos, $supervisor, $num_mes;
+           $concargo_id, $saldo, $selected_id, $pagos, $supervisor, $num_mes, $concar;
     public  $createMode = false;
     public  $updateMode = false;
 
@@ -20,6 +21,7 @@ class Contratos extends Component
         $this->proved = Proveedor::all();
         $this->tipoc = Tipocontrato::all();
         $this->depen = Dependencia::all();
+        $this->concar = Concargo::all();
         return view('livewire.contratos', [ 'data' => Contrato::orderBy('id', 'desc')->paginate(5)]);
     }
 
@@ -37,7 +39,7 @@ class Contratos extends Component
         $this->registro_pres_inic = null;
         $this->plazoejecucion = null;
         $this->objetocontrato = null;
-        $this->interadmi = null;
+        $this->concargo_id = null;
         $this->pagos = null;
         $this->saldo = null;
         $this->supervisor = null;
@@ -65,6 +67,7 @@ class Contratos extends Component
             'fechacontrato' => 'required',
             'valorcontrato' => 'required',
             'plazoejecucion' => 'required',
+            'concargo_id' => 'required|integer|not_in:0',
             'objetocontrato' =>'required',
             
 
@@ -76,12 +79,14 @@ class Contratos extends Component
             'fechacontrato' => $this->fechacontrato, 'valorcontrato' => $this->valorcontrato,
             'registro_pres_inic' => $this->registro_pres_inic, 'plazoejecucion' => $this->plazoejecucion,
             'objetocontrato' => $this->objetocontrato, 'saldo' => $this->valorcontrato, 
-            'interadmi' => $this->interadmi
+            'concargo_id' => $this->concargo_id, 'gran_total' => $this->valorcontrato
         ]);        
 
         //ucwords — Convierte a mayúsculas el primer caracter de cada palabra de una cadena
         $this->emit('alert', ['type'=> 'success', 'message' => 'Creado Correctamente']);
         $this->resetInput();
+        $this->updateMode = false;
+        $this->createMode = false;
     }
 
     public function edit($id)
@@ -98,7 +103,7 @@ class Contratos extends Component
         $this->plazoejecucion = $record->plazoejecucion;
         $this->objetocontrato = $record->objetocontrato; 
         $this->saldo = $record->saldo;
-        $this->interadmi = $record->interadmi;
+        $this->concargo_id = $record->concargo_id;
         $this->pagos = $record->pagos;
         $this->supervisor = $record->supervisor;
         $this->num_mes = $record->num_mes;
@@ -116,6 +121,7 @@ class Contratos extends Component
             'fechacontrato' => 'required',
             'valorcontrato' => 'required',
             'plazoejecucion' => 'required',
+            'concargo_id' => 'required|integer|not_in:0',
             'objetocontrato' =>'required',
             
         ]);   
@@ -127,7 +133,7 @@ class Contratos extends Component
                 'fechacontrato' => $this->fechacontrato, 'valorcontrato' => $this->valorcontrato,
                 'registro_pres_inic' => $this->registro_pres_inic, 'plazoejecucion' => $this->plazoejecucion,
                 'objetocontrato' => $this->objetocontrato, 'saldo' => $this->saldo, 
-                'interadmi' => $this->interadmi, 'pagos' => $this->pagos, 'supervisor' => $this->supervisor,
+                'concargo_id' => $this->concargo_id, 'pagos' => $this->pagos, 'supervisor' => $this->supervisor,
                 'num_mes' => $this->num_mes                
             ]);   
             $this->emit('alert', ['type'=> 'success', 'message' => 'Actualizado Correctamente']);    

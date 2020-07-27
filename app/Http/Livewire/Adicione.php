@@ -41,7 +41,10 @@ class Adicione extends Component
         ]);
 
         $con = Contrato::findOrFail($this->data->id);
-        $con->saldo = $con->saldo += $this->valoradicion;
+        $con->saldo = $con->saldo + $this->valoradicion;
+        $con->valoradicion = $con->valoradicion + $this->valoradicion;
+        $con->gran_total = $con->valorcontrato + $con->valoradicion;
+        $con->ejecutado = 100 - round(($con->saldo*100)/$con->gran_total);
         $con->save();
 
         Adicion::create([

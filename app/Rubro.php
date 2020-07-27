@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rubro extends Model
 {
+    protected $fillable = [ 'nombrerubro', 'codigo' ];
+
     
     public function factura()
     {

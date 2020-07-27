@@ -54,6 +54,12 @@ const app = new Vue({
             return sum;
             
           },
+        controlpago(idpa){
+            
+            axios.get('/pdfpagxnum',{params: {pago_id: idpa}}).then(respo=>{
+                
+            });
+        }
 
     }
 });

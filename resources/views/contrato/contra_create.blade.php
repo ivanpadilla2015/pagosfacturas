@@ -80,7 +80,15 @@
                     </div>
                     <div class="form-group col">
                       <label >Contrato Inter</label>  
-                      <input wire:model="interadmi" type="text" class="form-control" placeholder="Num Contrato Inter">
+                         <select wire:model="concargo_id" class="form-control">
+                            <option value="0">Seleccione</option>
+                            @foreach ($concar as $car)
+                              <option value="{{ $car['id'] }}">{{ $car['detalle_inter'] }}</option>
+                            @endforeach
+                          </select>
+                          @error('concargo_id')
+                              <small class="form-text text-danger">{{ $message }}</small>
+                          @enderror
                     </div>
                   </div>
 
