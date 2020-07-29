@@ -10,12 +10,13 @@ use App\Facturadeta;
 use App\Factudetadi;
 use Carbon\Carbon;
 use Livewire\Component;
+use App\Obliga_pago;
 use Illuminate\Support\Collection;
 
 class Pagos extends Component
 {
     public $contra, $contrato_id, $data, $pagos_id, $usos, $depen, $collection;
-    public  $verMode = false; 
+    public  $verMode = true;
     public $numfac, $proveedor_id, $total, $pago_id, $pago_corresponde_mes, $porcentaje_cumplimiento,
            $mes_ejecucion, $sal, $vct, $saldo_viene, $feje, $reg;
     public $fact = [
@@ -143,8 +144,15 @@ class Pagos extends Component
             Facturadeta::create(['numfac' => $f['numfac'],'fechafac' => $f['fechafac'], 'valorfac' => $f['valorfac'], 'dependencia_id' => $f['dependencia_id'], 
                                 'rubro_id'=> empty($f['rubro_id']) ? 1 : $f['rubro_id'], 'contrato_id'=> $this->contrato_id, 'pago_id'=> $this->pago_id ]);
         }
+        /*****************agregar obligacion****************************** */
+        foreach ($this->data->obligacions as $key => $obl) {
+             Obliga_pago::create(['numeral' => $obl['numeral'],'obligacion_deta'=> $obl['obligacion_deta'],
+                                'entregable' => $obl['entregable'], 'mes_ejecucion'=> $this->mes_ejecucion,
+                               'pago_id' => $this->pago_id]);
+        }
         $this->emit('alert', ['type'=> 'success', 'message' => 'Pago No: '.$pag->id.' Creado Correctamente']);
         $this->resetInput();
+        redirect()->route('oblipa', $pag->id);
     }
 
     public function elimina($key)
@@ -191,6 +199,7 @@ class Pagos extends Component
         $this->lisfact = array();
 
     }
+   
 
   
 }

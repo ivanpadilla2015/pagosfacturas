@@ -36,5 +36,10 @@ class Contrato extends Model
         return $this->hasMany('App\Adicion');
     }
 
+    public function obligacions()
+    {
+        return $this->hasMany('App\Obligacion');
+    }
+
    
 }

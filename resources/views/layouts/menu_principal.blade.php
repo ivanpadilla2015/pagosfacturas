@@ -47,6 +47,12 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('obliga') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Obligaciones</p>
+            </a>
+          </li>
         </ul>
       </li> <!---   -->
       <li class="nav-item">

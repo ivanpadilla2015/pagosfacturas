@@ -49,3 +49,7 @@ Route::view('users', 'usuarios.usuario')->name('users')->middleware('auth');
 Route::view('losusos', 'usos.usos')->name('losusos')->middleware('auth');
 Route::view('interadmi', 'contra_inter.interadmin')->name('interadmi')->middleware('auth');
 
+Route::view('obliga', 'contrato.obligacion')->name('obliga')->middleware('auth');
+Route::get('oblipa/{id}', 'ObligapagosController@Obligaciondepagos')->name('oblipa')->middleware('auth');
+Route::get('actualobli', 'ObligapagosController@actualizarobliga')->name('actualobli')->middleware('auth');
+
