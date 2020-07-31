@@ -13,7 +13,7 @@ class CreatePagosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pagos', function (Blueprint $table) {
+       Schema::create('pagos', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_pago');
             $table->double('total',10,2);

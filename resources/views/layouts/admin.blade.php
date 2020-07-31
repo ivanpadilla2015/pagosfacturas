@@ -220,25 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <livewire:scripts>
 @stack('scripts') <!-- utilizar javascrip livewire -->
 <script src="{{ asset('js/app.js') }}"></script>
-<script>
-  $('#edit').on('show.bs.modal', function (e) {
-    
-      var button = $(e.relatedTarget); 
-      var numeral = button.data('mynumeral');
-      var obliga = button.data('myobligacion'); 
-      var entrega = button.data('myentregable');
-      var ido = button.data('idobli');
-          
-      var modal = $(this)
-      modal.find('.modal-body #numeral').val(numeral);
-      modal.find('.modal-body #obliga').val(obliga);     
-      modal.find('.modal-body #entrega').val(entrega);
-      modal.find('.modal-body #id_obli').val(ido);
-      })
-</script>
 @toastr_render
 @yield('script')
-
-
 </body>
 </html>

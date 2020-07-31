@@ -45,9 +45,16 @@ class Pagos extends Component
         $this->resetInputsC();
         if ($id) {
             $this->data = Contrato::findOrFail($id);
-            $this->proveedor_id = $this->data->proveedor_id;
-            $this->sal = $this->data->saldo;
-            $this->vct = $this->data->gran_total;
+            if($this->data->obligacions->count() > 0){  //para saber si tiene obligaciones o no
+                $this->proveedor_id = $this->data->proveedor_id;
+                $this->sal = $this->data->saldo;
+                $this->vct = $this->data->gran_total;
+            }else
+            {
+                $this->emit('alert', ['type'=> 'error', 'message' => 'OJO Contrato No tiene Obligaciones']); 
+                $this->resetInput();
+            }
+
             //ojo faltaria reg de la adicion
         }
          

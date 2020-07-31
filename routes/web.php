@@ -51,5 +51,7 @@ Route::view('interadmi', 'contra_inter.interadmin')->name('interadmi')->middlewa
 
 Route::view('obliga', 'contrato.obligacion')->name('obliga')->middleware('auth');
 Route::get('oblipa/{id}', 'ObligapagosController@Obligaciondepagos')->name('oblipa')->middleware('auth');
-Route::get('actualobli', 'ObligapagosController@actualizarobliga')->name('actualobli')->middleware('auth');
+Route::put('actualobli/{id}/update', 'ObligapagosController@upadate')->name('edit.update')->middleware('auth');
+
+Route::view('addrubrocontra', 'contrato.rubrocontrato')->name('addrubrocontra')->middleware('auth');
 

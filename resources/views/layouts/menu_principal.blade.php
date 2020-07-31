@@ -53,6 +53,15 @@
               <p>Obligaciones</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('addrubrocontra') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Rubros a Contratos
+                <?php use App\Rubroprin; $rub_count = Rubroprin::all()->count();  ?>
+                <span class="right badge badge-danger">{{$rub_count}}</span>
+              </p>
+            </a>
+          </li>
         </ul>
       </li> <!---   -->
       <li class="nav-item">

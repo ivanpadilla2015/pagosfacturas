@@ -20,6 +20,8 @@ class CreateContratosTable extends Migration
             $table->timestamps();
         });
 
+      
+
         Schema::create('contratos', function (Blueprint $table) {
             $table->id();
             $table->string('numcontrato', 50)->unique();
