@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Facturadeta extends Model
 {
     protected $fillable = ['numfac', 'fechafac', 'valorfac', 'status','contrato_id', 'dependencia_id',
-                            'rubro_id','pago_id'];
+                            'uso_rubro_id','pago_id'];
 
     
     public function contrato()
@@ -20,9 +20,9 @@ class Facturadeta extends Model
        return $this->belongsTo('App\Dependencia');
     }
 
-    public function rubro()
+    public function uso_rubro()
     {
-       return $this->belongsTo('App\Rubro');
+       return $this->belongsTo('App\Uso_rubro');
     }
 
     public function pago()

@@ -37,9 +37,9 @@ class Pdf_pagosController extends Controller
         
         $datos = Pago::findOrFail($id);
         $rubro = DB::table('facturadetas')
-            ->join('rubros', 'rubros.id', '=', 'facturadetas.rubro_id')
-            ->select('facturadetas.numfac', 'rubros.nombrerubro', 'facturadetas.rubro_id','rubros.codigo', DB::raw('SUM(facturadetas.valorfac) as total_fac'))
-            ->groupBy('facturadetas.rubro_id')
+            ->join('uso_rubros', 'uso_rubros.id', '=', 'facturadetas.uso_rubro_id')
+            ->select('facturadetas.numfac', 'uso_rubros.nombre_uso', 'facturadetas.uso_rubro_id','uso_rubros.codigo_uso', DB::raw('SUM(facturadetas.valorfac) as total_fac'))
+            ->groupBy('facturadetas.uso_rubro_id')
             ->where('facturadetas.pago_id', $datos->id)
             ->get();
         //return $rubro;

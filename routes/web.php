@@ -20,7 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::view('/admin', 'layouts.admin')->name('admin');
+Route::resource('/admin', 'PrincipalController');
+//Route::view('/admin', 'layouts.admin')->name('admin');
 
 Route::view('depen', 'dependen.dependencia')->name('depen')->middleware('auth');
 Route::view('provee', 'provedores.proveedors')->name('provee')->middleware('auth');
@@ -54,4 +55,7 @@ Route::get('oblipa/{id}', 'ObligapagosController@Obligaciondepagos')->name('obli
 Route::put('actualobli/{id}/update', 'ObligapagosController@upadate')->name('edit.update')->middleware('auth');
 
 Route::view('addrubrocontra', 'contrato.rubrocontrato')->name('addrubrocontra')->middleware('auth');
+Route::view('movirubro', 'contrato.movirubros')->name('movirubro')->middleware('auth');
+
+
 

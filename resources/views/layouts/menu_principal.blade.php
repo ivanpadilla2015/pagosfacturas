@@ -53,17 +53,45 @@
               <p>Obligaciones</p>
             </a>
           </li>
+         
+          
+        </ul>
+      </li> <!---   -->
+      <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-chart-pie"></i>
+          <p>
+            Movimientos a Rubros
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="{{ route('addrubrocontra') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Rubros a Contratos
+              <p>Asignar Rubros a Contratos
                 <?php use App\Rubroprin; $rub_count = Rubroprin::all()->count();  ?>
                 <span class="right badge badge-danger">{{$rub_count}}</span>
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('movirubro') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Adiciones a Rubro
+                <?php //use App\Rubroprin; $rub_count = Rubroprin::all()->count();  ?>
+                <span class="right badge badge-danger">{{$rub_count}}</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Traslados entre Rubro</p>
+            </a>
+          </li>
         </ul>
-      </li> <!---   -->
+      </li>
       <li class="nav-item">
       <a href="{{ route('depen') }}" class="nav-link">
           <i class="nav-icon fas fa-th"></i>

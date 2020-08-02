@@ -11,6 +11,8 @@ use App\Factudetadi;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Obliga_pago;
+use App\Rubroprin;
+use App\Uso_rubro;
 use Illuminate\Support\Collection;
 
 class Pagos extends Component
@@ -31,6 +33,7 @@ class Pagos extends Component
 
     
     public $lisfact = array();
+    public $lisusos = array();
     
     public function render()
     {
@@ -45,10 +48,18 @@ class Pagos extends Component
         $this->resetInputsC();
         if ($id) {
             $this->data = Contrato::findOrFail($id);
+            
             if($this->data->obligacions->count() > 0){  //para saber si tiene obligaciones o no
                 $this->proveedor_id = $this->data->proveedor_id;
                 $this->sal = $this->data->saldo;
                 $this->vct = $this->data->gran_total;
+                foreach ($this->data->rubrocontratos as $value) {
+                     $rprin  = Rubroprin::findOrFail($value->rubroprin_id);        
+                      foreach ($rprin->uso_rubros as  $uso) {
+                          array_push($this->lisusos, ['id' => $uso->id, 'nombre_uso' => $uso->nombre_uso, 'id_prin' => $rprin->id ]);
+                      }
+                }
+                
             }else
             {
                 $this->emit('alert', ['type'=> 'error', 'message' => 'OJO Contrato No tiene Obligaciones']); 
@@ -82,8 +93,9 @@ class Pagos extends Component
         
        if($this->fact['rubro_id'])
        {
-        $rub = Rubro::findOrFail($this->fact['rubro_id']); 
-        $this->fact['nomrub'] = $rub->nombrerubro;
+        //$rub = Rubro::findOrFail($this->fact['rubro_id']); 
+        $rub = Uso_rubro::findOrFail($this->fact['rubro_id']); //usos
+        $this->fact['nomrub'] = $rub->nombre_uso;
        }
        array_push($this->lisfact, $this->fact);
        $this->fact = ['numfac' => '', 'fechafac' => '', 'valorfac' => '','dependencia_id' => '',
@@ -98,6 +110,7 @@ class Pagos extends Component
     public function grabarfactura()
     {
         
+        //dd()
         $this->totalizapago();
 
         $con = Contrato::findOrFail($this->contrato_id);
@@ -149,8 +162,8 @@ class Pagos extends Component
                 Factura::create(['numfac'=> $this->numfac, 'fechafac'=> $f['fechafac'], 'contrato_id'=> $this->contrato_id,'pago_id'=> $this->pago_id ]);
             }
             Facturadeta::create(['numfac' => $f['numfac'],'fechafac' => $f['fechafac'], 'valorfac' => $f['valorfac'], 'dependencia_id' => $f['dependencia_id'], 
-                                'rubro_id'=> empty($f['rubro_id']) ? 1 : $f['rubro_id'], 'contrato_id'=> $this->contrato_id, 'pago_id'=> $this->pago_id ]);
-        }
+                                'uso_rubro_id'=> $f['rubro_id'], 'contrato_id'=> $this->contrato_id, 'pago_id'=> $this->pago_id ]);
+        }                     //rubro_id = ide el uso      
         /*****************agregar obligacion****************************** */
         foreach ($this->data->obligacions as $key => $obl) {
              Obliga_pago::create(['numeral' => $obl['numeral'],'obligacion_deta'=> $obl['obligacion_deta'],

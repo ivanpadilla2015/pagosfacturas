@@ -10,7 +10,6 @@
 @if ($data) 
     <strong class="mr-2">Contrato : </strong>{{$data->numcontrato}} <strong class="mr-2 ml-2">Valor Cto : </strong>{{number_format($data->valorcontrato) }} <strong class="mr-2 ml-2">Adicion : </strong><span>{{number_format($data->valoradicion)}}</span> <strong class="mr-2 ml-2">Saldo : </strong><span>{{number_format($data->saldo)}}</span><br />
     <strong class="mr-2">Proveedor : </strong><span>{{$data->proveedor->nombre}}</span> <strong class="ml-2 mr-2">Supervidor : </strong>{{$data->supervisor}} <strong class="mr-2 ml-2">Ejecutado : </strong><span>{{($data->ejecutado).'%'}}</span><br />
-    
     <div class="form-row">
         <div class="col-2 text-center">
           <strong>Pago No</strong><br>
@@ -90,8 +89,8 @@
         <div class="col">
           <select wire:model="fact.rubro_id"  class="form-control" id="producto"   >
             <option value="0">Seleccione</option>
-            @foreach ($usos as $uso)
-              <option value="{{ $uso['id'] }}"  >{{ $uso['nombrerubro'] }}</option>
+            @foreach ($lisusos as $uso)
+              <option value="{{ $uso['id'] }}"  >{{ $uso['nombre_uso'] }}</option>
             @endforeach 
           </select>
       </div>

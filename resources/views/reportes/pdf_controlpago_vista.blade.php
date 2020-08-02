@@ -86,7 +86,7 @@
                                             <td>{{ $item->numfac }}</th>
                                             <td>{{ $item->fechafac }}</td>
                                             <td>{{ $item->dependencia->nombredepen }}</td>
-                                            <td class="col-sm-5">{{ $item->rubro->nombrerubro }}</td>
+                                            <td class="col-sm-5">{{ $item->uso_rubro->nombre_uso }}</td>
                                             <td>{{ number_format($item->valorfac) }}</td>
                                           </tr>
                                        @endforeach 

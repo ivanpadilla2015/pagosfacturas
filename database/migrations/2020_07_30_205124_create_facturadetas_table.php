@@ -23,7 +23,7 @@ class CreateFacturadetasTable extends Migration
 
             $table->foreignId('contrato_id')->constrained();
             $table->foreignId('dependencia_id')->constrained();
-            $table->foreignId('rubro_id')->constrained();
+            $table->foreignId('uso_rubro_id')->constrained();
             $table->foreignId('pago_id')->constrained();
         });
     }

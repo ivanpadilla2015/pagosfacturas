@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rubrocontrato extends Model
 {
-    protected $fillable = [ 'contrato_id', 'rubroprin_id' ];
+    protected $fillable = [ 'contrato_id', 'rubroprin_id', 'valorrubro', 'saldo' ];
 
     public function rubroprin()
     {

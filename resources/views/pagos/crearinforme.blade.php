@@ -12,7 +12,7 @@
                 <div class="card">
                 <h5 class="card-header">Listado Obligaciones Pago No {{$pago->id}} - Contrato: {{$pago->contrato->numcontrato}} </h5>
                   <div class="card-body">
-                    <a href="{{ route('admin')}}" class="btn btn-success btn-sm float-right">Finalizar Informe</a>
+                    <a href="{{ url('admin')}}" class="btn btn-success btn-sm float-right">Finalizar Informe</a>
                                     <table class="table table-sm">
                                         <thead>
                                             <tr>

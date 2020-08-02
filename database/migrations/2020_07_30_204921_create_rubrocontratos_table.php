@@ -16,6 +16,7 @@ class CreateRubrocontratosTable extends Migration
         Schema::create('rubrocontratos', function (Blueprint $table) {
             $table->id();
             $table->double('valorrubro', 20, 2)->nullable();
+            $table->double('saldo', 20, 2)->nullable();
             $table->timestamps();
 
             $table->foreignId('contrato_id')->constrained();

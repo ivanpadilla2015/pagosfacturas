@@ -108,8 +108,8 @@
     @php $s = 0; $sdo = $datos->saldo_viene; @endphp
       @foreach ($rubro as $item)
             <tr>
-              <td class="colu">{{$item->nombrerubro}}</td>
-              <td class="t2">{{$item->codigo}}</td>
+              <td class="colu">{{$item->nombre_uso}}</td>
+              <td class="t2">{{$item->codigo_uso}}</td>
               <td class="colu"></td>
               <td class="colu"></td>
               <td class="colu"></td>
@@ -118,7 +118,7 @@
               <td class="colu"></td>
             </tr>
           @foreach ($datos->facturadetas as $fac)
-            @if ($item->rubro_id == $fac->rubro_id)
+            @if ($item->uso_rubro_id == $fac->uso_rubro_id)
                 @php $s += $fac->valorfac; $sdo -= $fac->valorfac;
                 $fe = new DateTime($fac->fechafac);  $fefa = $fe->format('d/m/Y');
               @endphp
@@ -160,8 +160,8 @@
     @foreach ($rubro as $item)
          @php $sum += $item->total_fac  @endphp
         <tr>
-          <td class="colu">{{$item->nombrerubro}}</td>
-          <td class="t2">{{$item->codigo}}</td>
+          <td class="colu">{{$item->nombre_uso}}</td>
+          <td class="t2">{{$item->codigo_uso}}</td>
           <td class="colu"></td>
           <td class="colu"></td>
           <td class="colu"></td>
@@ -188,10 +188,7 @@ _______________________________
 <div>Elaboró: {{ $datos->user->name }}</div>
 <div>Resp. {{ $datos->user->dependencia->nombredepen }}</div>
     
- 	
-   
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+ 
     
   </body>
 

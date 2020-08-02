@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="float-right my-1">
-                              <button type="button" wire:click="Pdfxnumeropago()" class="btn btn-info ">Vista Previa</button>
+                             <!-- <button type="button" wire:click="Pdfxnumeropago()" class="btn btn-info ">Vista Previa</button>-->
                             </div>
                             <!-- ****************** Table *****************************-->
                                     <table class="table table-sm mt-2">
@@ -76,7 +76,7 @@
                                             <td>{{ $item->numfac }}</th>
                                             <td>{{ $item->fechafac }}</td>
                                             <td>{{ $item->dependencia->nombredepen }}</td>
-                                            <td class="col-sm-5">{{ $item->rubro->nombrerubro }}</td>
+                                            <td class="col-sm-5">{{ $item->uso_rubro->nombre_rubro }}</td>
                                             <td>{{ number_format($item->valorfac,2) }}</td>
                                           </tr>
                                         @endforeach

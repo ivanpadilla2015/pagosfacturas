@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Rubrocontra extends Component
 {
-    public $numcontrato, $data=null, $rubpri, $rubroprin_id, $codi_rub, $datosrubro;
+    public $numcontrato, $data=null, $rubpri, $rubroprin_id, $codi_rub, $datosrubro,$valorrubro;
     public function render()
     {
         return view('livewire.rubrocontra');
@@ -35,7 +35,9 @@ class Rubrocontra extends Component
     {
         Rubrocontrato::create([
             'contrato_id' => $this->data->id,
-            'rubroprin_id' => $this->rubroprin_id
+            'rubroprin_id' => $this->rubroprin_id,
+            'valorrubro' => $this->valorrubro,
+            'saldo' => $this->valorrubro
         ]);   
         
         
@@ -49,9 +51,31 @@ class Rubrocontra extends Component
     {
       /* $this->numcontrato = null;
        $this->data = null;
-       $this->rubpri;
-       $this->rubroprin_id;
-       $this->codi_rub;*/
+       $this->rubpri;*/
+       $this->rubroprin_id= null;
+       $this->valorrubro = null;
+       $this->codi_rub = null;
     }
+
+    public function destroy($id)
+    {
+        if ($id) {
+            $record = Rubrocontrato::findOrFail($id);
+            $record->delete();
+            $this->datosrubro =  Rubrocontrato::where('contrato_id', $this->data->id )->get();
+            $this->emit('alert', ['type'=> 'success', 'message' => 'Eliminado Correctamente']);
+            $this->resetInput();
+                        
+        }
+        
+    }
+
+    public function cancel()
+    {
+        
+        $this->resetInput();
+        return redirect()->to('/admin');
+    }
+
 
 }
