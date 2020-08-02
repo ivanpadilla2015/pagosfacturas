@@ -40,4 +40,9 @@ class Pago extends Model
        return $this->belongsTo('App\Rubro');
     }
 
+    public function obliga_pagos()
+    {
+      return $this->hasMany('App\Obliga_pago');
+    }
+
 }

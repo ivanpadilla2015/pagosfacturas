@@ -56,6 +56,9 @@ Route::put('actualobli/{id}/update', 'ObligapagosController@upadate')->name('edi
 
 Route::view('addrubrocontra', 'contrato.rubrocontrato')->name('addrubrocontra')->middleware('auth');
 Route::view('movirubro', 'contrato.movirubros')->name('movirubro')->middleware('auth');
+Route::view('traslados', 'contrato.traslado_rubro')->name('traslados')->middleware('auth');
+
+Route::get('repoxcontra', 'Report_contratoController@reportexcontrato')->name('repoxcontra'); 
 
 
 

@@ -146,108 +146,26 @@
             <td class="t2">NOV</td>
             <td class="t2">DIC</td>
         </tr>
-        <tr>
-            <td class="t1">10.1.2</td>
-            <td class="t1">Cumplir con el objeto del contratado</td>
-            <td class="t1">garantía</td>
-            <td class="t2" align="center">{{ $action = (1 >= $data->contrato->num_mes  && 1 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (2 >= $data->contrato->num_mes  && 2 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (3 >= $data->contrato->num_mes  && 3 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (4 >= $data->contrato->num_mes  && 4 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (5 >= $data->contrato->num_mes  && 5 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (6 >= $data->contrato->num_mes  && 6 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (7 >= $data->contrato->num_mes  && 7 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (8 >= $data->contrato->num_mes  && 8 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (9 >= $data->contrato->num_mes  && 9 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (10 >= $data->contrato->num_mes  && 10 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (11 >= $data->contrato->num_mes  && 11 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (12 >= $data->contrato->num_mes  && 12 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-        </tr>
-        <tr>
-            <td class="t1">10.1.3</td>
-            <td class="t1">Cumplir con el objeto del contratado</td>
-            <td class="t1">cumplimiento</td>
-            <td class="t2" align="center">{{ $action = (1 >= $data->contrato->num_mes  && 1 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (2 >= $data->contrato->num_mes  && 2 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (3 >= $data->contrato->num_mes  && 3 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (4 >= $data->contrato->num_mes  && 4 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (5 >= $data->contrato->num_mes  && 5 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (6 >= $data->contrato->num_mes  && 6 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (7 >= $data->contrato->num_mes  && 7 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (8 >= $data->contrato->num_mes  && 8 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (9 >= $data->contrato->num_mes  && 9 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (10 >= $data->contrato->num_mes  && 10 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (11 >= $data->contrato->num_mes  && 11 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (12 >= $data->contrato->num_mes  && 12 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-        </tr>
-        <tr>
-            <td class="t1">10.1.4</td>
-            <td class="t1">Cumplir con el objeto del contratado</td>
-            <td class="t1">Cumplir con las exigencias del supervisor</td>
-            <td class="t2" align="center">{{ $action = (1 >= $data->contrato->num_mes  && 1 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (2 >= $data->contrato->num_mes  && 2 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (3 >= $data->contrato->num_mes  && 3 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (4 >= $data->contrato->num_mes  && 4 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (5 >= $data->contrato->num_mes  && 5 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (6 >= $data->contrato->num_mes  && 6 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (7 >= $data->contrato->num_mes  && 7 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (8 >= $data->contrato->num_mes  && 8 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (9 >= $data->contrato->num_mes  && 9 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (10 >= $data->contrato->num_mes  && 10 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (11 >= $data->contrato->num_mes  && 11 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (12 >= $data->contrato->num_mes  && 12 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-        </tr>
-        <tr>
-            <td class="t1">10.1.5</td>
-            <td class="t1">Cumplir con el objeto del contratado</td>
-            <td class="t1">Obrar con lealtad y buena fe </td>
-            <td class="t2" align="center">{{ $action = (1 >= $data->contrato->num_mes  && 1 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (2 >= $data->contrato->num_mes  && 2 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (3 >= $data->contrato->num_mes  && 3 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (4 >= $data->contrato->num_mes  && 4 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (5 >= $data->contrato->num_mes  && 5 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (6 >= $data->contrato->num_mes  && 6 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (7 >= $data->contrato->num_mes  && 7 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (8 >= $data->contrato->num_mes  && 8 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (9 >= $data->contrato->num_mes  && 9 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (10 >= $data->contrato->num_mes  && 10 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (11 >= $data->contrato->num_mes  && 11 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (12 >= $data->contrato->num_mes  && 12 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-        </tr>
-        <tr>
-            <td class="t1">10.1.6</td>
-            <td class="t1">Cumplir con el objeto del contratado</td>
-            <td class="t1">Firmar actas de liquidación y recibos a satisfacción</td>
-            <td class="t2" align="center">{{ $action = (1 >= $data->contrato->num_mes  && 1 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (2 >= $data->contrato->num_mes  && 2 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (3 >= $data->contrato->num_mes  && 3 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (4 >= $data->contrato->num_mes  && 4 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (5 >= $data->contrato->num_mes  && 5 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (6 >= $data->contrato->num_mes  && 6 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (7 >= $data->contrato->num_mes  && 7 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (8 >= $data->contrato->num_mes  && 8 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (9 >= $data->contrato->num_mes  && 9 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (10 >= $data->contrato->num_mes  && 10 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (11 >= $data->contrato->num_mes  && 11 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (12 >= $data->contrato->num_mes  && 12 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-        </tr>
-        <tr>
-            <td class="t1">10.1.7</td>
-            <td class="t1">Cumplir con el objeto del contratado</td>
-            <td class="t1">Cumplir con las condiciones del contrato según anexo 1</td>
-            <td class="t2" align="center">{{ $action = (1 >= $data->contrato->num_mes  && 1 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (2 >= $data->contrato->num_mes  && 2 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (3 >= $data->contrato->num_mes  && 3 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (4 >= $data->contrato->num_mes  && 4 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (5 >= $data->contrato->num_mes  && 5 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (6 >= $data->contrato->num_mes  && 6 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (7 >= $data->contrato->num_mes  && 7 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (8 >= $data->contrato->num_mes  && 8 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (9 >= $data->contrato->num_mes  && 9 <= $data->mes_ejecucion) ? 'x' : '' }} </td>
-            <td class="t2" align="center">{{ $action = (10 >= $data->contrato->num_mes  && 10 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (11 >= $data->contrato->num_mes  && 11 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-            <td class="t2" align="center">{{ $action = (12 >= $data->contrato->num_mes  && 12 <= $data->mes_ejecucion) ? 'x' : '' }}</td>
-        </tr>
+        @foreach ($data->obliga_pagos as $item)
+            <tr>
+                <td class="t1">{{ $item->numeral }}</td>
+                <td class="t1">{{ $item->obligacion_deta }}</td>
+                <td class="t1">{{ $item->entregable }}</td><!-- $action = (4 >= $data->contrato->num_mes  && 4 <= $data->mes_ejecucion) ? 'x' : '' -->
+                <td class="t2" align="center">{{ $action = (1 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+                <td class="t2" align="center">{{ $action = (2 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+                <td class="t2" align="center">{{ $action = (3 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+                <td class="t2" align="center">{{ $action = (4 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+                <td class="t2" align="center">{{ $action = (5 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+                <td class="t2" align="center">{{ $action = (6 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+                <td class="t2" align="center">{{ $action = (7 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+                <td class="t2" align="center">{{ $action = (8 == $data->mes_ejecucion) ? 'x' : '' }} </td>
+                <td class="t2" align="center">{{ $action = (9 == $data->mes_ejecucion) ? 'x' : '' }} </td>
+                <td class="t2" align="center">{{ $action = (10 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+                <td class="t2" align="center">{{ $action = (11 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+                <td class="t2" align="center">{{ $action = (12 == $data->mes_ejecucion) ? 'x' : '' }}</td>
+            </tr>
+          @endforeach
+       
       </table>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Porcentaje cumplimiento Avance %</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->porcentaje_cumplimiento}}% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Demora _____________%                       
       <br><br>
