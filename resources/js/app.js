@@ -60,7 +60,15 @@ const app = new Vue({
             axios.get('/pdfpagxnum',{params: {pago_id: idpa}}).then(respo=>{
                 
             });
+        },
+
+        consulrubros(idpa){
+            
+            axios.get('/pdfpagxnum',{params: {pago_id: idpa}}).then(respo=>{
+                
+            });
         }
+
 
     }
 });

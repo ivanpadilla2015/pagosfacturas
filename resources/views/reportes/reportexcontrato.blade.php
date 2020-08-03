@@ -1,31 +1,25 @@
-@extends('layouts.admin_reportes')
+@extends('layouts.admin')
 
 @section('style')
 
 @endsection
 
-@section('content_reporte')
-
-<form class="" action="/verpago" method="GET">
-                        
-    <div class="form-group mb-2">
-      <label class="mr-1">Contrato</label>
-        <select  class="form-control" name="contrato_id">
-            <option value="0">Seleccione</option>
-            @foreach ($datacon as $con)
-            <option value="{{ $con['id'] }}">{{ $con->numcontrato.' '.$con->proveedor->nombre }}</option>
-            @endforeach
-        </select>
-        <p class="text-danger">{{ $errors->first('pago_id') }}</p>
+@section('content')
+<div  class="container mt-2 ">
+    <div class="row">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-8">
+                    <div class="card">
+                      <div class="card-body">
+                         <livewire:reportexcontrato>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group ml-1">
-        <button type="submit" class="btn  btn-primary btn-sm mb-2  ">Consultar</button>
-    </div>
-  </form>
-  <div v-if="datos != ''">
-      
-  </div>
-
+</div>
  @endsection
 
 @section('script')

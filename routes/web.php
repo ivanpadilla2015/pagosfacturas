@@ -58,7 +58,19 @@ Route::view('addrubrocontra', 'contrato.rubrocontrato')->name('addrubrocontra')-
 Route::view('movirubro', 'contrato.movirubros')->name('movirubro')->middleware('auth');
 Route::view('traslados', 'contrato.traslado_rubro')->name('traslados')->middleware('auth');
 
-Route::get('repoxcontra', 'Report_contratoController@reportexcontrato')->name('repoxcontra'); 
+Route::view('repoxcontra', 'Reportes.reportexcontrato')->name('repoxcontra'); 
+
+Route::get('p', function () {
+    
+    $fecha = "2018-03-29 15:20:40";
+    $dt = new DateTime($fecha);
+    $from = $dt->format('d/m/Y');
+    $to = date('Y-m-d');
+    
+    $cons = App\Facturadeta::whereBetween('fechafac', array($from, $to) )->get();
+    return $cons;
+});
+
 
 
 
