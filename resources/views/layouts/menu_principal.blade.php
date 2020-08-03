@@ -177,7 +177,12 @@
               </p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="{{ route('repoxcontraphp') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Totales Rubro Contrato</p>
+            </a>
+          </li>
 
         </ul>
       </li>

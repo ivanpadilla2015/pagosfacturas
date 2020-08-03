@@ -54,7 +54,9 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre rubro</th>
                                 <th scope="col">Total</th>
-                                
+                                <!-- nota: bo se ha podido terminar porque 
+                                    livewire no es capaz de leer datos de DB builder
+                                -->
                             </tr>
                             </thead>
                             <tbody>
