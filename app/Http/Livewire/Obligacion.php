@@ -23,7 +23,14 @@ class Obligacion extends Component
             'numcontrato' =>'required',
         ]);
         $this->data = Contrato::where('numcontrato', $this->numcontrato)->first();
-        $this->dato_obli = Obligaci::where('contrato_id', $this->data->id)->get();
+        if($this->data)
+        {
+            $this->dato_obli = Obligaci::where('contrato_id', $this->data->id)->get();
+        }            
+        else
+        {
+            $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No existe']); 
+        }
     }
 
     public function store()
