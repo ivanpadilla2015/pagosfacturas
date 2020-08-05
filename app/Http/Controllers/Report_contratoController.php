@@ -52,5 +52,31 @@ class Report_contratoController extends Controller
 
         }
     }
+
+    public function buscacontra()
+    {
+      return Contrato::with('proveedor:id,nombre')->orderBy('id', 'desc')->get();
+    }
+
+    public function totalrubros(Request $request)
+    {
+        $data = Contrato::with('proveedor:id,nombre')->findOrFail($request->id);
+        $rubro = DB::table('facturadetas')
+            ->join('uso_rubros', 'uso_rubros.id', '=', 'facturadetas.uso_rubro_id')
+            ->join('pagos', 'pagos.id', '=', 'facturadetas.pago_id')
+            ->join('rubroprins', 'rubroprins.id', '=', 'uso_rubros.rubroprin_id')
+            ->join('contratos', 'contratos.id', '=', 'facturadetas.contrato_id')
+            ->select('facturadetas.numfac', 'rubroprins.nombre_rubro', 'facturadetas.valorfac', 'pagos.fecha_pago','rubroprins.id','uso_rubros.id as uso','uso_rubros.nombre_uso', DB::raw('SUM(facturadetas.valorfac) as total_fac') )
+            ->groupBy('rubroprins.id')
+            ->where('pagos.fecha_pago', '>=', $request->fechaini)
+            ->where('pagos.fecha_pago', '<=', $request->fechafin)
+            ->where('contratos.id', $data->id)
+            ->get();
+
+            return response()->json([
+                'data' => $data,
+                'srubro' => $rubro,
+            ], 200);
+    }
   
 }

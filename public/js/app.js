@@ -1916,6 +1916,125 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Consultarubro.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Consultarubro.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      contras: [],
+      contrato_id: 0,
+      datocon: '',
+      datorubro: [],
+      fechaini: '',
+      fechafin: ''
+    };
+  },
+  created: function created() {
+    this.mostrarcontra();
+  },
+  methods: {
+    mostrarcontra: function mostrarcontra() {
+      var _this = this;
+
+      axios.get('/buscontratovue').then(function (resp) {
+        _this.contras = resp.data; // console.log(resp.data);
+      });
+    },
+    busqueda: function busqueda(idp) {
+      var _this2 = this;
+
+      this.datocon = '';
+      axios.get('/busrub', {
+        params: {
+          id: idp,
+          fechaini: this.fechaini,
+          fechafin: this.fechafin
+        }
+      }).then(function (respo) {
+        _this2.datocon = respo.data.data;
+        _this2.datorubro = respo.data.srubro; //console.log(respo.data.srubro);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -38022,6 +38141,232 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Consultarubro.vue?vue&type=template&id=55c37768&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Consultarubro.vue?vue&type=template&id=55c37768& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row my-2 p-10 col-10" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("label", [_vm._v("De:")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fechaini,
+              expression: "fechaini"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "date", placeholder: "Fecha ini" },
+          domProps: { value: _vm.fechaini },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.fechaini = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col " }, [
+        _c("label", [_vm._v("A:")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fechafin,
+              expression: "fechafin"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "date", placeholder: "fecha fin" },
+          domProps: { value: _vm.fechafin },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.fechafin = $event.target.value
+            }
+          }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group col" }, [
+      _c("label", [_vm._v("Contrato")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.contrato_id,
+              expression: "contrato_id"
+            }
+          ],
+          staticClass: "form-control",
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.contrato_id = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              function($event) {
+                return _vm.busqueda(_vm.contrato_id)
+              }
+            ]
+          }
+        },
+        [
+          _c("option", { attrs: { value: "0" } }, [
+            _vm._v("Seleccionar ............:")
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.contras, function(item, index) {
+            return _c("option", { key: index, domProps: { value: item.id } }, [
+              _vm._v(
+                _vm._s(
+                  item.numcontrato +
+                    " " +
+                    item.proveedor.nombre +
+                    " Saldo: " +
+                    item.saldo.toLocaleString()
+                ) + " "
+              )
+            ])
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _vm.datocon != ""
+      ? _c(
+          "div",
+          { staticClass: "border border-primary rounded m-1 pl-3 bg-light " },
+          [
+            _c("div", { staticClass: "form-row " }, [
+              _c("div", { staticClass: "col" }, [
+                _c("strong", [_vm._v("Contrato No : ")]),
+                _vm._v(" "),
+                _c("small", [_vm._v(_vm._s(_vm.datocon.numcontrato))])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("strong", [_vm._v("Proveedor : ")]),
+                _vm._v(" "),
+                _c("small", [_vm._v(_vm._s(_vm.datocon.proveedor.nombre))])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("strong", [_vm._v("Fecha Cto : ")]),
+                _vm._v(" "),
+                _c("small", [_vm._v(_vm._s(_vm.datocon.fechacontrato))])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row  rounded" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("strong", [_vm._v("Valor Cto : ")]),
+                _vm._v(" "),
+                _c("small", [
+                  _vm._v(_vm._s(_vm.datocon.valorcontrato.toLocaleString()))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("strong", [_vm._v("Saldo : ")]),
+                _vm._v(" "),
+                _c("small", [
+                  _vm._v(_vm._s(_vm.datocon.saldo.toLocaleString()))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("strong", [_vm._v("Reg Pres : ")]),
+                _vm._v(" "),
+                _c("small", [_vm._v(_vm._s(_vm.datocon.registro_pres_inic))])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("h5", { staticClass: "card-title mt-2 mr-1" }, [
+              _vm._v("Rubros:")
+            ]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table table-sm" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.datorubro, function(item, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(index + 1))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.nombre_rubro))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.total_fac.toLocaleString()))])
+                  ])
+                }),
+                0
+              )
+            ])
+          ]
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre rubro")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -50330,6 +50675,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('pdfpagoxnumero', __webpack_require__(/*! ./components/Pdfpagoxnumero.vue */ "./resources/js/components/Pdfpagoxnumero.vue")["default"]);
+Vue.component('consultarubro', __webpack_require__(/*! ./components/Consultarubro.vue */ "./resources/js/components/Consultarubro.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50363,6 +50709,13 @@ var app = new Vue({
       return sum;
     },
     controlpago: function controlpago(idpa) {
+      axios.get('/pdfpagxnum', {
+        params: {
+          pago_id: idpa
+        }
+      }).then(function (respo) {});
+    },
+    consulrubros: function consulrubros(idpa) {
       axios.get('/pdfpagxnum', {
         params: {
           pago_id: idpa
@@ -50420,6 +50773,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/Consultarubro.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/Consultarubro.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Consultarubro_vue_vue_type_template_id_55c37768___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Consultarubro.vue?vue&type=template&id=55c37768& */ "./resources/js/components/Consultarubro.vue?vue&type=template&id=55c37768&");
+/* harmony import */ var _Consultarubro_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Consultarubro.vue?vue&type=script&lang=js& */ "./resources/js/components/Consultarubro.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Consultarubro_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Consultarubro_vue_vue_type_template_id_55c37768___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Consultarubro_vue_vue_type_template_id_55c37768___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Consultarubro.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Consultarubro.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/Consultarubro.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Consultarubro_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Consultarubro.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Consultarubro.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Consultarubro_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Consultarubro.vue?vue&type=template&id=55c37768&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/Consultarubro.vue?vue&type=template&id=55c37768& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Consultarubro_vue_vue_type_template_id_55c37768___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Consultarubro.vue?vue&type=template&id=55c37768& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Consultarubro.vue?vue&type=template&id=55c37768&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Consultarubro_vue_vue_type_template_id_55c37768___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Consultarubro_vue_vue_type_template_id_55c37768___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
