@@ -1993,6 +1993,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2000,8 +2026,10 @@ __webpack_require__.r(__webpack_exports__);
       contrato_id: 0,
       datocon: '',
       datorubro: [],
+      datorubrodeta: [],
       fechaini: '',
-      fechafin: ''
+      fechafin: '',
+      verdeta: false
     };
   },
   created: function created() {
@@ -2027,8 +2055,12 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (respo) {
         _this2.datocon = respo.data.data;
-        _this2.datorubro = respo.data.srubro; //console.log(respo.data.srubro);
+        _this2.datorubro = respo.data.srubro;
+        _this2.datorubrodeta = respo.data.rubdeta; //console.log(respo.data.srubro);
       });
+    },
+    getverlo: function getverlo() {
+      this.verdeta = !this.verdeta;
     }
   }
 });
@@ -38339,7 +38371,51 @@ var render = function() {
                 }),
                 0
               )
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary btn-sm",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.getverlo()
+                  }
+                }
+              },
+              [_vm._v("Ver Detalles")]
+            ),
+            _vm._v(" "),
+            _vm.verdeta
+              ? _c("div", [
+                  _c("table", { staticClass: "table table-sm" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.datorubrodeta, function(item, index) {
+                        return _c("tr", { key: index }, [
+                          _c("td", [_vm._v(_vm._s(index + 1))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(item.nombre_rubro))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(item.numfac))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(item.id))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(item.fecha_pago))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(item.valorfac.toLocaleString()))
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                ])
+              : _vm._e()
           ]
         )
       : _vm._e()
@@ -38357,6 +38433,26 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre rubro")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre rubro")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Factura")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Pago No")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("valor")])
       ])
     ])
   }

@@ -64,7 +64,7 @@ Route::view('repoxcontra', 'Reportes.reportexcontrato')->name('repoxcontra');
 Route::get('repoxcontraphp', 'Report_contratoController@index')->name('repoxcontraphp');
 Route::get('verreporte', 'Report_contratoController@reportexcontrato')->name('verreporte')->middleware('auth');
 
-Route::view('buscontrarubro', 'repocolsultavue.repocontrarubro'); 
+Route::view('buscontrarubro', 'repocolsultavue.repocontrarubro')->name('buscontrarubro'); 
 Route::get('buscontratovue', 'Report_contratoController@buscacontra'); 
 Route::get('busrub', 'Report_contratoController@totalrubros'); 
 

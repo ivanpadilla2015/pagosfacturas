@@ -39,6 +39,7 @@ class Report_contratoController extends Controller
             ->where('pagos.fecha_pago', '<=', $request->fechafin)
             ->where('contratos.id', $data->id)
             ->get();
+            
         return view('reportes.reportexcontraphpdata', compact('data', 'rubro'));
     }
 
@@ -73,9 +74,21 @@ class Report_contratoController extends Controller
             ->where('contratos.id', $data->id)
             ->get();
 
+          $rubrodeta = DB::table('facturadetas')
+            ->join('uso_rubros', 'uso_rubros.id', '=', 'facturadetas.uso_rubro_id')
+            ->join('pagos', 'pagos.id', '=', 'facturadetas.pago_id')
+            ->join('rubroprins', 'rubroprins.id', '=', 'uso_rubros.rubroprin_id')
+            ->join('contratos', 'contratos.id', '=', 'facturadetas.contrato_id')
+            ->select('facturadetas.numfac', 'rubroprins.nombre_rubro', 'pagos.id', 'facturadetas.valorfac', 'pagos.fecha_pago','rubroprins.id','uso_rubros.id as uso','uso_rubros.nombre_uso' )
+            ->where('pagos.fecha_pago', '>=', $request->fechaini)
+            ->where('pagos.fecha_pago', '<=', $request->fechafin)
+            ->where('contratos.id', $data->id)
+            ->get();    
+
             return response()->json([
                 'data' => $data,
                 'srubro' => $rubro,
+                'rubdeta' => $rubrodeta,
             ], 200);
     }
   

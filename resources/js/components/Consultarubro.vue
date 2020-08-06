@@ -60,8 +60,34 @@
                    
                 </tbody>
             </table>
-         
+            <button type="button" class="btn btn-primary btn-sm" @click="getverlo()">Ver Detalles</button>
+            <div v-if="verdeta">
+               <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre rubro</th>
+                    <th scope="col">Factura</th>
+                    <th scope="col">Pago No</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">valor</th>
+                </tr>
+                </thead>
+                <tbody>
+                       <tr v-for="(item, index) in datorubrodeta"  :key='index'>
+                            <td>{{ index+1 }}</td>
+                            <td >{{ item.nombre_rubro}}</td>
+                            <td >{{ item.numfac}}</td>
+                            <td >{{ item.id}}</td>
+                            <td >{{ item.fecha_pago}}</td>
+                            <td>{{ item.valorfac.toLocaleString()}}</td>
+                       </tr>
+                   
+                </tbody>
+            </table>
+            </div>
       </div>
+      
   </div>
     
 </template>
@@ -74,8 +100,10 @@ export default {
         contrato_id: 0,
         datocon:'',
         datorubro:[],
+        datorubrodeta:[],
         fechaini:'',
         fechafin:'',
+        verdeta:false,
     }
     },
 
@@ -98,9 +126,13 @@ export default {
             axios.get('/busrub',{params: {id: idp, fechaini: this.fechaini, fechafin: this.fechafin}}).then(respo=>{
                 this.datocon = respo.data.data;
                 this.datorubro = respo.data.srubro;
+                this.datorubrodeta = respo.data.rubdeta;
                 //console.log(respo.data.srubro);
             });
 
+          },
+          getverlo(){
+            this.verdeta = !this.verdeta;
           },
     }
 }
