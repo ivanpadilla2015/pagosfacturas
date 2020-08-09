@@ -235,6 +235,7 @@ class Pagos extends Component
         $this->depen = null;
         $this->total = null;
         $this->lisfact = array();
+        $this->lisusos = array();
 
     }
    

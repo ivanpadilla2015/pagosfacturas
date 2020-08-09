@@ -22,7 +22,7 @@ class Contratos extends Component
         $this->tipoc = Tipocontrato::all();
         $this->depen = Dependencia::all();
         $this->concar = Concargo::all();
-        return view('livewire.contratos', [ 'data' => Contrato::orderBy('id', 'desc')->paginate(5)]);
+        return view('livewire.contratos', [ 'data' => Contrato::orderBy('numcontrato', 'desc')->paginate(5)]);
     }
 
     private function resetInput()

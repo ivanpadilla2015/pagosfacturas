@@ -39,6 +39,10 @@ class Rubrocontra extends Component
 
     public function agragarrubro()
     {
+        $this->validate([
+            'rubroprin_id' =>'required|integer|not_in:0',
+        ]);
+        
         Rubrocontrato::create([
             'contrato_id' => $this->data->id,
             'rubroprin_id' => $this->rubroprin_id,

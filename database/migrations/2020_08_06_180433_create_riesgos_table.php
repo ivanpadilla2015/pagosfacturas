@@ -17,7 +17,7 @@ class CreateRiesgosTable extends Migration
             $table->id();
             $table->string('tipo', 50)->nullable();;
             $table->text('descripcion');
-            $table->string('tratamiento', 120);
+            $table->text('tratamiento');
             $table->string('responsable', 70);
             $table->string('periodicidad', 50)->nullable();;
             $table->timestamps();

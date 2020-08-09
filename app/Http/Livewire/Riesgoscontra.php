@@ -39,13 +39,13 @@ class Riesgoscontra extends Component
             'tratamiento' => 'required',
             'responsable' => 'required',
         ]);       
-        $new =Riesgo::create([
+        $new = Riesgo::create([
             'tipo' => ucwords($this->tipo),
             'descripcion' => ucwords($this->descripcion),
             'tratamiento' =>  ucwords($this->tratamiento),
             'responsable' => ucwords($this->responsable),
             'periodicidad' => ucwords($this->periodicidad),
-            'contrato_id' => ucwords($this->data->id)
+            'contrato_id' => $this->data->id
           ]);        
         //ucwords — Convierte a mayúsculas el primer caracter de cada palabra de una cadena
         $this->dato_ries = Riesgo::where('contrato_id', $this->data->id)->get();

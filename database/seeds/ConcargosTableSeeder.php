@@ -17,12 +17,12 @@ class ConcargosTableSeeder extends Seeder
             'con_cargo_a' => 'Alfm Reg. Norte'
              
          ]); 
-        App\Concargo::create([
+       /* App\Concargo::create([
 
             'detalle_inter' => ucwords('Inter Administrativo No 25488 del 20 julio 2020'),
             'con_cargo_a' => 'Ejetcito'
         
-        ]);
+        ]);*/
 
         
         

@@ -79,3 +79,5 @@ Route::view('confacxfe', 'repocolsultavue.consulfacxfecha')->name('confacxfe');
 Route::get('busproveevue', 'Report_contratoController@buscaprovee'); 
 Route::post('busfac', 'Report_contratoController@buscafacturas')->middleware('auth');
 
+Route::view('copiasriesgos', 'otros.copias_riesgos')->name('copiasriesgos');
+Route::view('copiasobligaciones', 'otros.copias_obligacion')->name('copiasobligaciones');

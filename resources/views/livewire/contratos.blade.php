@@ -21,8 +21,9 @@
                         <tr>
                             <th style="width:15%;">Numero</th>
                             <th style="width:25%">Proveedor</th>
-                            <th style="width:25%">valor</th>
-                            <th style="width:20%">Saldo</th>
+                            <th style="width:20%">valor</th>
+                            <th style="width:15%">Saldo</th>
+                            <th style="width:10%">Supervidor</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -33,6 +34,7 @@
                                 <td >{{$item->proveedor->nombre}}</td>
                                 <td >{{number_format($item->valorcontrato)}}</td>
                                 <td >{{number_format($item->saldo)}}</td>
+                                <td >{{$item->supervisor}}</td>
                                 <td >
                                     <button class="btn bg-transparent color" wire:click="edit({{ $item->id }})"><svg width="2em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
