@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('pdfpagoxnumero', require('./components/Pdfpagoxnumero.vue').default);
 Vue.component('consultarubro', require('./components/Consultarubro.vue').default);
+Vue.component('consulfacxfe', require('./components/Consulfacxfecha.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

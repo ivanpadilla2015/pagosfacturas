@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Contrato;
+use App\Proveedor;
 
 class Report_contratoController extends Controller
 {
@@ -59,6 +60,11 @@ class Report_contratoController extends Controller
       return Contrato::with('proveedor:id,nombre')->orderBy('id', 'desc')->get();
     }
 
+    public function buscaprovee()
+    {
+        return Proveedor::orderBy('nombre', 'asc')->get();
+    }
+
     public function totalrubros(Request $request)
     {
         $data = Contrato::with('proveedor:id,nombre')->findOrFail($request->id);
@@ -79,7 +85,7 @@ class Report_contratoController extends Controller
             ->join('pagos', 'pagos.id', '=', 'facturadetas.pago_id')
             ->join('rubroprins', 'rubroprins.id', '=', 'uso_rubros.rubroprin_id')
             ->join('contratos', 'contratos.id', '=', 'facturadetas.contrato_id')
-            ->select('facturadetas.numfac', 'rubroprins.nombre_rubro', 'pagos.id', 'facturadetas.valorfac', 'pagos.fecha_pago','rubroprins.id','uso_rubros.id as uso','uso_rubros.nombre_uso' )
+            ->select('facturadetas.numfac', 'rubroprins.nombre_rubro', 'pagos.consecu_informe as pagonum', 'facturadetas.valorfac', 'pagos.fecha_pago','rubroprins.id','uso_rubros.id as uso','uso_rubros.nombre_uso' )
             ->where('pagos.fecha_pago', '>=', $request->fechaini)
             ->where('pagos.fecha_pago', '<=', $request->fechafin)
             ->where('contratos.id', $data->id)
@@ -90,6 +96,23 @@ class Report_contratoController extends Controller
                 'srubro' => $rubro,
                 'rubdeta' => $rubrodeta,
             ], 200);
+    }
+
+    public function buscafacturas(Request $request)
+    {
+        //dd($request->params['id']);
+        $fact = DB::table('facturadetas')
+                ->join('pagos', 'pagos.id', '=', 'facturadetas.pago_id')
+                ->join('contratos', 'contratos.id', '=', 'facturadetas.contrato_id')
+                ->join('proveedors', 'proveedors.id', '=', 'contratos.proveedor_id')
+                ->select('facturadetas.numfac', 'pagos.consecu_informe as pagonum', 'facturadetas.valorfac', 'contratos.numcontrato', 'pagos.fecha_pago','proveedors.id as idprove','proveedors.nombre')
+                ->where('pagos.fecha_pago', '>=', $request->params['fechaini'])
+                ->where('pagos.fecha_pago', '<=', $request->params['fechafin'])
+                ->where('proveedors.id', $request->params['id'])
+                ->get();   
+                return response()->json([
+                    'facts' => $fact,                   
+                ], 200); 
     }
   
 }

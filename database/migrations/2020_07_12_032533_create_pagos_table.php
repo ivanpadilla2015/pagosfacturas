@@ -25,6 +25,8 @@ class CreatePagosTable extends Migration
             $table->string('consecu_informe');
             $table->date('fecha_plazoeje')->nullable();
             $table->string('registroadicion')->nullable();
+            $table->string('director', 120);
+            $table->string('cargo_director', 120);
             $table->timestamps();
 
             $table->foreignId('contrato_id')->constrained();

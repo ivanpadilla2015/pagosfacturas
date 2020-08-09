@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateObligaPagosTable extends Migration
+class CreateRiesgoPagosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateObligaPagosTable extends Migration
      */
     public function up()
     {
-        Schema::create('obliga_pagos', function (Blueprint $table) {
+        Schema::create('riesgo_pagos', function (Blueprint $table) {
             $table->id();
-            $table->string('numeral')->nullable();
-            $table->text('obligacion_deta');
-            $table->string('entregable');
-            $table->string('mes_ejecucion');
-            $table->string('confirmar')->nullable();
+            $table->string('tipo', 50);
+            $table->text('descripcion');
+            $table->string('tratamiento', 120);
+            $table->string('responsable', 70);
+            $table->string('periodicidad', 50);
             $table->timestamps();
 
             $table->foreignId('pago_id')->constrained();
@@ -33,6 +33,6 @@ class CreateObligaPagosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('obliga_pagos');
+        Schema::dropIfExists('riesgo_pagos');
     }
 }

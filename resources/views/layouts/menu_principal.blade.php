@@ -30,7 +30,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('addcontra') }}" class="nav-link">
+            <!--  route('addcontra')   -->
+            <a href="#" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
               <p>Adicionar Contratos
                 <?php use App\Adicion; $add_count = Adicion::all()->count(); ?>
@@ -53,7 +54,12 @@
               <p>Obligaciones</p>
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="{{ route('riesgo') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Riesgos</p>
+            </a>
+          </li>
           
         </ul>
       </li> <!---   -->
@@ -189,6 +195,12 @@
               <p>Totales Rubro x Contrato</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('confacxfe') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Facturas x Proveedor</p>
+            </a>
+          </li>
         </ul>
       </li>
       <li class="nav-item">
@@ -198,6 +210,12 @@
             <?php use App\User; $use_count = User::all()->count(); ?>
             <span class="right badge badge-danger">{{$use_count}}</span>
           </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ route('maestro') }}" class="nav-link">
+          <i class="fas fa-circle nav-icon"></i>
+          <p>Datos Maestros</p>
         </a>
       </li>
 

@@ -6,9 +6,9 @@
 
 @section('content_reporte')
 
-    <h5 class="card-header">Colsuta Contrato x Fecha de Pagos</h5>
+    <h5 class="card-header">Colsuta Facturas x Proveedor</h5>
      
-    <consultarubro />
+    <consulfacxfe />
     
 
 @endsection

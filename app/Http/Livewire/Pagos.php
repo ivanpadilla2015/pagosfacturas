@@ -13,6 +13,9 @@ use Livewire\Component;
 use App\Obliga_pago;
 use App\Rubroprin;
 use App\Uso_rubro;
+use App\Riesgo;
+use App\Riesgo_pago;
+use App\Datosmaestro;
 use Illuminate\Support\Collection;
 
 class Pagos extends Component
@@ -49,23 +52,29 @@ class Pagos extends Component
         if ($id) {
             $this->data = Contrato::findOrFail($id);
             
-            if($this->data->obligacions->count() > 0){  //para saber si tiene obligaciones o no
-                $this->proveedor_id = $this->data->proveedor_id;
-                $this->sal = $this->data->saldo;
-                $this->vct = $this->data->gran_total;
-                foreach ($this->data->rubrocontratos as $value) {
-                     $rprin  = Rubroprin::findOrFail($value->rubroprin_id);        
-                      foreach ($rprin->uso_rubros as  $uso) {
-                          array_push($this->lisusos, ['id' => $uso->id, 'nombre_uso' => $uso->nombre_uso, 'id_prin' => $rprin->id ]);
-                      }
-                }
-                
-            }else
+            if($this->data->riesgos->count() < 1)
             {
-                $this->emit('alert', ['type'=> 'error', 'message' => 'OJO Contrato No tiene Obligaciones']); 
+                $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No tiene los Riesgos']); 
                 $this->resetInput();
-            }
-
+            }else
+             {   
+                if($this->data->obligacions->count() > 0){  //para saber si tiene obligaciones o no
+                    $this->proveedor_id = $this->data->proveedor_id;
+                    $this->sal = $this->data->saldo;
+                    $this->vct = $this->data->gran_total;
+                    foreach ($this->data->rubrocontratos as $value) {
+                        $rprin  = Rubroprin::findOrFail($value->rubroprin_id);        
+                        foreach ($rprin->uso_rubros as  $uso) {
+                            array_push($this->lisusos, ['id' => $uso->id, 'nombre_uso' => $uso->nombre_uso, 'id_prin' => $rprin->id ]);
+                        }
+                    }
+                    
+                }else
+                {
+                    $this->emit('alert', ['type'=> 'error', 'message' => '0Contrato No tiene Obligaciones']); 
+                    $this->resetInput();
+                }
+             }    
             //ojo faltaria reg de la adicion
         }
          
@@ -120,12 +129,14 @@ class Pagos extends Component
         $con->save();
 
         ////******************************************************* */
+        $dm = Datosmaestro::findOrFail(1);
         $fe  = Carbon::now();
         $fec = $fe->format('Y-m-d');
         $pag = Pago::create(['total'=> $this->total, 'fecha_pago' => $fec, 'contrato_id'=> $this->contrato_id,
                  'saldo_viene' => $this->sal, 'gran_total' => $con->gran_total, 'consecu_informe'=> $con->pagos,
                  'pago_corresponde_mes' => $this->pago_corresponde_mes, 'mes_ejecucion'=> $this->mes_ejecucion,
-                 'porcentaje_cumplimiento' => $this->porcentaje_cumplimiento, 'user_id' => \Auth::id()]);
+                 'porcentaje_cumplimiento' => $this->porcentaje_cumplimiento, 'director'=> $dm->director,
+                 'cargo_director' => $dm->cargo_director, 'user_id' => \Auth::id()]);
         $this->pago_id = $pag->id;
         //******************Adicion (es)************************************* */
         foreach ($this->data->adicions as $value) {
@@ -167,9 +178,16 @@ class Pagos extends Component
         /*****************agregar obligacion****************************** */
         foreach ($this->data->obligacions as $key => $obl) {
              Obliga_pago::create(['numeral' => $obl['numeral'],'obligacion_deta'=> $obl['obligacion_deta'],
-                                'entregable' => $obl['entregable'], 'mes_ejecucion'=> $this->mes_ejecucion,
+                                'entregable' => $obl['entregable'], 'mes_ejecucion'=> $this->mes_ejecucion, 'confirmar' => 'SI',
                                'pago_id' => $this->pago_id]);
         }
+        /*****************agregar Riesgos****************************** */
+        foreach ($this->data->riesgos as $key => $rie) {
+            Riesgo_pago::create(['tipo' => $rie['tipo'],'descripcion'=> $rie['descripcion'], 'tratamiento'=> $rie['tratamiento'],
+                               'responsable' => $rie['responsable'], 'periodicidad'=> $rie['periodicidad'],
+                               'pago_id' => $this->pago_id]);
+       }
+
         $this->emit('alert', ['type'=> 'success', 'message' => 'Pago No: '.$pag->id.' Creado Correctamente']);
         $this->resetInput();
         redirect()->route('oblipa', $pag->id);

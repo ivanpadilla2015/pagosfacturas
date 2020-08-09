@@ -11,7 +11,7 @@
  		<div>
   			<img src="{{ public_path('img/gf-fO-35.jpg')}}" class="img-fluid w-100" alt="Responsive image ">
   		</div>
-      <table>
+      <table> 
         <tr>
           <td class="c3"><strong>Contrato No:</strong></td>
         <td class="c2">{{ $datos->contrato->numcontrato }}</td>

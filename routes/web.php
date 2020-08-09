@@ -68,8 +68,14 @@ Route::view('buscontrarubro', 'repocolsultavue.repocontrarubro')->name('buscontr
 Route::get('buscontratovue', 'Report_contratoController@buscacontra'); 
 Route::get('busrub', 'Report_contratoController@totalrubros'); 
 
+Route::view('riesgo', 'contrato.riesgo')->name('riesgo'); 
 
+Route::get('riesgocon/{id}', 'ObligapagosController@vistariesgos')->middleware('auth');
+Route::post('riesgocon/{id}', 'ObligapagosController@grabariesgos')->name('riesgocon')->middleware('auth');
 
+Route::view('maestro', 'maestro.maestro')->name('maestro');
 
-
+Route::view('confacxfe', 'repocolsultavue.consulfacxfecha')->name('confacxfe'); 
+Route::get('busproveevue', 'Report_contratoController@buscaprovee'); 
+Route::post('busfac', 'Report_contratoController@buscafacturas')->middleware('auth');
 

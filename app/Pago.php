@@ -8,7 +8,7 @@ class Pago extends Model
 {
     protected $fillable = ['fecha_pago', 'total', 'contrato_id', 'user_id', 'pago_corresponde_mes', 'mes_ejecucion',
                            'porcentaje_cumplimiento', 'saldo_viene', 'gran_total', 'consecu_informe', 'fecha_plazoeje',
-                           'registroadicion'];
+                           'registroadicion', 'director', 'cargo_director'];
 
     public function contrato()
     {
@@ -43,6 +43,11 @@ class Pago extends Model
     public function obliga_pagos()
     {
       return $this->hasMany('App\Obliga_pago');
+    }
+
+    public function riesgo_pagos()
+    {
+      return $this->hasMany('App\Riesgo_pago');
     }
 
 }

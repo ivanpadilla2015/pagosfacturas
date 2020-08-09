@@ -78,7 +78,7 @@
                             <td>{{ index+1 }}</td>
                             <td >{{ item.nombre_rubro}}</td>
                             <td >{{ item.numfac}}</td>
-                            <td >{{ item.id}}</td>
+                            <td >{{ item.pagonum}}</td>
                             <td >{{ item.fecha_pago}}</td>
                             <td>{{ item.valorfac.toLocaleString()}}</td>
                        </tr>
