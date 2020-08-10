@@ -42,7 +42,7 @@ class Pagos extends Component
     {
         $this->usos = Rubro::all();
         $this->depen = Dependencia::all();
-        $this->contra = Contrato::orderBy('id', 'desc')->get();
+        $this->contra = Contrato::orderBy('numcontrato', 'desc')->get();
         return view('livewire.pagos');
     }
 
