@@ -7,9 +7,11 @@ use App\Tipocontrato;
 use App\Dependencia;
 use App\Concargo;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Contratos extends Component
 {
+    use WithPagination;
     public $proved, $proveedor_id, $numcontrato, $tipoc, $tipocontrato_id, $dependencia_id, $depen,
            $fechacontrato, $valorcontrato, $registro_pres_inic, $plazoejecucion, $objetocontrato,
            $concargo_id, $saldo, $selected_id, $pagos, $supervisor, $num_mes, $concar;

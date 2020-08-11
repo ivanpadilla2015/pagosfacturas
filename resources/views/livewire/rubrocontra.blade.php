@@ -69,12 +69,12 @@
                         @endif
 
 
-                        <div class="form-group col">
+                        <div class="form-group col"> 
                             <label class="mr-1">Rubros</label>
                             <select  wire:model="rubroprin_id" class="form-control col-sm-10" >
                                 <option value="0">Seleccione</option>
                                 @foreach ($rubpri as $rubro)
-                                  <option value="{{ $rubro['id'] }}" wire:click="colocacodigo({{$rubro['id']}})">{{ $rubro['nombre_rubro'] }}</option>
+                                  <option value="{{ $rubro['id'] }}" wire:click="colocacodigo({{$rubro['id']}})">{{ $rubro['codigo_rubro'].' - '.substr($rubro['nombre_rubro'],0,40) }}</option>
                                 @endforeach
                               </select>
                                <div class="mx-auto mt-2">{{$codi_rub}}</div> 

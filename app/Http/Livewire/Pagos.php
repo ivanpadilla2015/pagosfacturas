@@ -65,7 +65,7 @@ class Pagos extends Component
                     foreach ($this->data->rubrocontratos as $value) {
                         $rprin  = Rubroprin::findOrFail($value->rubroprin_id);        
                         foreach ($rprin->uso_rubros as  $uso) {
-                            array_push($this->lisusos, ['id' => $uso->id, 'nombre_uso' => $uso->nombre_uso, 'id_prin' => $rprin->id ]);
+                            array_push($this->lisusos, ['id' => $uso->id, 'nombre_uso' => $uso->codigo_uso.' - '.substr($uso->nombre_uso,0,40),'id_prin' => $rprin->id ]); 
                         }
                     }
                     
