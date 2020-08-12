@@ -8,7 +8,7 @@ class Pago extends Model
 {
     protected $fillable = ['fecha_pago', 'total', 'contrato_id', 'user_id', 'pago_corresponde_mes', 'mes_ejecucion',
                            'porcentaje_cumplimiento', 'saldo_viene', 'gran_total', 'consecu_informe', 'fecha_plazoeje',
-                           'registroadicion', 'director', 'cargo_director'];
+                           'registroadicion', 'director', 'cargo_director', 'sum_conse'];
 
     public function contrato()
     {

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Facturadeta extends Model
 {
     protected $fillable = ['numfac', 'fechafac', 'valorfac', 'status','contrato_id', 'dependencia_id',
-                            'uso_rubro_id','pago_id'];
+                            'uso_rubro_id','pago_id', 'sum_conse'];
 
     
     public function contrato()

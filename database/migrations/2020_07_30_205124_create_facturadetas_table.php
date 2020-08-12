@@ -19,6 +19,7 @@ class CreateFacturadetasTable extends Migration
             $table->date('fechafac');
             $table->double('valorfac', 20, 2);
             $table->boolean('status')->default(true);
+            $table->bigInteger('sum_conse')->nullable();
             $table->timestamps();
 
             $table->foreignId('contrato_id')->constrained();

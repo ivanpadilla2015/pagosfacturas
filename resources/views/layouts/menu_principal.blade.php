@@ -140,6 +140,18 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('suministro')}}" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Pagos Suministros</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('infosumin')}}" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Informe Suministros</p>
+                </a>
+              </li>
+          <li class="nav-item">
             <a href="{{route('losusos')}}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
               <p>Manejo de Usos

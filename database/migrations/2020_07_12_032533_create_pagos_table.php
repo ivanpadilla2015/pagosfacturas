@@ -16,9 +16,9 @@ class CreatePagosTable extends Migration
        Schema::create('pagos', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_pago');
-            $table->double('total',10,2);
-            $table->double('saldo_viene',10,2);
-            $table->double('gran_total',15,2);
+            $table->double('total',20,2);
+            $table->double('saldo_viene',20,2);
+            $table->double('gran_total',20,2);
             $table->string('pago_corresponde_mes');
             $table->string('porcentaje_cumplimiento');
             $table->string('mes_ejecucion')->nullable();
@@ -27,6 +27,7 @@ class CreatePagosTable extends Migration
             $table->string('registroadicion')->nullable();
             $table->string('director', 120);
             $table->string('cargo_director', 120);
+            $table->bigInteger('sum_conse')->nullable(); 
             $table->timestamps();
 
             $table->foreignId('contrato_id')->constrained();

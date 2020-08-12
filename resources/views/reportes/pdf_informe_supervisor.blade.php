@@ -126,8 +126,8 @@
       </table>
       <table>
         <tr>
-            <td></td>
-            <td></td>
+            <td ></td>
+            <td ></td>
             <td></td>
             <td></td>
             <td></td>
@@ -148,8 +148,8 @@
             
          </tr>
         <tr>
-            <td class="t1" style="background-color:  #dedbda ">NUMERAL</td>
-            <td class="t1" style="background-color:  #dedbda ">OBLIGACION</td>
+            <td class="t2" style="background-color:  #dedbda ">NUMERAL</td>
+            <td class="tn" style="background-color:  #dedbda ">OBLIGACION</td>
             <td class="t1" style="background-color:  #dedbda ">ENTREGABLE</td>
             <td class="t2" style="background-color:  #dedbda ">ENE</td>
             <td class="t2" style="background-color:  #dedbda ">FEB</td>
@@ -166,8 +166,8 @@
         </tr>
         @foreach ($data->obliga_pagos as $item)
             <tr>
-                <td class="t1">{{ $item->numeral }}</td>
-                <td class="t1">{{ $item->obligacion_deta }}</td>
+                <td class="t2">{{ $item->numeral }}</td>
+                <td class="tn">{{ $item->obligacion_deta }}</td>
                 <td class="t1">{{ $item->entregable }}</td><!-- $action = (4 >= $data->contrato->num_mes  && 4 <= $data->mes_ejecucion) ? 'x' : '' -->
                 <td class="t2" align="center">{{ $action = (1 == $data->mes_ejecucion) ? $item->confirmar : '' }}</td>
                 <td class="t2" align="center">{{ $action = (2 == $data->mes_ejecucion) ? $item->confirmar : '' }}</td>

@@ -81,3 +81,6 @@ Route::post('busfac', 'Report_contratoController@buscafacturas')->middleware('au
 
 Route::view('copiasriesgos', 'otros.copias_riesgos')->name('copiasriesgos');
 Route::view('copiasobligaciones', 'otros.copias_obligacion')->name('copiasobligaciones');
+
+Route::view('suministro', 'pagos.suministros')->name('suministro'); 
+Route::view('infosumin', 'pagos.informesuministro')->name('infosumin'); 
