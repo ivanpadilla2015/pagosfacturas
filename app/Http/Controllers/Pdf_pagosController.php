@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Pago;
 use App\Facturadeta;
+use App\Datosmaestro;
 use PDF;
 
 class Pdf_pagosController extends Controller
@@ -36,6 +37,7 @@ class Pdf_pagosController extends Controller
     {
         
         $datos = Pago::findOrFail($id);
+        $dmaestro = Datosmaestro::findOrFail(1);
         $rubro = DB::table('facturadetas')
             ->join('uso_rubros', 'uso_rubros.id', '=', 'facturadetas.uso_rubro_id')
             ->select('facturadetas.numfac', 'uso_rubros.nombre_uso', 'facturadetas.uso_rubro_id','uso_rubros.codigo_uso', DB::raw('SUM(facturadetas.valorfac) as total_fac'))
@@ -43,7 +45,7 @@ class Pdf_pagosController extends Controller
             ->where('facturadetas.pago_id', $datos->id)
             ->get();
         //return $rubro;
-        $pdf= PDF::loadView('reportes.pdf_pago_num', compact('datos','rubro'));
+        $pdf= PDF::loadView('reportes.pdf_pago_num', compact('datos','rubro', 'dmaestro'));
         $pdf->setPaper('letter', 'landscape');
         return $pdf->stream();
     }

@@ -38,7 +38,7 @@
         </div>
           <div class="row ">
             <div class="form-group col">
-                <label >Tipo Contrato</label>
+                <label >Modalidad Contrato</label>
                 <select wire:model="tipocontrato_id" class="form-control">
                     <option value="0">Seleccione</option>
                     @foreach ($tipoc as $tipo)
@@ -133,6 +133,16 @@
                     <option value="12">Diciembre</option>
                 </select>
             </div>
+            <div class="form-group form-check mt-5 ml-3">
+                        <input  wire:model="suministro" type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Contrato Suministro</label>
+            </div>
+              <div class="form-group col">
+                @if ($suministro)
+                  <label >Cons Informe</label>
+                  <input wire:model="sum_conse" type="text" class="form-control" placeholder="Conse. informe">
+                @endif
+              </div>
           </div>
           <button wire:click="update()" type="submit" class="btn btn-primary">Actualizar</button>
           <button wire:click.prevent="cancel()" class="btn btn-danger">Cancel</button>

@@ -47,30 +47,32 @@ class Pagosuministros extends Component
         $this->resetInputsC();
         if ($id) {
             $this->data = Contrato::findOrFail($id);
-            
-            if($this->data->riesgos->count() < 1)
+
+            if(!$this->data->suministro)
             {
-                $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No tiene los Riesgos']); 
-                $this->resetInput();
-            }else
-             {   
-                if($this->data->obligacions->count() > 0){  //para saber si tiene obligaciones o no
-                    $this->proveedor_id = $this->data->proveedor_id;
-                    $this->sal = $this->data->saldo;
-                    $this->vct = $this->data->gran_total;
-                    foreach ($this->data->rubrocontratos as $value) {
-                        $rprin  = Rubroprin::findOrFail($value->rubroprin_id);        
-                        foreach ($rprin->uso_rubros as  $uso) {
-                            array_push($this->lisusos, ['id' => $uso->id, 'nombre_uso' => $uso->codigo_uso.' - '.substr($uso->nombre_uso,0,40),'id_prin' => $rprin->id ]); 
-                        }
-                    }
-                    
-                }else
+               $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato no es de Suministro']); 
+               $this->resetInput();
+            } else
                 {
-                    $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No tiene Obligaciones']); 
-                    $this->resetInput();
-                }
-             }    
+                    
+                   if($this->data->rubrocontratos->count() > 0){  //para saber si tiene los rubros o no
+                            $this->proveedor_id = $this->data->proveedor_id;
+                            $this->sal = $this->data->saldo;
+                            $this->vct = $this->data->gran_total;
+                        foreach ($this->data->rubrocontratos as $value) {
+                           $rprin  = Rubroprin::findOrFail($value->rubroprin_id);        
+                            foreach ($rprin->uso_rubros as  $uso) {
+                                array_push($this->lisusos, ['id' => $uso->id, 'nombre_uso' => $uso->codigo_uso.' - '.substr($uso->nombre_uso,0,40),'id_prin' => $rprin->id ]); 
+                            }
+                        }
+                            
+                    }else
+                        {
+                            $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No tiene Rubros']); 
+                            $this->resetInput();
+                        }
+                        
+                }   
             //ojo faltaria reg de la adicion
         }
          

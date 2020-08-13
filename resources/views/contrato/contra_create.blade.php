@@ -38,7 +38,7 @@
                 </div>
                   <div class="row ">
                     <div class="form-group col">
-                        <label >Tipo Contrato</label>
+                        <label >Modalidad Contrato</label>
                         <select wire:model="tipocontrato_id" class="form-control">
                             <option value="0">Seleccione</option>
                             @foreach ($tipoc as $tipo)
@@ -99,6 +99,10 @@
                         @error('objetocontrato')
                         <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
+                      </div>
+                      <div class="form-group form-check mt-5 ml-3">
+                        <input  wire:model="suministro" type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Contrato Suministro</label>
                       </div>
                   </div>
                   

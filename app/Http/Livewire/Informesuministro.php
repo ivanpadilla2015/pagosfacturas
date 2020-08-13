@@ -19,25 +19,40 @@ class Informesuministro extends Component
         return view('livewire.informesuministro');
     }
 
-    public function consulcontra()
+    public function consulcontra() 
     {
         $this->validate([
             'numcontrato' =>'required',
         ]);
         $this->data = Contrato::where('numcontrato', $this->numcontrato)->first();
-        if ($this->data) {
-            $this->datosrubro =  Rubrocontrato::where('contrato_id', $this->data->id )->get();
-            $this->rubpri = Rubroprin::orderBy('nombre_rubro', 'asc')->get();
-            $info = $this->data->sum_conse+1;
-            $this->datopago =  Pago::where('sum_conse', $info)->get();
-            $this->datofac =  Facturadeta::where('sum_conse', $info)->get();
+        if(!$this->data->suministro)
+         {
+              $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No es de Suministro']); 
+              $this->resetInput();
+         } else{
+            if ($this->data) {
+                $this->datosrubro =  Rubrocontrato::where('contrato_id', $this->data->id )->get();
+                $this->rubpri = Rubroprin::orderBy('nombre_rubro', 'asc')->get();
+                $info = $this->data->sum_conse+1;
+                $this->datopago =  Pago::where('sum_conse', $info)->get();
+                $this->datofac =  Facturadeta::where('sum_conse', $info)->get();
 
-        }else
-        {
-            $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No existe']);
-        }
+            }else
+            {
+                $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No existe']);
+            }
         
-       
+        }
+    }
+
+    public function resetInput() 
+    {
+        $this->numcontrato = null;
+        $this->data=null;
+        $this->rubpri = null; 
+        $this->datosrubro = null;
+        $this->datopago = null;
+        $this->datofac = null;
     }
 
 }

@@ -14,7 +14,8 @@ class Contratos extends Component
     use WithPagination;
     public $proved, $proveedor_id, $numcontrato, $tipoc, $tipocontrato_id, $dependencia_id, $depen,
            $fechacontrato, $valorcontrato, $registro_pres_inic, $plazoejecucion, $objetocontrato,
-           $concargo_id, $saldo, $selected_id, $pagos, $supervisor, $num_mes, $concar;
+           $concargo_id, $saldo, $selected_id, $pagos, $supervisor, $num_mes, $concar, $suministro,
+           $sum_conse;
     public  $createMode = false;
     public  $updateMode = false;
 
@@ -46,6 +47,7 @@ class Contratos extends Component
         $this->saldo = null;
         $this->supervisor = null;
         $this->num_mes = null;
+        $this->sum_conse = null;
     }
 
     public function cancel()
@@ -81,7 +83,8 @@ class Contratos extends Component
             'fechacontrato' => $this->fechacontrato, 'valorcontrato' => $this->valorcontrato,
             'registro_pres_inic' => $this->registro_pres_inic, 'plazoejecucion' => $this->plazoejecucion,
             'objetocontrato' => $this->objetocontrato, 'saldo' => $this->valorcontrato, 
-            'concargo_id' => $this->concargo_id, 'gran_total' => $this->valorcontrato
+            'concargo_id' => $this->concargo_id, 'gran_total' => $this->valorcontrato, 'suministro' => $this->suministro,
+            'sum_conse' => $this->sum_conse
         ]);        
 
         //ucwords — Convierte a mayúsculas el primer caracter de cada palabra de una cadena
@@ -109,6 +112,8 @@ class Contratos extends Component
         $this->pagos = $record->pagos;
         $this->supervisor = $record->supervisor;
         $this->num_mes = $record->num_mes;
+        $this->suministro = $record->suministro;
+        $this->sum_conse = $record->sum_conse;
         $this->createMode = false;
         $this->updateMode = true;
     }
@@ -136,7 +141,7 @@ class Contratos extends Component
                 'registro_pres_inic' => $this->registro_pres_inic, 'plazoejecucion' => $this->plazoejecucion,
                 'objetocontrato' => $this->objetocontrato, 'saldo' => $this->saldo, 
                 'concargo_id' => $this->concargo_id, 'pagos' => $this->pagos, 'supervisor' => $this->supervisor,
-                'num_mes' => $this->num_mes                
+                'num_mes' => $this->num_mes, 'suministro' => $this->suministro, 'sum_conse' => $this->sum_conse                
             ]);   
             $this->emit('alert', ['type'=> 'success', 'message' => 'Actualizado Correctamente']);    
             $this->resetInput();

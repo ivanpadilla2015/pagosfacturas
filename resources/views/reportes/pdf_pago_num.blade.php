@@ -184,11 +184,13 @@
 </table>
 <br><br>
 
-_______________________________
-<div>Elaboró: {{ $datos->user->name }}</div>
-<div>Resp. {{ $datos->user->dependencia->nombredepen }}</div>
-    
- 
+<div style="float:left"> _______________________________ <br>                                                 
+Elaboró: {{ $datos->user->name }} <br>  
+Resp. {{ $datos->user->dependencia->nombredepen }}</div> 
+
+<div style="float:right"> _______________________________ <br> 
+{{ $dmaestro->presupuesto }} <br>
+{{ $dmaestro->cargo_presupuesto  }}</div>
     
   </body>
 

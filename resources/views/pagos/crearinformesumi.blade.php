@@ -85,9 +85,9 @@
                                         <tr>
                                             <th scope="row">{{$c}}</th>
                                             <td class="text-center">{{ $item['numfac'] }} </td>
-                                            <td>{{ $item['fechafac'] }}</td>
+                                            <td>{{ $item->fechafac }}</td>
                                             <td>{{ number_format($item['valorfac'])  }}</td>
-                                          
+                                            <td>{{ $item->dependencia->nombredepen }}</td>
                                         </tr>
                                     @endforeach
                                         <tr>
