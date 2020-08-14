@@ -25,8 +25,10 @@
           <td class="c1" style="text-align: center"></td>
         </tr>
         <tr>
+          @php $car = $datos->contrato->concargo->con_cargo_a @endphp 
+          
           <td class="c3"><strong>Presupuesto cargo a ALFM:</strong></td>
-          <td class="c2"><b>SI__</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NO__</td>
+          <td class="c2"><b> {{ $action = (substr($car,0,4) == 'Alfm') ? 'SI' : 'NO' }} </b> </td>
           <td class="c3" style="text-align: right" ></td>
           <td class="c1" style="text-align: center"></td>
         </tr>
