@@ -83,7 +83,8 @@
     @if ($lisfact)
     
         <div class="float-center ">
-        <button wire:click="grabarfactura()"  class="btn btn-success btn-sm my-2 " title="Grabar pago" >Grabar Pago</button>
+          <button wire:click="grabarfactura()" onclick="confirm('Confirma Terminar pago?') || event.stopImmediatePropagation()"   class="btn btn-success btn-sm my-2 " title="Grabar pago" >Grabar Pago</button>
+          @include('pagos.sumarfacturas')
         </div>
         <?php $sum = 0; ?>
         <table class="table table-bordered">
@@ -118,7 +119,10 @@
             </tr>  
           </tbody>
         </table>
-        {{'saldpo:'. $sal.' total: '.$total.' cto. '.$vct }}
+        
       @endif
-
+      
 @endif
+
+
+

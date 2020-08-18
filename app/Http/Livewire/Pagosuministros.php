@@ -21,7 +21,7 @@ class Pagosuministros extends Component
     public $contra, $contrato_id, $data, $pagos_id, $usos, $depen, $collection;
     public  $verMode = true;
     public $numfac, $proveedor_id, $total, $pago_id, $pago_corresponde_mes, $porcentaje_cumplimiento,
-           $mes_ejecucion, $sal, $vct, $saldo_viene, $feje, $reg;
+           $mes_ejecucion, $sal, $vct, $saldo_viene, $feje, $reg, $sumfac;
     public $fact = [
         'numfac' => '',
         'fechafac' => '',
@@ -33,6 +33,7 @@ class Pagosuministros extends Component
     ];
     public $lisfact = array();
     public $lisusos = array();
+    public $facunica = array();
 
     public function render()
     {
@@ -87,10 +88,11 @@ class Pagosuministros extends Component
         'fact.fechafac' => 'required',
         'fact.valorfac' => 'required',
         'fact.dependencia_id' => 'required|integer|not_in:0',
-        
-
+  
        ]);     
        
+       array_push($this->facunica, $this->fact['numfac']); //para totalizar por factura
+       $this->mirar();
        if($this->fact['dependencia_id'])
        {
         $dep = Dependencia::findOrFail($this->fact['dependencia_id']);
@@ -111,6 +113,25 @@ class Pagosuministros extends Component
         
         $this->porcentaje_cumplimiento = 100 - round((($this->sal - $this->total)*100)/$this->vct);
 
+    }
+
+    public function mirar() //para ver el total de las facturas
+    {
+        $arra=array_unique($this->facunica);
+        $this->sumfac= array();
+        foreach ($arra as $fa) {
+            $s = 0;
+            foreach ($this->lisfact as $t) {
+                if ($fa == $t['numfac'] ) {
+                    $s += $t['valorfac'];
+                }
+                
+            } 
+            if($s > 0){
+                array_push($this->sumfac, [ 'numfac' => $fa, 'total' => $s]);
+            }
+        }
+       // dd($this->sumfac);
     }
 
     public function grabarfactura()
@@ -234,6 +255,7 @@ class Pagosuministros extends Component
         $this->total = null;
         $this->lisfact = array();
         $this->lisusos = array();
+        $this->facunica = array();
 
     }
 }

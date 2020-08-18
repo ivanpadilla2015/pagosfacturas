@@ -109,16 +109,7 @@
     </tr>
     @php $s = 0; $sdo = $datos->saldo_viene; @endphp
       @foreach ($rubro as $item)
-            <tr>
-              <td class="colu">{{$item->nombre_uso}}</td>
-              <td class="t2">{{$item->codigo_uso}}</td>
-              <td class="colu"></td>
-              <td class="colu"></td>
-              <td class="colu"></td>
-              <td class="colu"></td>
-              <td class="colu"></td>
-              <td class="colu"></td>
-            </tr>
+           
           @foreach ($datos->facturadetas as $fac)
             @if ($item->uso_rubro_id == $fac->uso_rubro_id)
                 @php $s += $fac->valorfac; $sdo -= $fac->valorfac;
@@ -137,14 +128,14 @@
             @endif
           @endforeach
             <tr>
-              <td class="colu" style="text-align: center"></td>
-              <td class="colu" style="text-align: center"></td>
-              <td class="colu" style="text-align: center"></td>
-              <td class="colu" style="text-align: center"></td>
-              <td class="colu">Total</td>
-              <td class="colu" style="text-align: center">{{ number_format($item->total_fac)}}</td>
-              <td class="colu" style="text-align: center">{{ number_format($item->total_fac)}}</td>
-              <td class="colu" style="text-align: center"></td>
+              <td class="colu" ><strong>{{$item->nombre_uso}}</strong> </td>
+              <td class="colu" ><strong>{{$item->codigo_uso}}</strong></td>
+              <td class="colu" style="text-align: center;"></td>
+              <td class="colu" style="text-align: center;"></td>
+              <td class="colu" ></td>
+              <td class="colu" style="text-align: center; "><strong>{{ number_format($item->total_fac)}}</strong></td>
+              <td class="colu" style="text-align: center;"><strong>{{ number_format($item->total_fac)}}</strong></td>
+              <td class="colu" style="text-align: center; "></td>
             </tr>
       @endforeach
     <tr>
@@ -188,7 +179,7 @@
 
 <div style="float:left"> _______________________________ <br>                                                 
 Elaboró: {{ $datos->user->name }} <br>  
-Resp. {{ $datos->user->dependencia->nombredepen }}</div> 
+{{ $datos->user->dependencia->nombredepen }}</div> 
 
 <div style="float:right"> _______________________________ <br> 
 {{ $dmaestro->presupuesto }} <br>

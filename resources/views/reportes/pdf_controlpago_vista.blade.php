@@ -65,6 +65,7 @@
                                 </div>
                                 <div class="float-right my-1">
                                  <a href="{{ route('verconpago', $dato->id )}}"  class="btn btn-info btn-sm ">Control Pago</a>
+                                 <a href="{{ route('verconpagonew', $dato->id )}}"  class="btn btn-info btn-sm ">Control Pago New</a>
                                   <!--<button type="button" wire:click="Pdfxnumeropago()" class="btn btn-info ">Vista Previa</button>-->
                                 </div>
                                  <!--  ****************** Table *****************************-->

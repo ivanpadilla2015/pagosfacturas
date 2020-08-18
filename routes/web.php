@@ -79,10 +79,13 @@ Route::view('confacxfe', 'repocolsultavue.consulfacxfecha')->name('confacxfe');
 Route::get('busproveevue', 'Report_contratoController@buscaprovee'); 
 Route::post('busfac', 'Report_contratoController@buscafacturas')->middleware('auth');
 
-Route::view('copiasriesgos', 'otros.copias_riesgos')->name('copiasriesgos');
-Route::view('copiasobligaciones', 'otros.copias_obligacion')->name('copiasobligaciones');
-
 Route::view('suministro', 'pagos.suministros')->name('suministro')->middleware('auth'); 
 Route::view('infosumin', 'pagos.informesuministro')->name('infosumin')->middleware('auth'); 
 
+Route::get('verconpagonew/{id}', 'pdf_pagosController@Pdfxpagonumnew')->name('verconpagonew')->middleware('auth');
+
+/************************************************************************************* */
+Route::view('copiasriesgos', 'otros.copias_riesgos')->name('copiasriesgos');
+Route::view('copiasobligaciones', 'otros.copias_obligacion')->name('copiasobligaciones');
 Route::view('borrarpago', 'otros.borrarpago')->name('borrarpago')->middleware('auth'); 
+/******************************************************************************************** */

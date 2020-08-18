@@ -13,7 +13,7 @@
                             <select  class="form-control" name="pago_id">
                                 <option value="0">Seleccione</option>
                                 @foreach ($contra as $con)
-                                <option value="{{ $con['id'] }}">{{"Pago No: ".$con['id']." Cto : ".$con->contrato->numcontrato }}</option>
+                                <option value="{{ $con['id'] }}">{{"Pago No: ".$con['id']." Cto : ".$con->contrato->numcontrato." - Vlr : ".number_format($con->total)}}</option>
                                 @endforeach
                             </select>
                             <p class="text-danger">{{ $errors->first('pago_id') }}</p>
