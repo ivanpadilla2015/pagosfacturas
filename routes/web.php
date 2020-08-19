@@ -88,4 +88,5 @@ Route::get('verconpagonew/{id}', 'pdf_pagosController@Pdfxpagonumnew')->name('ve
 Route::view('copiasriesgos', 'otros.copias_riesgos')->name('copiasriesgos');
 Route::view('copiasobligaciones', 'otros.copias_obligacion')->name('copiasobligaciones');
 Route::view('borrarpago', 'otros.borrarpago')->name('borrarpago')->middleware('auth'); 
+Route::view('editarpago', 'otros.editarpagos')->name('editarpago')->middleware('auth'); 
 /******************************************************************************************** */
