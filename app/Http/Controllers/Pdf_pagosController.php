@@ -62,9 +62,10 @@ class Pdf_pagosController extends Controller
         
     }
 
-    public function Pdfxpagonumnew($id)
+    public function Pdfxpagonumnew()
     {
-        $datos = Pago::findOrFail($id);
+        //return $request;
+        $datos = Pago::findOrFail(request('id'));
         $dmaestro = Datosmaestro::findOrFail(1);
         $rubro = DB::table('facturadetas')
             ->join('uso_rubros', 'uso_rubros.id', '=', 'facturadetas.uso_rubro_id')
@@ -73,7 +74,8 @@ class Pdf_pagosController extends Controller
             ->where('facturadetas.pago_id', $datos->id)
             ->get();
         //return $rubro;
-        $pdf= PDF::loadView('reportes.pdf_pago_num_new', compact('datos','rubro', 'dmaestro'));
+        $spacio = request('space');
+        $pdf= PDF::loadView('reportes.pdf_pago_num_new', compact('datos','rubro', 'dmaestro', 'spacio'));
         $pdf->setPaper('letter', 'landscape');
         return $pdf->stream();
     }

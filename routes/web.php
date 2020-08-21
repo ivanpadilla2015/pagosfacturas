@@ -82,7 +82,7 @@ Route::post('busfac', 'Report_contratoController@buscafacturas')->middleware('au
 Route::view('suministro', 'pagos.suministros')->name('suministro')->middleware('auth'); 
 Route::view('infosumin', 'pagos.informesuministro')->name('infosumin')->middleware('auth'); 
 
-Route::get('verconpagonew/{id}', 'pdf_pagosController@Pdfxpagonumnew')->name('verconpagonew')->middleware('auth');
+Route::get('/verconpagonew', 'pdf_pagosController@Pdfxpagonumnew')->name('verconpagonew')->middleware('auth');
 
 /************************************************************************************* */
 Route::view('copiasriesgos', 'otros.copias_riesgos')->name('copiasriesgos');

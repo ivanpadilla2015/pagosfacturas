@@ -8,18 +8,18 @@
     <title>Reporte Pago Financiero</title>
    </head>
   <body>
- 		<div>
+ 		  <div>
   			<img src="{{ public_path('img/gf-fO-35.jpg')}}" class="img-fluid w-100" alt="Responsive image ">
   		</div>
-      <table> 
-        <tr>
+      <table > 
+        <tr >
           <td class="c3"><strong>Contrato No:</strong></td>
-        <td class="c2">{{ $datos->contrato->numcontrato }}</td>
-          <td class="c3" style="text-align: right" ><strong>No Registro Presupuestal:</strong></td>
-          <td class="c1" style="text-align: center">{{$datos->contrato->registro_pres_inic.$datos->registroadicion}}</td>
+          <td class="c2" >{{ $datos->contrato->numcontrato }}</td>
+          <td class="c3" style="text-align: right;" ><strong>No Registro Presupuestal:</strong></td>
+          <td class="c1" style="text-align: center;">{{$datos->contrato->registro_pres_inic.$datos->registroadicion}}</td>
         </tr>
         <tr>
-          <td class="c3"><strong>Nombre Contratista:</strong> </td>
+          <td class="c3" ><strong>Nombre Contratista:</strong> </td>
           <td class="c2">{{ $datos->contrato->proveedor->nombre}}</td>
           <td class="c3" style="text-align: right" ></td>
           <td class="c1" style="text-align: center"></td>
@@ -28,14 +28,13 @@
           @php $car = $datos->contrato->concargo->con_cargo_a @endphp 
           
           <td class="c3"><strong>Presupuesto cargo a ALFM:</strong></td>
-          <td class="c2"><b> {{ $action = (substr($car,0,4) == 'Alfm') ? 'SI' : 'NO' }} </b> </td>
+         <!-- <td class="c2"><b> {{ $action = (substr($car,0,4) == 'Alfm') ? 'SI' : 'NO' }} </b> </td>-->
+          <td class="c2"><b> {{ 'SI' }} </b> </td>
           <td class="c3" style="text-align: right" ></td>
           <td class="c1" style="text-align: center"></td>
         </tr>
-      </table>
-      <table>
         <tr>
-          <td> <b>Con cargo al (los) contrato(s) interadministrativo(s)</b> </td>
+          <td> <b>Con cargo a contrato(s) interadmin(s)</b> </td>
           <td> {{$datos->contrato->concargo->detalle_inter}}</td>
           <td> <b> Plazo de Ejecucion:</b></td>
            @php  $fecha = new DateTime($datos->fecha_plazoeje);
@@ -48,13 +47,13 @@
           <td></td>
           <td></td>
         </tr>
-      </table>
+     </table>
+     
+  
   	<table id="padre">
-  	
-	    <tr>
+     <tr>
 	      <th class="t1" >
             {{ $datos->contrato->objetocontrato }}
-
 	      </th>
 	      <th class="colu" style="">Codigo de Uso Ppal</th>
 	      <th class="colu" >Fecha</th>
@@ -64,8 +63,7 @@
 	      <th class="colu">Valor a Pagar</th>
 	      <th class="colu" >Saldo por Ejecutar</th>
 	    </tr>
-  
-  <tbody>
+ 
     @php  $fe = new DateTime($datos->contrato->fechacontrato);
                  $fecon = $fe->format('d/m/Y'); @endphp 
     <tr>
@@ -128,43 +126,53 @@
             @endif
           @endforeach
             <tr>
-              <td class="colu" ><strong>{{$item->nombre_uso}}</strong> </td>
-              <td class="colu" ><strong>{{$item->codigo_uso}}</strong></td>
+              <td class="t1" >{{$item->nombre_uso}} </td>
+              <td class="t1" >{{$item->codigo_uso}} </td>
               <td class="colu" style="text-align: center;"></td>
               <td class="colu" style="text-align: center;"></td>
               <td class="colu" ></td>
-              <td class="colu" style="text-align: center; "><strong>{{ number_format($item->total_fac)}}</strong></td>
-              <td class="colu" style="text-align: center;"><strong>{{ number_format($item->total_fac)}}</strong></td>
+              <td class="colu" style="text-align: center; ">{{ number_format($item->total_fac)}}</td>
+              <td class="colu" style="text-align: center;">{{ number_format($item->total_fac)}}</td>
               <td class="colu" style="text-align: center; "></td>
             </tr>
       @endforeach
     <tr>
-      <th class="colu" style="background-color: #d1cccc;" >Total Tramite Pago No {{$datos->consecu_informe}}</th>
-      <th class="colu" style="background-color: #d1cccc;"></th>
-      <th class="colu" style="background-color: #d1cccc;"></th>
-      <th class="colu" style="background-color: #d1cccc;"></th>
-      <th class="colu" style="background-color: #d1cccc;"></th>
-      <th class="colu" style="background-color: #d1cccc;">{{number_format($s)}}</th>
-      <th class="colu" style="background-color: #d1cccc;">{{number_format($datos->total)}}</th>
-      <th class="colu" style="background-color: #d1cccc;">{{number_format($sdo)}}</th>
+      <td class="colu" colspan ="8" style="background-color: #d1cccc;" ></td>
+      
     </tr>
-   
+    
     @php $sum = 0 @endphp
     @foreach ($rubro as $item)
          @php $sum += $item->total_fac  @endphp
         <tr>
-          <td class="colu">{{$item->nombre_uso}}</td>
-          <td class="t2">{{$item->codigo_uso}}</td>
+          <td class="t1">{{$item->nombre_uso}}</td>
+          <td class="t1">{{$item->codigo_uso}}</td>
           <td class="colu"></td>
           <td class="colu"></td>
           <td class="colu"></td>
-          <th class="colu">{{ number_format($item->total_fac)}}</th>
-          <th class="colu">{{ number_format($item->total_fac)}}</th>
-          <th class="colu"></th>
+          <td class="colu" style="text-align: center; ">{{ number_format($item->total_fac)}}</td>
+          <td class="colu" style="text-align: center; ">{{ number_format($item->total_fac)}}</td>
+          <td class="colu"></td>
         </tr>
     @endforeach
+    
     <tr>
-      <td class="colu" style="background-color: #d1cccc;">Sub Total Uso</td>
+      <td class="colu" style="background-color: #d1cccc;"><strong> Sub Total Uso</strong></td>
+      <td class="colu" style="background-color: #d1cccc;"></td>
+      <td class="colu" style="background-color: #d1cccc;"></td>
+      <td class="colu" style="background-color: #d1cccc;"></td>
+      <td class="colu" style="background-color: #d1cccc;"></td>
+      <th class="colu" style="background-color: #d1cccc;"></th>
+      <th class="colu" style="background-color: #d1cccc;">{{ number_format($sum)}}</th>
+      <th class="colu" style="background-color: #d1cccc;">{{number_format($sdo)}}</th>
+    </tr>
+    <tr>
+      <th class="colu" style="background-color: #d1cccc;">TOTAL TRAMITE</th>
+      <th class="colu" colspan ="7" style="background-color: #d1cccc; text-align: center;">{{number_format($datos->total)}}</th>
+     
+    </tr>
+    <tr>
+      <th class="colu" style="background-color: #d1cccc;">TOTAL</th>
       <td class="t2" style="background-color: #d1cccc;"></td>
       <td class="colu" style="background-color: #d1cccc;"></td>
       <td class="colu" style="background-color: #d1cccc;"></td>
@@ -173,12 +181,20 @@
       <th class="colu" style="background-color: #d1cccc;">{{ number_format($sum)}}</th>
       <th class="colu" style="background-color: #d1cccc;">{{number_format($sdo)}}</th>
     </tr>
-  </tbody>
+    <table>
+      @for ($i = 0; $i < $spacio; $i++)
+      <tr>
+        <td class="" colspan ="8" ></td>
+      </tr>
+    @endfor
+    </table>
+      
 </table>
-<br><br>
+
+<br><br><br>
 
 <div style="float:left"> _______________________________ <br>                                                 
-Elaboró: {{ $datos->user->name }} <br>  
+Supervisor: {{ $datos->user->name }} <br>  
 {{ $datos->user->dependencia->nombredepen }}</div> 
 
 <div style="float:right"> _______________________________ <br> 
