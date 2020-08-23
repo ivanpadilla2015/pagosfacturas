@@ -1,7 +1,7 @@
 <div>
         <div class="form-group mb-2">
             <label class="mr-1">Pago No</label>
-            <select  class="form-control" name="pago_id">
+            <select  class="form-control" wire:model="pago_id" name="pago_id">
                 <option value="0">Seleccione</option>
                 @foreach ($contra as $con)
                 <option value="{{ $con['id'] }}" wire:click="consulpago({{$con['id']}})">{{"Pago No: ".$con['id']." Cto : ".$con->contrato->numcontrato." - Vlr : ".number_format($con->total)}}</option>
@@ -75,62 +75,49 @@
         <!-- Modal -->
 
                         <div wire:ignore.self class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-                            <div class="modal-dialog" role="document">
-
-                            <div class="modal-content">
-
+                           <div class="modal-dialog" role="document">
+                               <div class="modal-content">
                                     <div class="modal-header">
-
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-
+                                        <h5 class="modal-title" id="exampleModalLabel">Editar Factura</h5>
+                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
-
-                                        </button>
-
+                                         </button>
                                     </div>
-
                                     <div class="modal-body">
-
                                         <form>
-
                                             <div class="form-group">
-
                                                 <input type="hidden" wire:model="user_id">
-
-                                                <label for="exampleFormControlInput1">Name</label>
-
-                                                <input type="text" class="form-control" wire:model="name" id="exampleFormControlInput1" placeholder="Enter Name">
-
-                                                @error('name') <span class="text-danger">{{ $message }}</span>@enderror
-
+                                                <label >Fecha Fac</label>
+                                                <input type="date" class="form-control" wire:model="fechafac"  placeholder="Fecha">
+                                                @error('fechafac') <span class="text-danger">{{ $message }}</span>@enderror
                                             </div>
-
+                                            <div class="form-group">  
+                                              <label>Dependencia</label>
+                                              <select wire:model="dependencia_id"  class="form-control" >
+                                                
+                                                <option value="0">Seleccione</option>
+                                                @foreach ($depen as $depe)
+                                                  <option value="{{ $depe['id'] }}"  >{{ $depe['nombredepen'] }}</option>
+                                                @endforeach
+                                              </select>
+                                              @error('fact.dependencia_id') <span class="text-danger">{{$message}}</span>@enderror
+                                            </div>
                                             <div class="form-group">
-
-                                                <label for="exampleFormControlInput2">Email address</label>
-
-                                                <input type="email" class="form-control" wire:model="email" id="exampleFormControlInput2" placeholder="Enter Email">
-
-                                                @error('email') <span class="text-danger">{{ $message }}</span>@enderror
-
+                                                <label>Uso</label>
+                                                <select wire:model="uso_rubro_id"  class="form-control">
+                                                    <option value="0">Seleccione</option>
+                                                    @foreach ($lisusos as $uso)
+                                                      <option value="{{ $uso['id'] }}"  >{{ $uso['nombre_uso'] }}</option>
+                                                    @endforeach 
+                                                </select>
                                             </div>
-
                                         </form>
-
                                     </div>
-
                                     <div class="modal-footer">
-
-                                        <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                                        <button type="button" wire:click.prevent="update()" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-
+                                        <button type="button"  class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" wire:click.prevent="updatedeta()" class="btn btn-primary" data-dismiss="modal">Grabar Cambios</button>
                                     </div>
-
-                            </div>
+                                </div>
 
                             </div>
 

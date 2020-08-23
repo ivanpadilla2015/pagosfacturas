@@ -43,7 +43,7 @@ class CreateContratosTable extends Migration
             $table->bigInteger('num_mes')->default(0); // para saber desde que mes enpezaron los pagos
             $table->float('ejecutado', 5, 2)->nullable(); //porcentaje ejecutado del contrato
             $table->string('supervisor')->nullable(); 
-            $table->bigInteger('sum_conse')->nullable(); 
+            $table->bigInteger('sum_conse')->nullable(); //para informe suministro
             $table->boolean('sumiministro')->nullable(); 
             $table->timestamps();
 

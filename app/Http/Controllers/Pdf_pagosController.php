@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Pago;
 use App\Facturadeta;
 use App\Datosmaestro;
+use App\Inforsumini;
 use PDF;
 
 class Pdf_pagosController extends Controller
@@ -80,9 +81,28 @@ class Pdf_pagosController extends Controller
         return $pdf->stream();
     }
 
-    public function contratos()
+    public function selectinfo()
     {
-        
+        $inform = Inforsumini::orderBy('id', 'desc')->get();
+        return view('reportes.pdf_info_sumini_1', compact('inform'));
     }
+
+    public function vistainfo(Request $request)
+    {
+        $request->validate([
+            'inforsumini_id' => 'required|integer|not_in:0'
+        ]);
+        $data = Inforsumini::findOrFail($request->inforsumini_id);
+        $datofac= DB::table('facturadetas')
+        ->join('dependencias', 'dependencias.id', '=', 'facturadetas.dependencia_id')
+        ->select('numfac', 'fechafac', 'dependencias.nombredepen',DB::raw('SUM(valorfac) as valorfac'))
+        ->groupBy('numfac')->where('sum_conse', $data->sum_conse)->where('contrato_id', $data->contrato_id )->get();
+        
+        $pdf= PDF::loadView('reportes.pdf_info_sumini_3', compact('data', 'datofac'));
+        $pdf->setPaper('letter');
+        return $pdf->stream();
+    }
+
+   
 
 }

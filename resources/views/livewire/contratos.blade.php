@@ -23,6 +23,7 @@
                             <th style="width:25%">Proveedor</th>
                             <th style="width:20%">valor</th>
                             <th style="width:15%">Saldo</th>
+                            <th style="width:10%">Ejecutado</th>
                             <th style="width:10%">Supervidor</th>
                             <th>Actions</th>
                         </tr>
@@ -34,6 +35,7 @@
                                 <td >{{$item->proveedor->nombre}}</td>
                                 <td >{{number_format($item->valorcontrato)}}</td>
                                 <td >{{number_format($item->saldo)}}</td>
+                                <td>{{ $valor = ($item->ejecutado) ? $item->ejecutado.'%': '0.%'}} </td>
                                 <td >{{$item->supervisor}}</td>
                                 <td >
                                     <button class="btn bg-transparent color" wire:click="edit({{ $item->id }})"><svg width="2em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

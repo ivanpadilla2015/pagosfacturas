@@ -118,50 +118,62 @@
             </p>
           </a>
         </li>
-      <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-chart-pie"></i>
-          <p>
-            Facturas
-            <i class="right fas fa-angle-left"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{ route('consulfa') }}" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
-              <p>Consultar Facturas</p>
-            </a>
-          </li>
-          <li class="nav-item">
-          <a href="{{route('pagosfa')}}" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
-              <p>Pagos</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('suministro')}}" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Pagos Suministros</p>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+              Ctl Pagos Compra Venta
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('pagosfa')}}" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Crear Ctl Pagos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('pdfpagos') }}" class="nav-link">
+                  <i class="fas fa-print nav-icon"></i>
+                  <p>Imp Ctl Pago - Informe Sup.
+                    <?php use App\Pago; $pag_count1 = Pago::all()->count(); ?>
+                    <span class="right badge badge-success">{{$pag_count1}}</span>
+                  </p>
+                </a>
+              </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+              Ctl Pagos Suministros
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('suministro')}}" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Crear Pagos Suministros</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('infosumin')}}" class="nav-link">
                   <i class="fas fa-circle nav-icon"></i>
-                  <p>Informe Suministros</p>
-                </a>
-              </li>
-          <li class="nav-item">
-            <a href="{{route('losusos')}}" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
-              <p>Manejo de Usos
-                <?php use App\Rubro; $usos_count = Rubro::all()->count(); ?>
-                <span class="right badge badge-danger">{{$usos_count}}</span>
-              </p>
-            </a>
-          </li>
-        </ul>
-      </li>
+                  <p>Crear Informe Suministros</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('pdfinfosumini') }}" class="nav-link">
+                <i class="fas fa-print nav-icon"></i>
+                <p>Imp. Informes Suministro </p>
+              </a>
+            </li>
+          </ul>
+        </li>
+     
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-chart-pie"></i>
@@ -181,20 +193,19 @@
             <a href="{{ route('pagonum') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
               <p>Consulta Pago
-                <?php use App\Pago; $pag_count = Pago::all()->count(); ?>
-                <span class="right badge badge-danger">{{$pag_count}}</span>
+                <?php //use App\Pago; $pag_count = Pago::all()->count(); ?>
+                <span class="right badge badge-danger"></span>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('pdfpagos') }}" class="nav-link">
+            <a href="{{ route('consulfa') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Pago x Numero
-                <?php  $pag_count1 = Pago::all()->count(); ?>
-                <span class="right badge badge-danger">{{$pag_count1}}</span>
-              </p>
+              <p>Consultar Facturas</p>
             </a>
           </li>
+          
+          
           <li class="nav-item">
             <a href="{{ route('repoxcontraphp') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>

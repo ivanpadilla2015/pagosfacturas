@@ -90,3 +90,12 @@ Route::view('copiasobligaciones', 'otros.copias_obligacion')->name('copiasobliga
 Route::view('borrarpago', 'otros.borrarpago')->name('borrarpago')->middleware('auth'); 
 Route::view('editarpago', 'otros.editarpagos')->name('editarpago')->middleware('auth'); 
 /******************************************************************************************** */
+
+Route::get('pdfinfosumini','pdf_pagosController@selectinfo')->name('pdfinfosumini')->middleware('auth'); 
+
+Route::get('verinfo', 'pdf_pagosController@vistainfo')->name('verinfo')->middleware('auth');
+Route::get('obligasumi/{id}', 'ObligapagosController@Obligaciondesumis')->name('obligasumi')->middleware('auth');
+Route::post('actualizasumi/{id}', 'ObligapagosController@actualizainfosumi')->name('actualizasumi')->middleware('auth');
+Route::get('verriesgoinfo/{id}', 'ObligapagosController@vistariesgosinfo')->name('verriesgoinfo')->middleware('auth');
+Route::post('grabariesgoinfo/{id}', 'ObligapagosController@grabavistariesgos')->name('grabariesgoinfo')->middleware('auth');
+

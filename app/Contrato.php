@@ -51,4 +51,6 @@ class Contrato extends Model
         return $this->hasMany('App\Rubrocontrato');
     }
 
+    
+
 }

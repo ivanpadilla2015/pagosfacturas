@@ -77,7 +77,7 @@ class Pagos extends Component
                                 
                             }else
                             {
-                                $this->emit('alert', ['type'=> 'error', 'message' => '0Contrato No tiene Obligaciones']); 
+                                $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No tiene Obligaciones']); 
                                 $this->resetInput();
                             }
                         } 
