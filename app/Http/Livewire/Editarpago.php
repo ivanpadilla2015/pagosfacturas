@@ -12,7 +12,7 @@ use App\Facturadeta;
 class Editarpago extends Component
 {
     public $contra, $data, $contradato, $lisusos = array(), $fechafac, $dependencia_id, $uso_rubro_id,
-            $depen, $pago_id, $selected_id;
+            $depen, $pago_id, $selected_id, $fecha_pago, $consecu_informe, $sum_conse, $select_id;
     public function render()
     {
         $this->depen = Dependencia::all();
@@ -37,9 +37,30 @@ class Editarpago extends Component
         
     }
 
-    public function editencabe()
+    public function editencabe($id)
     {
+        $record = Pago::findOrFail($id);
+        $this->select_id = $record->id;
+        $this->fecha_pago = $record->fecha_pago;
+        $this->consecu_informe = $record->consecu_informe; //consecutivo del pago
+        $this->sum_conse = $record->sum_conse; //consecutivo del informe
+    }
 
+    public function updateencabe($id)
+    {
+        if ($this->select_id) {
+            $record = Pago::findOrFail($this->select_id);
+            $record->update(['fecha_pago' => $this->fecha_pago, 'consecu_informe' => $this->consecu_informe,
+                    'sum_conse' => $this->sum_conse]);   
+            $this->data = Pago::findOrFail($this->select_id);  
+            foreach ($this->data->facturadetas as $key => $f) {
+                $record = Facturadeta::findOrFail($f->id);
+                $record->update(['sum_conse'=> $this->sum_conse ]);
+            }   
+            $this->data = Pago::findOrFail($this->data->id);
+            $this->emit('alert', ['type'=> 'success', 'message' => 'Actualizado Correctamente']);          
+        } 
+        
     }
 
     public function editdeta($id)

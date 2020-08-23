@@ -36,7 +36,8 @@
                         <strong>Saldo Cto : </strong> <small>{{ number_format($data->contrato->saldo,2)}}</small>
                     </div>
                 </div>
-                <button wire:click="editencabe" class="mb-2 btn btn-danger btn-sm">Editar</button>
+                <td> <button data-toggle="modal" data-target="#updateModal2"  wire:click="editencabe({{ $data->id }})" class="btn btn-danger btn-sm">Editar</button> </td>
+               
            </div>
            <div>
             <table class="table table-sm mt-2">
@@ -122,4 +123,46 @@
                             </div>
 
                         </div>
+        <!-- Modal edi Pago-->
+
+        <div wire:ignore.self class="modal fade" id="updateModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">Editar Pago</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                          </button>
+                     </div>
+                     <div class="modal-body">
+                         <form>
+                             <div class="form-group">
+                                 <input type="hidden" wire:model="user_id">
+                                 <label >Fecha Pago</label>
+                                 <input type="date" class="form-control" wire:model="fecha_pago"  placeholder="Fecha">
+                                 @error('fecha_pago') <span class="text-danger">{{ $message }}</span>@enderror
+                             </div>
+                             <div class="form-group">
+                                <input type="hidden" wire:model="user_id">
+                                <label >No Consecutivo Pago</label>
+                                <input type="text" class="form-control" wire:model="consecu_informe"  placeholder="Fecha">
+                                @error('consecu_informe') <span class="text-danger">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" wire:model="user_id">
+                                <label >No Consecutivo Informe</label>
+                                <input type="text" class="form-control" wire:model="sum_conse"  placeholder="Fecha">
+                                @error('sum_conse') <span class="text-danger">{{ $message }}</span>@enderror
+                            </div>
+                         </form>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button"  class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                         <button type="button" wire:click.prevent="updateencabe()" class="btn btn-primary" data-dismiss="modal">Grabar Cambios</button>
+                     </div>
+                 </div>
+
+             </div>
+
+         </div>
 </div>

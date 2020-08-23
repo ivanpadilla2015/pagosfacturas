@@ -1,5 +1,6 @@
 <div>
-    <div class=" row">
+    <small class="text-danger">Tenga en Cuenta, Utilice esta Opcion para Borrar el Ultimo pago Realizado a Un contrato, Asi no afectaria su saldo </small><br>
+    <div class=" row mt-2">
         <label  class="">No ID Pago :</label>
         <div class="ml-1">
           <input wire:model="npago" wire:keydown.enter="buscapago()" class="form-control form-control-sm " autofocus  type="text">

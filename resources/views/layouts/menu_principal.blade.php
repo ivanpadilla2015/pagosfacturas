@@ -2,6 +2,26 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="{{ route('depen') }}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                      Dependencias
+                      <?php use App\Dependencia; $depens_count = Dependencia::all()->count(); ?>
+                    <span class="right badge badge-danger">{{$depens_count}}</span>
+                    </p>
+                  </a>
+          </li>
+          <li class="nav-item">
+              <a href="{{ route('provee') }}" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Proveedores
+                    <?php use App\Proveedor; $prov_count = Proveedor::all()->count(); ?>
+                  <span class="right badge badge-danger">{{$prov_count}}</span>
+                  </p>
+                </a>
+           </li>
       <li class="nav-item has-treeview ">
         <a href="#" class="nav-link ">
           <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -23,7 +43,7 @@
           <li class="nav-item">
             <a href="{{ route('contra') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Contratos
+              <p>Manejo Contratos
                 <?php use App\Contrato; $con_count = Contrato::all()->count(); ?>
                 <span class="right badge badge-danger">{{$con_count}}</span>
               </p>
@@ -67,7 +87,7 @@
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-chart-pie"></i>
           <p>
-            Movimientos a Rubros
+            Rubros
             <i class="right fas fa-angle-left"></i>
           </p>
         </a>
@@ -98,26 +118,7 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item">
-      <a href="{{ route('depen') }}" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
-          <p>
-            Dependencias
-            <?php use App\Dependencia; $depens_count = Dependencia::all()->count(); ?>
-          <span class="right badge badge-danger">{{$depens_count}}</span>
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="{{ route('provee') }}" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              Proveedores
-              <?php use App\Proveedor; $prov_count = Proveedor::all()->count(); ?>
-            <span class="right badge badge-danger">{{$prov_count}}</span>
-            </p>
-          </a>
-        </li>
+      
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
@@ -157,6 +158,12 @@
               <a href="{{route('suministro')}}" class="nav-link">
                   <i class="fas fa-circle nav-icon"></i>
                   <p>Crear Pagos Suministros</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('pdfpagos') }}" class="nav-link">
+                <i class="fas fa-print nav-icon"></i>
+                <p>Imp Ctl Pago - Informe Sup.</p>
               </a>
             </li>
             <li class="nav-item">
@@ -228,7 +235,7 @@
       </li>
       <li class="nav-item">
         <a href="{{ route('users') }}" class="nav-link">
-          <i class="fas fa-circle nav-icon"></i>
+          <i class="fas fa-user-friends nav-icon"></i>
           <p>Usuarios
             <?php use App\User; $use_count = User::all()->count(); ?>
             <span class="right badge badge-danger">{{$use_count}}</span>
@@ -240,6 +247,29 @@
           <i class="fas fa-circle nav-icon"></i>
           <p>Datos Maestros</p>
         </a>
+      </li>
+      <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-chart-pie"></i>
+          <p>
+            Otros
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{route('editarpago')}}" class="nav-link">
+                <i class="fas fa-edit nav-icon"></i>
+                <p>Editar Pagos</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('borrarpago') }}" class="nav-link">
+                <i class="fas fa-trash-alt nav-icon"></i>
+                <p>Borrar  Pago </p>
+              </a>
+            </li>
+        </ul>
       </li>
 
     </ul><!--- otro-->
