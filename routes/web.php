@@ -99,3 +99,5 @@ Route::post('actualizasumi/{id}', 'ObligapagosController@actualizainfosumi')->na
 Route::get('verriesgoinfo/{id}', 'ObligapagosController@vistariesgosinfo')->name('verriesgoinfo')->middleware('auth');
 Route::post('grabariesgoinfo/{id}', 'ObligapagosController@grabavistariesgos')->name('grabariesgoinfo')->middleware('auth');
 
+Route::view('pagscontra', 'reportes.pagos_contrato1')->name('pagscontra');
+
