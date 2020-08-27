@@ -197,6 +197,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('buscontrarubro') }}" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Totales Rubro x Contrato</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('pagonum') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
               <p>Consulta Pago
@@ -219,12 +225,7 @@
               <p>Totales Rubro Contrato</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('buscontrarubro') }}" class="nav-link">
-              <i class="fas fa-circle nav-icon"></i>
-              <p>Totales Rubro x Contrato</p>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a href="{{ route('confacxfe') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>

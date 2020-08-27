@@ -191,7 +191,7 @@
       
 </table>
 
-<br><br><br>
+<br>
 
 <div style="float:left"> _______________________________ <br>                                                 
 Supervisor: {{ $datos->user->name }} <br>  

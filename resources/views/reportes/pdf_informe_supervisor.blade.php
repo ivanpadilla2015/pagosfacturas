@@ -274,7 +274,10 @@
       <strong>7.	INFORMACIÓN PERSONAL CONTRATADO (Cuando aplique)</strong> <br>     
             El servicio fue desarrollado por el personal asignado por la empresa sin novedad especial <br><br>
 
-      <strong>8. RECOMENDACIONES </strong> <br>
+      <strong>8. INFORMACION AIU </strong> <br>
+        Ninguna <br><br>
+
+      <strong>9. RECOMENDACIONES </strong> <br>
         Ninguna <br><br>
 
 <div class="centra_div">

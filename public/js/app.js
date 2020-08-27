@@ -2136,6 +2136,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2178,6 +2183,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     getverlo: function getverlo() {
       this.verdeta = !this.verdeta;
+    },
+    totalizar: function totalizar() {
+      var total = 0;
+      this.datorubro.forEach(function (task) {
+        total = total + task.total_fac;
+      });
+      return total;
     }
   }
 });
@@ -38659,7 +38671,11 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("h5", { staticClass: "card-title mt-2 mr-1" }, [
-              _vm._v("Rubros:")
+              _vm._v("Rubros: ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "float-right mr-2" }, [
+              _vm._v("Total: " + _vm._s(_vm.totalizar().toLocaleString()) + " ")
             ]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-sm" }, [
@@ -38667,16 +38683,35 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.datorubro, function(item, index) {
-                  return _c("tr", { key: index }, [
-                    _c("td", [_vm._v(_vm._s(index + 1))]),
+                [
+                  _vm._l(_vm.datorubro, function(item, index) {
+                    return _c("tr", { key: index }, [
+                      _c("td", [_vm._v(_vm._s(index + 1))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(item.nombre_rubro))]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-right" }, [
+                        _vm._v(_vm._s(item.total_fac.toLocaleString()))
+                      ])
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c(
+                      "td",
+                      {
+                        staticClass: "text-right font-weight-bold",
+                        attrs: { colspan: "2" }
+                      },
+                      [_vm._v("Total")]
+                    ),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(item.nombre_rubro))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(item.total_fac.toLocaleString()))])
+                    _c("td", { staticClass: "text-right" }, [
+                      _vm._v(_vm._s(_vm.totalizar().toLocaleString()))
+                    ])
                   ])
-                }),
-                0
+                ],
+                2
               )
             ]),
             _vm._v(" "),
@@ -38739,7 +38774,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre rubro")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total")])
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Total")
+        ])
       ])
     ])
   },

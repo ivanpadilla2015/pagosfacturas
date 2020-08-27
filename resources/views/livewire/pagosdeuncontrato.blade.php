@@ -1,4 +1,16 @@
 <div>
+    <div class="row my-2 p-10 col-10">
+        <div class="col">
+            <label >De:</label>
+            <input type="date" wire:model="fechaini"  class="form-control" placeholder="Fecha ini">
+            @error('fechaini') <span class="text-danger">{{$message}}</span>@enderror
+        </div>
+        <div class="col ">
+            <label >A:</label>
+            <input type="date" wire:model="fechafin" class="form-control" placeholder="fecha fin">
+            @error('fechafin') <span class="text-danger">{{$message}}</span>@enderror
+        </div>
+    </div>
     <div class="form-group col">
         <label >Contrato</label>
         <select wire:model="contrato_id"  class="form-control" >
@@ -36,9 +48,9 @@
            <div>
                <button class="btn btn-info btn-sm">Imprimir</button>
            </div>
-           <div class="col-8 mx-auto">
+           <div class="col-9 mx-auto">
                 @foreach ($pagos as $item)
-                 <div class="pl-1 bg-gradient-info text-white">Pago : {{$item->consecu_informe}} <b class="ml-3 mr-1"> Valor :</b> {{number_format($item->total)}} <b class="ml-3 mr-1">Reporte :</b>  {{$item->id}}</div>
+                 <div class="pl-1 bg-gradient-info text-white">Pago : {{$item->consecu_informe}} <b class="ml-3 mr-1"> Valor :</b> {{number_format($item->total)}} <b class="ml-3 mr-1">Reporte :</b>  {{$item->id}} <b class="ml-3 mr-1">Fecha :</b>  {{$item->fecha_pago}}</div>
                 
                 <table class="table table-sm ">
                     <thead>

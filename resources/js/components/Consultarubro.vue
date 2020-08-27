@@ -41,13 +41,14 @@
               <strong>Reg Pres : </strong> <small>{{ datocon.registro_pres_inic}}</small>
             </div>
          </div>
-         <h5 class="card-title mt-2 mr-1">Rubros:</h5> 
+         <h5 class="card-title mt-2 mr-1">Rubros: </h5>
+         <div class="float-right mr-2">Total: {{ totalizar().toLocaleString() }} </div> 
          <table class="table table-sm">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre rubro</th>
-                    <th scope="col">Total</th>
+                    <th scope="col" class="text-center">Total</th>
                     
                 </tr>
                 </thead>
@@ -55,7 +56,11 @@
                        <tr v-for="(item, index) in datorubro"  :key='index'>
                             <td>{{ index+1 }}</td>
                             <td >{{ item.nombre_rubro}}</td>
-                            <td>{{ item.total_fac.toLocaleString()}}</td>
+                            <td class="text-right">{{ item.total_fac.toLocaleString()}}</td>
+                       </tr>
+                        <tr>
+                          <td colspan="2" class="text-right font-weight-bold" >Total</td>
+                          <td class="text-right" >{{ totalizar().toLocaleString() }}</td>
                        </tr>
                    
                 </tbody>
@@ -82,7 +87,7 @@
                             <td >{{ item.fecha_pago}}</td>
                             <td>{{ item.valorfac.toLocaleString()}}</td>
                        </tr>
-                   
+                      
                 </tbody>
             </table>
             </div>
@@ -134,6 +139,13 @@ export default {
           getverlo(){
             this.verdeta = !this.verdeta;
           },
+          totalizar(){
+               var total = 0;
+               this.datorubro.forEach(function (task) {
+                  total = total + task.total_fac;
+              });
+                return total;
+	        },
     }
 }
 </script>
