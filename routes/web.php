@@ -58,25 +58,25 @@ Route::view('addrubrocontra', 'contrato.rubrocontrato')->name('addrubrocontra')-
 Route::view('movirubro', 'contrato.movirubros')->name('movirubro')->middleware('auth');
 Route::view('traslados', 'contrato.traslado_rubro')->name('traslados')->middleware('auth');
 
-Route::view('repoxcontra', 'Reportes.reportexcontrato')->name('repoxcontra'); 
+Route::view('repoxcontra', 'Reportes.reportexcontrato')->name('repoxcontra')->middleware('auth');  
 
 
 Route::get('repoxcontraphp', 'Report_contratoController@index')->name('repoxcontraphp');
 Route::get('verreporte', 'Report_contratoController@reportexcontrato')->name('verreporte')->middleware('auth');
 
-Route::view('buscontrarubro', 'repocolsultavue.repocontrarubro')->name('buscontrarubro'); 
-Route::get('buscontratovue', 'Report_contratoController@buscacontra'); 
-Route::get('busrub', 'Report_contratoController@totalrubros'); 
+Route::view('buscontrarubro', 'repocolsultavue.repocontrarubro')->name('buscontrarubro')->middleware('auth');  
+Route::get('buscontratovue', 'Report_contratoController@buscacontra')->middleware('auth');  
+Route::get('busrub', 'Report_contratoController@totalrubros')->middleware('auth');  
 
-Route::view('riesgo', 'contrato.riesgo')->name('riesgo'); 
+Route::view('riesgo', 'contrato.riesgo')->name('riesgo')->middleware('auth'); 
 
 Route::get('riesgocon/{id}', 'ObligapagosController@vistariesgos')->middleware('auth');
 Route::post('riesgocon/{id}', 'ObligapagosController@grabariesgos')->name('riesgocon')->middleware('auth');
 
-Route::view('maestro', 'maestro.maestro')->name('maestro');
+Route::view('maestro', 'maestro.maestro')->name('maestro')->middleware('auth'); 
 
 Route::view('confacxfe', 'repocolsultavue.consulfacxfecha')->name('confacxfe'); 
-Route::get('busproveevue', 'Report_contratoController@buscaprovee'); 
+Route::get('busproveevue', 'Report_contratoController@buscaprovee')->middleware('auth');  
 Route::post('busfac', 'Report_contratoController@buscafacturas')->middleware('auth');
 
 Route::view('suministro', 'pagos.suministros')->name('suministro')->middleware('auth'); 
@@ -85,8 +85,8 @@ Route::view('infosumin', 'pagos.informesuministro')->name('infosumin')->middlewa
 Route::get('/verconpagonew', 'pdf_pagosController@Pdfxpagonumnew')->name('verconpagonew')->middleware('auth');
 
 /************************************************************************************* */
-Route::view('copiasriesgos', 'otros.copias_riesgos')->name('copiasriesgos');
-Route::view('copiasobligaciones', 'otros.copias_obligacion')->name('copiasobligaciones');
+Route::view('copiasriesgos', 'otros.copias_riesgos')->name('copiasriesgos')->middleware('auth'); 
+Route::view('copiasobligaciones', 'otros.copias_obligacion')->name('copiasobligaciones')->middleware('auth'); 
 Route::view('borrarpago', 'otros.borrarpago')->name('borrarpago')->middleware('auth'); 
 Route::view('editarpago', 'otros.editarpagos')->name('editarpago')->middleware('auth'); 
 /******************************************************************************************** */
@@ -98,6 +98,7 @@ Route::get('obligasumi/{id}', 'ObligapagosController@Obligaciondesumis')->name('
 Route::post('actualizasumi/{id}', 'ObligapagosController@actualizainfosumi')->name('actualizasumi')->middleware('auth');
 Route::get('verriesgoinfo/{id}', 'ObligapagosController@vistariesgosinfo')->name('verriesgoinfo')->middleware('auth');
 Route::post('grabariesgoinfo/{id}', 'ObligapagosController@grabavistariesgos')->name('grabariesgoinfo')->middleware('auth');
+Route::post('masdatos/{id}', 'ObligapagosController@Otrosdatosuministro')->name('masdatos')->middleware('auth');
 
 Route::view('pagscontra', 'reportes.pagos_contrato1')->name('pagscontra');
 

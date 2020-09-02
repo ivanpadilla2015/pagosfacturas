@@ -153,7 +153,7 @@ class Pagosuministros extends Component
                  'saldo_viene' => $this->sal, 'gran_total' => $con->gran_total, 'consecu_informe'=> $con->pagos,
                  'pago_corresponde_mes' => '5XXXXX', 
                  'porcentaje_cumplimiento' => $this->porcentaje_cumplimiento, 'director'=> $dm->director,
-                 'cargo_director' => $dm->cargo_director, 'sum_conse'=>  $con->sum_conse + 1, 'user_id' => \Auth::id()]);
+                 'cargo_director' => $dm->cargo_director, 'sum_conse'=>  $con->sum_conse + 1,'user_id' => \Auth::id()]);
         $this->pago_id = $pag->id;
         //******************Adicion (es)************************************* */
         foreach ($this->data->adicions as $value) {

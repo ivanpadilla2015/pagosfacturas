@@ -12,6 +12,9 @@
                 <div class="card">
                 <h5 class="card-header">Listado Obligaciones Informe No {{$info->id}} - Contrato: {{$info->contrato->numcontrato}} </h5>
                   <div class="card-body">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                        Mas Datos Del Informe
+                      </button>
                     <a href="{{ route('verriesgoinfo', $info->id)}}" class="btn btn-success btn-sm float-right">Continuar Informe</a>
                                     <table class="table table-sm">
                                         <thead>
@@ -105,7 +108,54 @@
              </div>
         </div>
       </div>
-      <!-- Button trigger modal -->
+      <!-- Button trigger modal $pagodato -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Mas Datos del Informe</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('masdatos', $info->id)}}" method="POST">
+                    @csrf   
+                    <div class="row">
+                        <div class="col">
+                        <label>6.	INFORMACIÓN FIDUCIAS </label>
+                        <textarea name="fiducia" id="" cols="10" rows="5" class="form-control">{{$info->fiducia}}</textarea>
+                        </div>
+                        <div class="col">
+                        <label >7. INFORMACIÓN PERSONAL CONTRATADO </label>
+                        <textarea name="infopersonal" id="" cols="10" rows="4" class="form-control">{{$info->infopersonal}}</textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                        <label>8. INFORMACIÓN AIU </label>
+                        <textarea name="infoaiu" id="" cols="10" rows="5" class="form-control">{{$info->infoaiu}}</textarea>
+                        
+                        </div>
+                        <div class="col">
+                        <label >9. RECOMENDACIONES</label>
+                        <textarea name="recomendacion" id="" cols="10" rows="5" class="form-control">{{$info->recomendacion}}</textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Grabar Cambios</button>
+                    </div>
+                </form>
+            </div>
+            
+              
+           
+          </div>
+        </div>
+      </div>
+        <!-- fin modal     -->
+
   
            
 </div>

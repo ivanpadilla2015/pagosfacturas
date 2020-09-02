@@ -79,7 +79,7 @@
             
         </tr>
         <tr>
-            <td colspan="2" class="colu" align="justify" ><strong>MODIFICACIONES : </strong> SI___ No___</td>
+            <td colspan="2" class="colu" align="justify" ><strong>MODIFICACIONES : </strong> SI___ No_X_</td>
             
         </tr>
         <tr>

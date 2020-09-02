@@ -10,6 +10,7 @@ class Pago extends Model
                            'porcentaje_cumplimiento', 'saldo_viene', 'gran_total', 'consecu_informe', 'fecha_plazoeje',
                            'registroadicion', 'director', 'cargo_director', 'sum_conse'];
 
+
     public function contrato()
     {
        return $this->belongsTo('App\Contrato');

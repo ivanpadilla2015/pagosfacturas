@@ -52,20 +52,36 @@ class ObligapagosController extends Controller
     public function Obligaciondesumis($id)
     {
         $info = Inforsumini::findOrFail($id);
-        $dato_obli = Obliga_sumin::where('inforsumini_id', $id)->paginate(3);;
-        //return($dato_obli);
+        $dato_obli = Obliga_sumin::where('inforsumini_id', $id)->paginate(3);
+        $info->fiducia = $action = (empty($info->fiducia)) ? 'N/A': $info->fiducia;
+        $men = 'El servicio fue desarrollado por el personal asignado por la empresa sin novedad especial';
+        $info->infopersonal = $action = (empty($info->infopersonal)) ? $men : $info->infopersonal;
+        $info->infoaiu = $action = (empty($info->infoaiu)) ? 'Ninguna': $info->infoaiu;
+        $info->recomendacion = $action = (empty($info->recomendacion)) ? 'Ninguna': $info->recomendacion;
+        $info->save();
         return view('pagos.crearinfobigaciones', compact('dato_obli', 'info'));
     }
 
     public function actualizainfosumi(Request $request, $id)
     {
-        //oblipa/2
+       
         $record = Obliga_sumin::find($id);
         $record->update(['numeral' => $request->numeral, 'obligacion_deta' => $request->obligacion_deta,
                         'entregable' => $request->entregable, 'confirmar' =>  strtoupper($request->confirmar)]);
         toastr()->success('Actualizado Correctamente');
         return back();
     }
+
+    public function Otrosdatosuministro(Request $request, $id)
+    {
+        $infom = Inforsumini::findOrFail($id);
+        $infom->update(['fiducia' => $request->fiducia, 'infopersonal' => $request->infopersonal,
+                        'infoaiu' => $request->infoaiu, 'recomendacion' => $request->recomendacion]);
+        toastr()->success('Actualizado Correctamente');
+        return back();
+       
+    }
+
 
     public function vistariesgosinfo($id)
     {

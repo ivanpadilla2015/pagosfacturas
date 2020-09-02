@@ -54,14 +54,7 @@
             <td colspan="2"></td>
             
         </tr>
-        <tr>
-            <td colspan="2" class="colu" align="justify" ><strong>NOMBRE DEL SUPERVISOR: </strong> {{$data->contrato->supervisor}}</td>
-            
-        </tr>
-        <tr>
-            <td colspan="2"></td>
-            
-        </tr>
+       
         <tr>
             <td colspan="2" class="colu" align="justify" ><strong>VALOR DEL CONTRATO:</strong>  {{ number_format($data->contrato->valorcontrato) }}</td>
             
@@ -79,7 +72,7 @@
             
         </tr>
         <tr>
-            <td colspan="2" class="colu" align="justify" ><strong>MODIFICACIONES : </strong> SI___ No___</td>
+            <td colspan="2" class="colu" align="justify" ><strong>MODIFICACIONES : </strong> SI___ No_X_</td>
             
         </tr>
         <tr>
@@ -269,16 +262,17 @@
       Nota: El supervisor verificará que el contratista realice el cargue de las facturas en el SECOP II. <br>
 
       <strong>6.	INFORMACIÓN FIDUCIAS ( Cuando aplique)</strong> <br>
-        N/A
+       {{$data->fiducia}}
       <br><br>
       <strong>7.	INFORMACIÓN PERSONAL CONTRATADO (Cuando aplique)</strong> <br>     
-            El servicio fue desarrollado por el personal asignado por la empresa sin novedad especial <br><br>
-
+      {{$data->infopersonal}} 
+      <br><br>
       <strong>8. INFORMACION AIU </strong> <br>
-        Ninguna <br><br>
-
+      {{$data->infoaiu}} 
+      <br><br>
       <strong>9. RECOMENDACIONES </strong> <br>
-        Ninguna <br><br>
+      {{$data->recomendacion}}
+      <br><br>
 
 
 <div class="centra_div">
