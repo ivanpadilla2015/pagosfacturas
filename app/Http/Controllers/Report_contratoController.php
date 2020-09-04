@@ -114,5 +114,24 @@ class Report_contratoController extends Controller
                     'facts' => $fact,                   
                 ], 200); 
     }
+
+    public function verpagototalcontrato(Request $request)
+    {
+        $request->validate([
+            'numcontrato' => 'required',
+        ]);
+        $data = Contrato::where('numcontrato', $request->numcontrato)->first();
+        $this->pagos = Pago::where('contrato_id', $id)->get();
+        
+        if($data) {
+                
+        }else{
+            toastr()->error('Contrato No Existe');
+            return back();
+        }
+
+        
+        //return $request->all();
+    }
   
 }

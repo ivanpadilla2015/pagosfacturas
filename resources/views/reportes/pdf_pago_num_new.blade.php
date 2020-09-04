@@ -59,7 +59,7 @@
 	      <th class="colu" >Fecha</th>
 	      <th class="colu" >Valor anticipo acuerdo porcentaje del contrato</th>
 	      <th class="colu" >Saldo por amortizar del anticipo</th>
-	      <th class="colu" >Vr. Facturador</th>
+	      <th class="colu" >Vr. Facturado</th>
 	      <th class="colu">Valor a Pagar</th>
 	      <th class="colu" >Saldo por Ejecutar</th>
 	    </tr>
@@ -101,6 +101,15 @@
       <td class="colu"></td>
       <td class="colu"></td>
     </tr>
+
+    @foreach ($pag_ante as $hechos)
+      <tr>
+        <td class="colu" colspan="5" style="text-align: center;"> <b>Pago No {{ ' '.$hechos->consecu_informe }}</b> </td>
+        <td class="colu" colspan="1" style="text-align: center;">{{ number_format($hechos->total) }}</td>
+        <td class="colu" colspan="2" style="text-align: center;"></td>
+      </tr>
+    @endforeach
+
     <tr>
     <td class="colu" colspan="8" style="text-align: center; background-color: #d1cccc; "><b>Tramite de Pago No {{ ' '.$datos->consecu_informe." ".$action = empty($rega) ? ' ' : 'Adicio Reg: '.$rega }}</b></td>
       

@@ -57,7 +57,8 @@
                         <tr>
                             <th class="col-15-sm">Factura</th>
                             <th class="col-20-sm text-center">Valor</th>
-                            <th class="col">Dependencia</th>
+                            <th class="col-20-sm">Dependencia</th>
+                            <th class="col-20-sm">Uso</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,6 +67,7 @@
                                 <td>{{$fact->numfac}}</td>
                                 <td class="text-right">{{number_format($fact->valorfac)}}</td>
                                 <td>{{ $fact->dependencia->nombredepen }}</td>
+                                <td>{{ $fact->uso_rubro->nombre_uso }}</td>
                             </tr>    
                         @endforeach
                     </tbody>

@@ -67,6 +67,7 @@ class Pdf_pagosController extends Controller
     {
         //return $request;
         $datos = Pago::findOrFail(request('id'));
+        $pag_ante = Pago::where('contrato_id', $datos->contrato_id)->where('consecu_informe', '<', $datos->consecu_informe)->get();
         $dmaestro = Datosmaestro::findOrFail(1);
         $rubro = DB::table('facturadetas')
             ->join('uso_rubros', 'uso_rubros.id', '=', 'facturadetas.uso_rubro_id')
@@ -76,7 +77,7 @@ class Pdf_pagosController extends Controller
             ->get();
         //return $rubro;
         $spacio = request('space');
-        $pdf= PDF::loadView('reportes.pdf_pago_num_new', compact('datos','rubro', 'dmaestro', 'spacio'));
+        $pdf= PDF::loadView('reportes.pdf_pago_num_new', compact('datos','rubro', 'dmaestro', 'spacio', 'pag_ante'));
         $pdf->setPaper('letter', 'landscape');
         return $pdf->stream();
     }

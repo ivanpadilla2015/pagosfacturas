@@ -22,7 +22,7 @@ class CreatePagosTable extends Migration
             $table->string('pago_corresponde_mes');
             $table->string('porcentaje_cumplimiento');
             $table->string('mes_ejecucion')->nullable();
-            $table->string('consecu_informe');
+            $table->string('consecu_informe'); //para consecutivo pago pago
             $table->date('fecha_plazoeje')->nullable();
             $table->string('registroadicion')->nullable();
             $table->string('director', 120);

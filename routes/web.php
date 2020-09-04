@@ -40,7 +40,7 @@ Route::get('pagxnum', 'PdfController@Pdfpagosxnums')->middleware('auth');
 Route::get('pdfpagxnum', 'PdfController@Pdfxpagonum')->name('pdfpagxnum')->middleware('auth');
 Route::get('pdfinfosuper', 'PdfController@Pdfinformesuper')->name('pdfinfosuper')->middleware('auth');
 
-Route::get('pdfpagos','pdf_pagosController@index')->name('pdfpagos');
+Route::get('pdfpagos','pdf_pagosController@index')->name('pdfpagos')->middleware('auth');
 Route::get('verpago', 'pdf_pagosController@vistapago')->name('verpago')->middleware('auth');
 Route::get('verconpago/{id}', 'pdf_pagosController@Pdfxpagonum')->name('verconpago')->middleware('auth');
 Route::get('verinforme/{id}', 'pdf_pagosController@informesuperv')->name('verinforme')->middleware('auth');
@@ -89,6 +89,7 @@ Route::view('copiasriesgos', 'otros.copias_riesgos')->name('copiasriesgos')->mid
 Route::view('copiasobligaciones', 'otros.copias_obligacion')->name('copiasobligaciones')->middleware('auth'); 
 Route::view('borrarpago', 'otros.borrarpago')->name('borrarpago')->middleware('auth'); 
 Route::view('editarpago', 'otros.editarpagos')->name('editarpago')->middleware('auth'); 
+Route::view('pagosinfac', 'otros.pagosinfactura')->name('pagosinfac')->middleware('auth'); 
 /******************************************************************************************** */
 
 Route::get('pdfinfosumini','pdf_pagosController@selectinfo')->name('pdfinfosumini')->middleware('auth'); 
@@ -101,4 +102,7 @@ Route::post('grabariesgoinfo/{id}', 'ObligapagosController@grabavistariesgos')->
 Route::post('masdatos/{id}', 'ObligapagosController@Otrosdatosuministro')->name('masdatos')->middleware('auth');
 
 Route::view('pagscontra', 'reportes.pagos_contrato1')->name('pagscontra');
-
+/****************************sin terminar****************************************************************************** */
+Route::view('ctrlpagototal', 'reportes.ctrl_pago_total')->name('ctrlpagototal')->middleware('auth');
+Route::post('verctrlpago', 'Report_contratoController@verpagototalcontrato')->name('verctrlpago')->middleware('auth');
+/*********************************************************************************************************** */

@@ -23,9 +23,7 @@ class Pagosdeuncontrato extends Component
         $this->validate([
             'fechaini' => 'required',
             'fechafin' => 'required',
-           
-               
-           ]);    
+        ]);    
         if ($id) {
             $this->data = Contrato::findOrFail($id);
             $this->pagos = Pago::where('contrato_id', $id)
