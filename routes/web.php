@@ -102,6 +102,8 @@ Route::post('grabariesgoinfo/{id}', 'ObligapagosController@grabavistariesgos')->
 Route::post('masdatos/{id}', 'ObligapagosController@Otrosdatosuministro')->name('masdatos')->middleware('auth');
 
 Route::view('pagscontra', 'reportes.pagos_contrato1')->name('pagscontra');
+Route::view('bus_uso', 'usos.busqueda_usos')->name('bus_uso')->middleware('auth');
+
 /****************************sin terminar****************************************************************************** */
 Route::view('ctrlpagototal', 'reportes.ctrl_pago_total')->name('ctrlpagototal')->middleware('auth');
 Route::post('verctrlpago', 'Report_contratoController@verpagototalcontrato')->name('verctrlpago')->middleware('auth');

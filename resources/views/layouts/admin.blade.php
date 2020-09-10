@@ -56,7 +56,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
       </div>
     </form>
+    <a class="text-success mx-1" href="{{route('suministro')}}" title="Crear Pago"><small>C-Ctrl-P</small> </a>
+    <a class="text-primary mx-1" href="{{ route('pdfpagos') }}" title="Imp. Ctrl Pago"><small>I-Ctrl-P</small> </a>
+    <a class="text-success ml-5 mx-1" href="{{route('infosumin')}}" title="Crear Informe Sepervisor"><small>C-Info</small> </a>
+    <a class="text-primary mx-1" href="{{ route('pdfinfosumini') }}" title="Imp. Informe Supervisor"><small>I-Info</small> </a>
 
+    <a class="text-success ml-5 mx-1" href="{{route('bus_uso')}}" title="Buscar Uso"><small>B-Usos</small> </a>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->

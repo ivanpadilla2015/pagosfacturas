@@ -59,19 +59,21 @@
                                       </div>
 
                                 </div>
-                                <div class="float-right my-1">
+                                <!--<div class="float-right my-1">
                                   
                                   <a href="{{ route('verinforme', $dato->id )}}" class="btn btn-info btn-sm ml-2">Informe Supervisor</a>
-                                </div>
-                                <div class="form-inline">
-                                  <form action="{{ route('verconpagonew') }}" method="GET">
-                                    @csrf
-                                    <input type="number" name="space" value="0" step="10" class="form-control form-control-sm col-2">
-                                    <input type="hidden" name="id" value="{{$dato->id}}">
-                                    <button type="submit" class="btn btn-info btn-sm">Control Pago New</button>
-                                  </form>
+                                </div> -->
                                 
-                                </div>
+                                  <div class="form-inline d-flex justify-content-center">
+                                    <form action="{{ route('verconpagonew') }}" method="GET">
+                                      @csrf
+                                      <input type="number" name="space" value="0" step="10" class="form-control form-control-sm col-2">
+                                      <input type="hidden" name="id" value="{{$dato->id}}">
+                                      <button type="submit" class="btn btn-info btn-sm">Control Pago New</button>
+                                    </form>
+                                  </div>
+                                
+                                
                                  <!--  ****************** Table *****************************-->
                                    <table class="table table-sm mt-2">
                                     <thead class="thead-light" >

@@ -25,6 +25,7 @@ class CreateInforsuminisTable extends Migration
             $table->date('fechainfo');
             $table->string('director', 120);
             $table->string('cargo_director', 120);
+            $table->text('novedad')->nullable();
             $table->text('fiducia')->nullable();
             $table->text('infopersonal')->nullable();
             $table->text('infoaiu')->nullable();

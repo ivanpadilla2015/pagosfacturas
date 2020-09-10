@@ -178,7 +178,7 @@
           @endforeach
        
       </table>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Porcentaje cumplimiento Avance %</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->porcentaje_cumplimiento}}% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Demora _____________%                       
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Porcentaje cumplimiento Avance %</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{ $action = ($data->porcentaje_cumplimiento < 0) ? "0" : $data->porcentaje_cumplimiento }}% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Demora _____________%                       
       <br><br>
       <STRong>3. CUMPLIMIENTO DE LOS RIESGOS PREVISIBLES DEL CONTRATO.</STRong><br>
        <span align="justify" >Seguimiento y monitoreo delos riesgos establecidos para la etapa de ejecución del contrato:</span> 
@@ -205,14 +205,14 @@
       @endforeach
       </table>
       <strong>4.	NOVEDADES DE INCUMPLIMIENTO EN LA EJECUCION</strong> <br>
-        N/A
+       {{$data->novedad}}
       <br><br>
       <strong>5.	CONTROL DE PAGOS</strong> 
       <br><br>
       <table>
           <tr>
               <td colspan="2" class="colu">Valor Total del contrato</td>
-              <td colspan="3" class="colu">{{ number_format($data->contrato->valorcontrato)}}</td>
+              <td colspan="4" class="colu">{{ number_format($data->contrato->valorcontrato)}}</td>
           </tr>
           @php $c = 0; $rega = '' @endphp
           @foreach ($data->informeadis as $itemadi)
@@ -226,23 +226,24 @@
          
           <tr>
             <td colspan="2" class="colu">TOTAL</td>
-            <td colspan="3" class="colu">{{ number_format($data->gran_total) }}</td>
+            <td colspan="4" class="colu">{{ number_format($data->gran_total) }}</td>
           </tr>
          
           <tr>
-            <td colspan="5" class="colu" style="text-align: center">PAGOS</td>
+            <td colspan="6" class="colu" style="text-align: center">PAGOS</td>
             
           </tr>
           <tr>
             <td colspan="3" class="colu"></td>
             <td  class="colu">SALDO VIENE</td>
-            <td  class="colu">{{ number_format($data->saldo_viene + $data->total_info) }}</td>
+            <td  colspan= "2" class="colu">{{ number_format($data->saldo_viene + $data->total_info) }}</td>
           </tr>
           <tr>
             <td colspan="2" class="colu" style="background-color:  #dedbda "><strong>No. Factura y/o Cuenta de cobro</strong> </td>
             <td  class="colu" style="background-color:  #dedbda " ><strong>Fecha</strong> </td>
             <td  class="colu" style="background-color:  #dedbda "><strong>Valor</strong> </td>
             <td  class="colu" style="background-color:  #dedbda "><strong>Saldo</strong></td>
+            <td  class="t3" style="background-color:  #dedbda " align="justify"><strong>Con Cargo al contrato Interadministrativo No. {{$data->contrato->concargo->detalle_inter}} </strong></td>
           </tr>
           @php $s = 0; $sdo = $data->saldo_viene+ $data->total_info; @endphp
           @foreach ($datofac as $fac)
@@ -254,6 +255,7 @@
               <td  class="colu" >{{ $fefa }}</td>
               <td  class="colu" >{{ number_format($fac->valorfac) }}</td>
               <td  class="colu" >{{ number_format($sdo)}}</td>
+              <td  class="colu" ></td>
             </tr>
           @endforeach
      

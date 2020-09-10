@@ -123,6 +123,13 @@
                     @csrf   
                     <div class="row">
                         <div class="col">
+                        <label>4. NOVEDADES DE INCUMPLIMIENTO EN LA EJECUCION </label>
+                        <textarea name="novedad" id="" cols="10" rows="5" class="form-control">{{$info->novedad}}</textarea>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="col">
                         <label>6.	INFORMACIÓN FIDUCIAS </label>
                         <textarea name="fiducia" id="" cols="10" rows="5" class="form-control">{{$info->fiducia}}</textarea>
                         </div>

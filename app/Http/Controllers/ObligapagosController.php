@@ -53,6 +53,7 @@ class ObligapagosController extends Controller
     {
         $info = Inforsumini::findOrFail($id);
         $dato_obli = Obliga_sumin::where('inforsumini_id', $id)->paginate(3);
+        $info->novedad = $action = (empty($info->novedad)) ? 'N/A': $info->novedad;
         $info->fiducia = $action = (empty($info->fiducia)) ? 'N/A': $info->fiducia;
         $men = 'El servicio fue desarrollado por el personal asignado por la empresa sin novedad especial';
         $info->infopersonal = $action = (empty($info->infopersonal)) ? $men : $info->infopersonal;
@@ -75,7 +76,7 @@ class ObligapagosController extends Controller
     public function Otrosdatosuministro(Request $request, $id)
     {
         $infom = Inforsumini::findOrFail($id);
-        $infom->update(['fiducia' => $request->fiducia, 'infopersonal' => $request->infopersonal,
+        $infom->update(['novedad' => $request->novedad, 'fiducia' => $request->fiducia, 'infopersonal' => $request->infopersonal,
                         'infoaiu' => $request->infoaiu, 'recomendacion' => $request->recomendacion]);
         toastr()->success('Actualizado Correctamente');
         return back();

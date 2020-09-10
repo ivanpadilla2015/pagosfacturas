@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inforsumini extends Model
 {
     protected $fillable = ['sum_conse', 'saldo_viene','total_info','gran_total','porcentaje_cumplimiento','mes_ejecucion',
-                        'corresponde_periodo', 'fechainfo', 'contrato_id','director','cargo_director', 'fiducia', 'infopersonal',
+                        'corresponde_periodo', 'fechainfo', 'contrato_id','director','cargo_director', 'novedad','fiducia', 'infopersonal',
                         'infoaiu', 'recomendacion'];
                        
     public function informeadis()
