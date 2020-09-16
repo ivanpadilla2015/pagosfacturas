@@ -30,35 +30,44 @@ class Informesuministro extends Component
             'numcontrato' =>'required',
         ]);
         $this->data = Contrato::where('numcontrato', $this->numcontrato)->first();
-        if(!$this->data->suministro)
-         {
-              $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No es de Suministro']); 
-              $this->resetInput();
-         } else{
-                if($this->data->riesgos->count() < 1)
-                {
-                    $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No tiene los Riesgos']); 
-                    $this->resetInput();
-                }else
-                {   
-                    if($this->data->obligacions->count() > 0){ 
-                        if ($this->data) {
-                            $info = $this->data->sum_conse+1;
-                            $this->datopago =  Pago::where('sum_conse', $info)->where('contrato_id', $this->data->id )->get();
-                            $this->datofac =  Facturadeta::where('sum_conse', $info)->where('contrato_id', $this->data->id )->get();
+       
+        if(empty($this->data))
+        {
+            $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No existe']); 
+            $this->resetInput();
+        }else{
+            if(!$this->data->suministro)
+            {
+                $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No es de Suministro']); 
+                $this->resetInput();
+            } else{
+                    if($this->data->riesgos->count() < 1)
+                    {
+                        $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No tiene los Riesgos']); 
+                        $this->resetInput();
+                    }else
+                    {   
+                        if($this->data->obligacions->count() > 0){ 
+                            if ($this->data) {
+                                $info = $this->data->sum_conse+1;
+                                $this->datopago =  Pago::where('sum_conse', $info)->where('contrato_id', $this->data->id )->get();
+                                $this->datofac =  Facturadeta::where('sum_conse', $info)->where('contrato_id', $this->data->id )->get();
 
+                            }else
+                            {
+                                $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No existe']);
+                            }
                         }else
                         {
-                            $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No existe']);
+                            $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No tiene Obligaciones']); 
+                            $this->resetInput();
                         }
-                    }else
-                    {
-                        $this->emit('alert', ['type'=> 'error', 'message' => 'Contrato No tiene Obligaciones']); 
-                        $this->resetInput();
-                    }
 
+                }
             }
         }
+
+           
     }
 
     public function crearinforme()

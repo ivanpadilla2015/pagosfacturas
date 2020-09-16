@@ -280,7 +280,11 @@
       <strong>9. RECOMENDACIONES </strong> <br>
         Ninguna <br><br>
 
+        <img src="{{ public_path('img/CT-FO-11.jpg')}}" width="100%"  alt="Responsive image ">
+dsfadadada
 <div class="centra_div">
+
+  <img src="{{ public_path('img/CT-FO-11.jpg')}}" width="100%"  alt="Responsive image ">
   _______________________________
   <div>{{ $data->contrato->supervisor }}</div>
   <div>Supervisor del Contrato No {{$data->contrato->numcontrato}} </div>
