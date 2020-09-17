@@ -275,19 +275,20 @@
       <strong>9. RECOMENDACIONES </strong> <br>
       {{$data->recomendacion}}
       <br><br>
-
-      <div class="contenedor" >
-          <img src="{{ public_path('img/ima_acro.png')}}" width="45%" />
-          <div class="texto-encima">{{ $data->contrato->supervisor }}</div>
-          <div class="texto-encima2">Firmado Digitalmente por {{ $data->contrato->supervisor }} Fecha 2020.09.13 07:33:40 -50'00'</div>
-      </div>
-  
-<div class="centra_div">  
-  _______________________________
-  <div>{{ $data->contrato->supervisor }}</div>
-  <div>Supervisor del Contrato No {{$data->contrato->numcontrato}} </div>
-</div>
-   
+      
+      <div class="centra_div">
+          <div class="texto-encima3"> _______________________________</div>
+          <div class="contenedor"  >
+              <img src="{{ public_path('img/ima_acro.png')}}" width="45%" />
+              <div class="texto-encima"><strong>{{ $data->contrato->supervisor }} </strong> </div>
+              <div class="texto-encima2">Firmado Digitalmente por {{ ucwords($data->contrato->supervisor) }} Fecha {{$fec}}</div>
+          </div>
+      
+          <div  >  
+            <div>{{ $data->contrato->supervisor }}</div>
+            <div>Supervisor del Contrato No {{$data->contrato->numcontrato}} </div>
+          </div>
+       </div>
         
   		
   	

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Pago;
 use App\Facturadeta;
 use App\Datosmaestro;
@@ -93,13 +94,18 @@ class Pdf_pagosController extends Controller
         $request->validate([
             'inforsumini_id' => 'required|integer|not_in:0'
         ]);
+          $fe  = Carbon::now(); 
+          $fec = $fe->format('Y').".".$fe->format('m').".".$fe->format('d')." ".$fe->format('H:i:s')." -05'00'";
+
+          //$fec = $fe->toDateTimeString();
+     
         $data = Inforsumini::findOrFail($request->inforsumini_id);
         $datofac= DB::table('facturadetas')
         ->join('dependencias', 'dependencias.id', '=', 'facturadetas.dependencia_id')
         ->select('numfac', 'fechafac', 'dependencias.nombredepen',DB::raw('SUM(valorfac) as valorfac'))
         ->groupBy('numfac')->where('sum_conse', $data->sum_conse)->where('contrato_id', $data->contrato_id )->get();
         
-        $pdf= PDF::loadView('reportes.pdf_info_sumini_3', compact('data', 'datofac'));
+        $pdf= PDF::loadView('reportes.pdf_info_sumini_3', compact('data', 'datofac', 'fec'));
         $pdf->setPaper('letter');
         return $pdf->stream();
     }

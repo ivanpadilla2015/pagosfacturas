@@ -49,6 +49,8 @@
 
     .centra_div {
         text-align: center;
+        position: relative;
+       
       } 
 
     .tn {
@@ -61,28 +63,40 @@
 
     .contenedor{
         position: relative;
-        display: inline-block;
         text-align: center;
         width: 200px;
         margin: auto;
+        padding: 0;
     }
    
     .texto-encima{
         position: absolute;
-        top: 2px;      
+        top: 2;      
         left: 2%;
         width: 45%;
         font-size: 10px;
         text-align: left;
+        font-family: Vegur, 'PT Sans', Verdana, sans-serif;
     }
 
     .texto-encima2{
         position: absolute;
-        top: 2px;      
-        right: 5%;
+        top: 2;      
+        right: 2%;
         width: 45%;
         font-size: 7px;
         text-align: left;
+        
+    }
+
+    .texto-encima3{
+        position: absolute;
+        top: 18;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto
+       
         
     }
    
