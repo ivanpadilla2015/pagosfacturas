@@ -65,11 +65,21 @@
                                 </div> -->
                                 
                                   <div class="form-inline d-flex justify-content-center">
-                                    <form action="{{ route('verconpagonew') }}" method="GET">
+                                    <form action="{{ route('verconpagonew') }}" method="GET" class="form-inline">
                                       @csrf
-                                      <input type="number" name="space" value="0" step="10" class="form-control form-control-sm col-2">
+                                      <div class="form-group">
+                                        <label>Espacios </label>
+                                        <input type="number" name="space" value="0" step="10" class="form-control form-control-sm col-4">
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Firmado </label>
+                                        <select name="resp" class="form-control form-control-sm ">
+                                          <option value="1">Si</option>
+                                          <option value="2">No</option>
+                                        </select>
+                                      </div>
                                       <input type="hidden" name="id" value="{{$dato->id}}">
-                                      <button type="submit" class="btn btn-info btn-sm">Control Pago New</button>
+                                      <button type="submit" class="btn btn-info btn-sm ml-5">Control Pago New</button>
                                     </form>
                                   </div>
                                 

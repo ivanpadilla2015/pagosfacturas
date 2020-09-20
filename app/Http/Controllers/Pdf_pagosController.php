@@ -70,6 +70,8 @@ class Pdf_pagosController extends Controller
         $datos = Pago::findOrFail(request('id'));
         $pag_ante = Pago::where('contrato_id', $datos->contrato_id)->where('consecu_informe', '<', $datos->consecu_informe)->get();
         $dmaestro = Datosmaestro::findOrFail(1);
+        $fe  = Carbon::now(); 
+        $fec = $fe->format('Y').".".$fe->format('m').".".$fe->format('d')." ".$fe->format('H:i:s')." -05'00'";
         $rubro = DB::table('facturadetas')
             ->join('uso_rubros', 'uso_rubros.id', '=', 'facturadetas.uso_rubro_id')
             ->select('facturadetas.numfac', 'uso_rubros.nombre_uso', 'facturadetas.uso_rubro_id','uso_rubros.codigo_uso', DB::raw('SUM(facturadetas.valorfac) as total_fac'))
@@ -78,7 +80,8 @@ class Pdf_pagosController extends Controller
             ->get();
         //return $rubro;
         $spacio = request('space');
-        $pdf= PDF::loadView('reportes.pdf_pago_num_new', compact('datos','rubro', 'dmaestro', 'spacio', 'pag_ante'));
+        $resp = request('resp');
+        $pdf= PDF::loadView('reportes.pdf_pago_num_new', compact('datos','rubro', 'dmaestro', 'spacio', 'pag_ante', 'fec', 'resp'));
         $pdf->setPaper('letter', 'landscape');
         return $pdf->stream();
     }
@@ -104,8 +107,8 @@ class Pdf_pagosController extends Controller
         ->join('dependencias', 'dependencias.id', '=', 'facturadetas.dependencia_id')
         ->select('numfac', 'fechafac', 'dependencias.nombredepen',DB::raw('SUM(valorfac) as valorfac'))
         ->groupBy('numfac')->where('sum_conse', $data->sum_conse)->where('contrato_id', $data->contrato_id )->get();
-        
-        $pdf= PDF::loadView('reportes.pdf_info_sumini_3', compact('data', 'datofac', 'fec'));
+        $resp = $request->resp;
+        $pdf= PDF::loadView('reportes.pdf_info_sumini_3', compact('data', 'datofac', 'fec', 'resp'));
         $pdf->setPaper('letter');
         return $pdf->stream();
     }

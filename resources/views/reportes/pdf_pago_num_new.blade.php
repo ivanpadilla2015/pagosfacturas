@@ -201,15 +201,25 @@
 </table>
 
 <br>
-
-<div style="float:left"> _______________________________ <br>                                                 
+<div style="position: relative;">
+  
+ @if ($resp == 1)
+   <div class="texto-encima3"> _______________________________</div>
+    <div class="contenedor"  >
+      <img src="{{ public_path('img/ima_acro.png')}}" width="45%" />
+      <div class="texto-encima"><strong>{{ $datos->user->name }} </strong> </div>
+      <div class="texto-encima2">Firmado Digitalmente por {{ ucwords($datos->user->name) }} Fecha {{$fec}}</div>
+    </div>
+ @endif
+ 
+<div style="float:left">  @if ($resp == 2) _______________________________ <br> @endif                                         
 Supervisor: {{ $datos->user->name }} <br>  
 {{ $datos->user->dependencia->nombredepen }}</div> 
 
 <div style="float:right"> _______________________________ <br> 
 {{ $dmaestro->presupuesto }} <br>
 {{ $dmaestro->cargo_presupuesto  }}</div>
-    
-  </body>
+</div>    
+</body>
 
 </html>

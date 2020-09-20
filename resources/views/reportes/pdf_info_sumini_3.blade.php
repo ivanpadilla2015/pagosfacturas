@@ -277,14 +277,17 @@
       <br><br>
       
       <div class="centra_div">
+        @if ($resp == 1)
           <div class="texto-encima3"> _______________________________</div>
           <div class="contenedor"  >
               <img src="{{ public_path('img/ima_acro.png')}}" width="45%" />
               <div class="texto-encima"><strong>{{ $data->contrato->supervisor }} </strong> </div>
               <div class="texto-encima2">Firmado Digitalmente por {{ ucwords($data->contrato->supervisor) }} Fecha {{$fec}}</div>
           </div>
-      
+        @endif
           <div  >  
+            @if ($resp == 2) ___________________________________ @endif
+            
             <div>{{ $data->contrato->supervisor }}</div>
             <div>Supervisor del Contrato No {{$data->contrato->numcontrato}} </div>
           </div>

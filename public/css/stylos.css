@@ -43,3 +43,36 @@
         word-wrap: break-word;
         font-size: 14px;
     }
+
+    .contenedor{
+        position: relative;
+        text-align: center;
+        width: 200px;
+       
+    }
+   
+    .texto-encima{
+        position: absolute;
+        top: 2;      
+        left: 2%;
+        width: 45%;
+        font-size: 10px;
+        text-align: left;
+        font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+    }
+
+    .texto-encima2{
+        position: absolute;
+        top: 2;      
+        right: 2%;
+        width: 45%;
+        font-size: 7px;
+        text-align: left;
+        
+    }
+
+    .texto-encima3{
+        position: absolute;
+        top: 18;
+      
+    }

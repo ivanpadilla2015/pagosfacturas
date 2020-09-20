@@ -281,7 +281,7 @@
         Ninguna <br><br>
 
         <img src="{{ public_path('img/CT-FO-11.jpg')}}" width="100%"  alt="Responsive image ">
-dsfadadada
+
 <div class="centra_div">
 
   <img src="{{ public_path('img/CT-FO-11.jpg')}}" width="100%"  alt="Responsive image ">

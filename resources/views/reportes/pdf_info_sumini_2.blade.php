@@ -18,6 +18,13 @@
                             </select>
                             <p class="text-danger">{{ $errors->first('pago_id') }}</p>
                         </div>
+                        <div class="form-group">
+                            <label>Firmado </label>
+                            <select name="resp" class="form-control form-control-sm col-4">
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
+                            </select>
+                          </div>
                         <div class="form-group ml-1">
                             <button type="submit" class="btn  btn-primary btn-sm mb-2  ">Consultar</button>
                         </div>
