@@ -108,3 +108,6 @@ Route::view('bus_uso', 'usos.busqueda_usos')->name('bus_uso')->middleware('auth'
 Route::view('ctrlpagototal', 'reportes.ctrl_pago_total')->name('ctrlpagototal')->middleware('auth');
 Route::post('verctrlpago', 'Report_contratoController@verpagototalcontrato')->name('verctrlpago')->middleware('auth');
 /*********************************************************************************************************** */
+
+
+Route::view('modi_adicion', 'contrato.adicion_modificar')->name('modi_adicion')->middleware('auth'); 

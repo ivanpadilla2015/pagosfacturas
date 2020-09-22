@@ -106,7 +106,13 @@
                                       <small class="form-text text-danger">{{ $message }}</small>
                                   @enderror
                               </div>
-                              
+                              <div class="form-group col mt-1">
+                                <label class="mr-3">Nuevo Plazo Ejecucion</label>
+                                 <input wire:model="newplazoejecucion" class="form-control col-sm-10" placeholder="" type="text"> 
+                                 @error('newplazoejecucion')
+                                      <small class="form-text text-danger">{{ $message }}</small>
+                                  @enderror
+                              </div>
                         </div>
                         <div class=" container text-center mt-2"><button wire:click="store()" class="btn btn-success btn-sm" >Grabar Adicion</button></div>
                         

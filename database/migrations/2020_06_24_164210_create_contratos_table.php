@@ -34,6 +34,7 @@ class CreateContratosTable extends Migration
             $table->string('registro_pres_inic', 50)->nullable();
             $table->date('fechacontrato');
             $table->date('plazoejecucion');
+            $table->date('newplazoejecucion')->nullable();
             $table->string('interadmi', 150)->nullable();
             $table->text('objetocontrato');
             $table->double('saldo', 20, 2);

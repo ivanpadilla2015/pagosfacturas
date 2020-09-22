@@ -64,8 +64,8 @@
             
         </tr>
         <tr>
-            <td colspan="2" class="colu" align="justify" ><strong>PLAZO DE EJECUCION DEL CONTRATO:</strong>{{$data->contrato->plazoejecucion}}</td>
-            
+            <td colspan="2" class="colu" align="justify" ><strong>PLAZO DE EJECUCION DEL CONTRATO:</strong>{{$accion = ($data->contrato->newplazoejecucion == null)? $data->contrato->plazoejecucion : $data->contrato->newplazoejecucion}}</td>
+             
         </tr>
         <tr>
             <td colspan="2"></td>

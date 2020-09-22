@@ -116,32 +116,31 @@
               <input wire:model="supervisor" type="text" class="form-control" placeholder="Seperv. Contrato">
             </div>
             <div class="form-group col">
-              <label >Primer Pago</label>
-                <select wire:model="num_mes" class="form-control">
-                    <option value="0">Seleccione</option>
-                    <option value="1">Enero</option>
-                    <option value="2">Febrero</option>
-                    <option value="3">Marzo</option>
-                    <option value="4">Abril</option>
-                    <option value="5">Mayo</option>
-                    <option value="6">Junio</option>
-                    <option value="7">Julio</option>
-                    <option value="8">Agosto</option>
-                    <option value="9">Septiembre</option>
-                    <option value="10">Octubre</option>
-                    <option value="11">Noviembre</option>
-                    <option value="12">Diciembre</option>
-                </select>
+                  <!-- <label >Primer Pago</label>
+                    <select wire:model="num_mes" class="form-control">
+                        <option value="0">Seleccione</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select> -->
+                    <label >New Plazo Ejecución</label>
+                    <input wire:model="newplazoejecucion" type="date" class="form-control" placeholder="New Plazo Ejecución Contrato">
             </div>
-            <div class="form-group form-check mt-5 ml-3">
-                        <input  wire:model="suministro" type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Contrato Suministro</label>
-            </div>
+            
               <div class="form-group col">
-                @if ($suministro)
+                
                   <label >Cons Informe</label>
                   <input wire:model="sum_conse" type="text" class="form-control" placeholder="Conse. informe">
-                @endif
+               
               </div>
           </div>
           <button wire:click="update()" type="submit" class="btn btn-primary">Actualizar</button>

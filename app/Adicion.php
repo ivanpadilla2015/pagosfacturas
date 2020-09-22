@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adicion extends Model
 {
-    protected $fillable = ['registroadicion', 'fechaadicion', 'valoradicion', 'contrato_id'];
+    protected $fillable = ['registroadicion', 'fechaadicion', 'valoradicion', 'contrato_id', 'newplazoejecucion'];
     
     public function contrato()
     {

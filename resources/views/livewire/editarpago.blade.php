@@ -143,13 +143,13 @@
                                  @error('fecha_pago') <span class="text-danger">{{ $message }}</span>@enderror
                              </div>
                              <div class="form-group">
-                                <input type="hidden" wire:model="user_id">
+                                
                                 <label >No Consecutivo Pago</label>
                                 <input type="text" class="form-control" wire:model="consecu_informe"  placeholder="Fecha">
                                 @error('consecu_informe') <span class="text-danger">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
-                                <input type="hidden" wire:model="user_id">
+                                
                                 <label >No Consecutivo Informe</label>
                                 <input type="text" class="form-control" wire:model="sum_conse"  placeholder="Fecha">
                                 @error('sum_conse') <span class="text-danger">{{ $message }}</span>@enderror

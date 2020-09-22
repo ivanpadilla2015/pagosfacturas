@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Contrato;
 use App\Pago;
 use App\Facturadeta;
 use App\Datosmaestro;
@@ -68,6 +69,7 @@ class Pdf_pagosController extends Controller
     {
         //return $request;
         $datos = Pago::findOrFail(request('id'));
+        $datoc = Contrato::findOrFail($datos->contrato->id);
         $pag_ante = Pago::where('contrato_id', $datos->contrato_id)->where('consecu_informe', '<', $datos->consecu_informe)->get();
         $dmaestro = Datosmaestro::findOrFail(1);
         $fe  = Carbon::now(); 
@@ -81,7 +83,7 @@ class Pdf_pagosController extends Controller
         //return $rubro;
         $spacio = request('space');
         $resp = request('resp');
-        $pdf= PDF::loadView('reportes.pdf_pago_num_new', compact('datos','rubro', 'dmaestro', 'spacio', 'pag_ante', 'fec', 'resp'));
+        $pdf= PDF::loadView('reportes.pdf_pago_num_new', compact('datos','rubro', 'dmaestro', 'spacio', 'pag_ante', 'fec', 'resp', 'datoc'));
         $pdf->setPaper('letter', 'landscape');
         return $pdf->stream();
     }

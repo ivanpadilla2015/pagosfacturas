@@ -18,6 +18,7 @@ class CreateAdicionsTable extends Migration
             $table->string('registroadicion');
             $table->date('fechaadicion');
             $table->double('valoradicion',20,2);
+            $table->date('newplazoejecucion')->nullable();
             $table->timestamps();
 
             $table->foreignId('contrato_id')->constrained();

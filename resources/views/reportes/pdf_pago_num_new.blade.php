@@ -37,7 +37,13 @@
           <td> <b>Con cargo a contrato(s) interadmin(s)</b> </td>
           <td> {{$datos->contrato->concargo->detalle_inter}}</td>
           <td> <b> Plazo de Ejecucion:</b></td>
-           @php  $fecha = new DateTime($datos->fecha_plazoeje);
+           @php  
+                if (empty($datoc->newplazoejecucion)) {
+                  $fecon = $datoc->plazoejecucion;
+                }else {
+                  $fecon = $datoc->newplazoejecucion;
+                }
+                $fecha = new DateTime($fecon);
                  $fecha_m_d_y = $fecha->format('d/m/Y'); @endphp 
           <td>__{{$fecha_m_d_y}}____</td>
         </tr>

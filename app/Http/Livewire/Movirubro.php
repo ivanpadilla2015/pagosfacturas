@@ -14,7 +14,7 @@ class Movirubro extends Component
 {
     public $numcontrato, $data=null, $rubpri, $datosrubro,$valorrubro, $codi_rub, $rubroprin_id;
     public $adi =['valor' => '', "id" => '', 'nombre_rubro' => '', 'rubrocontrato_id' => ''];
-    public $fechaadicion, $registroadicion, $valoradicion ;
+    public $fechaadicion, $registroadicion, $valoradicion, $newplazoejecucion ;
      public $rubs = array();
 
     public function render()
@@ -60,6 +60,7 @@ class Movirubro extends Component
             'valoradicion' => 'required',
             'fechaadicion' => 'required',
             'registroadicion' => 'required',
+            'newplazoejecucion' => 'required',
         ]);
 
         
@@ -67,6 +68,7 @@ class Movirubro extends Component
         $con->saldo = $con->saldo + $this->valoradicion;
         $con->valoradicion = $con->valoradicion + $this->valoradicion;
         $con->gran_total = $con->valorcontrato + $con->valoradicion;
+        $con->newplazoejecucion = $this->newplazoejecucion;
         $con->ejecutado = 100 - round(($con->saldo*100)/$con->gran_total);
         $con->save();
 
@@ -75,6 +77,7 @@ class Movirubro extends Component
             'fechaadicion' => $this->fechaadicion,
             'valoradicion' => $this->valoradicion,
             'contrato_id' => $this->data->id,
+            'newplazoejecucion' => $this->newplazoejecucion
         ]);
         
         foreach ($this->rubs as $key => $value) {
@@ -106,6 +109,7 @@ class Movirubro extends Component
         $this->registroadicion = null;
         $this->fechaadicion = null;
         $this->valoradicion = null;
+        $this->newplazoejecucion = null;
 
     }
 
