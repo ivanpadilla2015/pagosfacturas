@@ -273,7 +273,7 @@
                 <p>Editar Pagos</p>
               </a>
             </li>
-            <li class="nav-item">modi_adicion
+            <li class="nav-item">
               <a href="{{ route('borrarpago') }}" class="nav-link">
                 <i class="fas fa-trash-alt nav-icon"></i>
                 <p>Borrar  Pago </p>

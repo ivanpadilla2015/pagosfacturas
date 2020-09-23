@@ -8,15 +8,18 @@ use App\Dependencia;
 use App\Contrato;
 use App\Rubroprin;
 use App\Facturadeta;
+use App\User;
 
 class Editarpago extends Component
 {
     public $contra, $data, $contradato, $lisusos = array(), $fechafac, $dependencia_id, $uso_rubro_id,
-            $depen, $pago_id, $selected_id, $fecha_pago, $consecu_informe, $sum_conse, $select_id;
+            $depen, $pago_id, $selected_id, $fecha_pago, $consecu_informe, $sum_conse, $select_id,
+            $user_id, $users;
     public function render()
     {
         $this->depen = Dependencia::all();
         $this->contra = Pago::orderBy('id', 'desc')->get();
+        $this->users = User::all();
         return view('livewire.editarpago');
     }
 
@@ -44,6 +47,7 @@ class Editarpago extends Component
         $this->fecha_pago = $record->fecha_pago;
         $this->consecu_informe = $record->consecu_informe; //consecutivo del pago
         $this->sum_conse = $record->sum_conse; //consecutivo del informe
+        $this->user_id = $record->user_id;
     }
 
     public function updateencabe($id)
@@ -51,7 +55,7 @@ class Editarpago extends Component
         if ($this->select_id) {
             $record = Pago::findOrFail($this->select_id);
             $record->update(['fecha_pago' => $this->fecha_pago, 'consecu_informe' => $this->consecu_informe,
-                    'sum_conse' => $this->sum_conse]);   
+                    'sum_conse' => $this->sum_conse, 'user_id' => $this->user_id]);   
             $this->data = Pago::findOrFail($this->select_id);  
             foreach ($this->data->facturadetas as $key => $f) {
                 $record = Facturadeta::findOrFail($f->id);

@@ -108,7 +108,7 @@
                               </div>
                               <div class="form-group col mt-1">
                                 <label class="mr-3">Nuevo Plazo Ejecucion</label>
-                                 <input wire:model="newplazoejecucion" class="form-control col-sm-10" placeholder="" type="text"> 
+                                 <input wire:model="newplazoejecucion" class="form-control col-sm-10" placeholder="" type="date"> 
                                  @error('newplazoejecucion')
                                       <small class="form-text text-danger">{{ $message }}</small>
                                   @enderror
