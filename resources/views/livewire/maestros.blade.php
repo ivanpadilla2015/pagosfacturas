@@ -23,6 +23,10 @@
                       <label >Cargo Presu :</label>
                       <input wire:model="cargo_presupuesto"  class="form-control" >
                     </div>
+                    <div class="form-group">
+                      <label >Ciudad :</label>
+                      <input wire:model="ciudad"  class="form-control" type="text" >
+                    </div>
                    
                     <button wire:click="buscar" class="btn btn-primary btn-sm">Buscar Datos</button>
                     

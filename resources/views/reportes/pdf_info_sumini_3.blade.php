@@ -12,13 +12,19 @@
     </style>
    </head>
   <body>
- 		<div>
+ 		  <div>
   			<img src="{{ public_path('img/CT-FO-11.jpg')}}" width="100%"  alt="Responsive image ">
-  		</div>
+      </div>
+      @php  $fein = $data->fechainfo;
+            $fechin = new DateTime($fein);
+            $fecha_d_m_y = $fechin->format('d-m-Y'); @endphp 
       <table>
         <tr>
         <td colspan="4" style="text-align: center" ><strong>INFORME DE SUPERVISIÓN No. {{ $data->sum_conse}}</strong></td>
         </tr>
+        <tr>
+          <td colspan="4" style="text-align: right" > <small>{{  $dmaestro->ciudad.", ". $fecha_d_m_y }}</small> </td>
+          </tr>
       </table>
       <strong>Al</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{":".$data->director}}<br/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->cargo_director}}

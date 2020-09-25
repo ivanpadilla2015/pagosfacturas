@@ -7,7 +7,7 @@ use App\Datosmaestro;
 
 class Maestros extends Component
 {
-    public $director, $cargo_director, $presupuesto, $cargo_presupuesto;
+    public $director, $cargo_director, $presupuesto, $cargo_presupuesto, $ciudad;
 
     
 
@@ -24,6 +24,7 @@ class Maestros extends Component
         $this->cargo_director = $dm->cargo_director;
         $this->presupuesto = $dm->presupuesto;
         $this->cargo_presupuesto = $dm->cargo_presupuesto;
+        $this->ciudad = $dm->ciudad;
        
     }
 
@@ -34,6 +35,7 @@ class Maestros extends Component
         $dm->cargo_director = $this->cargo_director;
         $dm->presupuesto = $this->presupuesto;
         $dm->cargo_presupuesto = $this->cargo_presupuesto;
+        $dm->ciudad = $this->ciudad;
         $dm->save();
         $this->emit('alert', ['type'=> 'success', 'message' => 'Actualizado Correctamente']);
        

@@ -19,6 +19,7 @@ class CreateDatosmaestrosTable extends Migration
             $table->string('cargo_director', 120);
             $table->string('presupuesto', 120);
             $table->string('cargo_presupuesto', 120);
+            $table->string('ciudad')->nullable();
             $table->text('detalle1');
             $table->text('detalle2');//control obligacion
             $table->text('detalle3');//novedades incumplimiento

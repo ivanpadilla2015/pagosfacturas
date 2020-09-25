@@ -101,7 +101,7 @@ class Pdf_pagosController extends Controller
         ]);
           $fe  = Carbon::now(); 
           $fec = $fe->format('Y').".".$fe->format('m').".".$fe->format('d')." ".$fe->format('H:i:s')." -05'00'";
-
+          $dmaestro = Datosmaestro::findOrFail(1);  
           //$fec = $fe->toDateTimeString();
      
         $data = Inforsumini::findOrFail($request->inforsumini_id);
@@ -110,7 +110,7 @@ class Pdf_pagosController extends Controller
         ->select('numfac', 'fechafac', 'dependencias.nombredepen',DB::raw('SUM(valorfac) as valorfac'))
         ->groupBy('numfac')->where('sum_conse', $data->sum_conse)->where('contrato_id', $data->contrato_id )->get();
         $resp = $request->resp;
-        $pdf= PDF::loadView('reportes.pdf_info_sumini_3', compact('data', 'datofac', 'fec', 'resp'));
+        $pdf= PDF::loadView('reportes.pdf_info_sumini_3', compact('data', 'datofac', 'fec', 'resp', 'dmaestro'));
         $pdf->setPaper('letter');
         return $pdf->stream();
     }
