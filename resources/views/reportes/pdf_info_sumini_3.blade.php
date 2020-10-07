@@ -26,10 +26,10 @@
           <td colspan="4" style="text-align: right" > <small>{{  $dmaestro->ciudad.", ". $fecha_d_m_y }}</small> </td>
           </tr>
       </table>
-      <strong>Al</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{":".$data->director}}<br/>
+      <strong>Al</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{":".strtoupper($data->director)}}<br/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->cargo_director}}
       <br> <br>
-      <div align="justify" >{{"Con toda atención me permito enviar al señor $data->director, el informe de supervisión No. $data->consecu_informe  Del contrato No."}} {{$data->contrato->numcontrato}}  Correspondiente {{$data->corresponde_periodo}}, de acuerdo con la siguiente información:</div>
+      <div align="justify" >{{"Con toda atención me permito enviar al señor $data->director, el informe de supervisión No. $data->sum_conse  Del contrato No."}} {{$data->contrato->numcontrato}}  Correspondiente {{$data->corresponde_periodo}}, de acuerdo con la siguiente información:</div>
       <div align="justify" >{{"Tener en cuenta para el diligenciamiento del informe las instrucciones impartidas en el Manual de Contratación."}}</div>
       <table>
         <tr>
@@ -78,7 +78,10 @@
             
         </tr>
         <tr>
-            <td colspan="2" class="colu" align="justify" ><strong>MODIFICACIONES : </strong> SI___ No_X_</td>
+          @php
+            $canti =  $data->informeadis->count();
+          @endphp
+            <td colspan="2" class="colu" align="justify" ><strong>MODIFICACIONES : </strong> SI_{{ $res = ($canti > 0 ? 'x':'_') }}__ No_{{ $res = ($canti = 0 ? 'x':'_') }}_</td>
             
         </tr>
         <tr>
@@ -89,13 +92,24 @@
           <td class="colu" align="center">TIPO</td>
           <td class="colu"></td>
       </tr>
-      @php $c = 0; @endphp
+      @php $ca = 0; $cr = 0;  @endphp
       @foreach ($data->informeadis as $itemadi)
-        @php $c += 1 @endphp
+        
+        
+        @if ($itemadi->tipo == '1')
+          @php $ca += 1; @endphp
+          <tr>
+            <td class="colu" align="justify">{{'Adicion N° '.$ca}}</td>
+            <td class="colu" align="justify">{{ number_format($itemadi->valoradicion) }}</td>
+          </tr>
+        @else
+         @php $cr += 1; @endphp
         <tr>
-          <td class="colu" align="justify">{{'Adicion N° '.$c}}</td>
+          <td class="colu" align="justify">{{'Reducción N° '.$cr}}</td>
           <td class="colu" align="justify">{{ number_format($itemadi->valoradicion) }}</td>
         </tr>
+        @endif
+        
       @endforeach
         <tr>
           <td class="colu" align="justify"></td>
@@ -220,19 +234,31 @@
               <td colspan="2" class="colu">Valor Total del contrato</td>
               <td colspan="4" class="colu">{{ number_format($data->contrato->valorcontrato)}}</td>
           </tr>
-          @php $c = 0; $rega = '' @endphp
+          @php $ca = 0; $cr = 0; $rega = ''; $vc = $data->contrato->valorcontrato @endphp
           @foreach ($data->informeadis as $itemadi)
-          @php $c += 1; $fe = new DateTime($itemadi->fechaadicion);  $fea = $fe->format('d/m/Y'); $rega =$itemadi->registroadicion @endphp
+          @php  $fe = new DateTime($itemadi->fechaadicion);  $fea = $fe->format('d/m/Y'); $rega =$itemadi->registroadicion @endphp
+         
+          @if ($itemadi == '1')
+              @php $vc += $itemadi->valoradicion; $ca += 1; @endphp
+            <tr>
+              <td colspan="2" class="colu" >{{'Adicion N° '.$ca}}</td>
+              <td colspan="3" class="colu">{{ number_format($itemadi->valoradicion) }}</td>
+              
+            </tr>
+          @else
+              @php $vc -= $itemadi->valoradicion; $cr += 1; @endphp
           <tr>
-            <td colspan="2" class="colu" >{{'Adicion N° '.$c}}</td>
+            <td colspan="2" class="colu" >{{'Reducción N° '.$cr}}</td>
             <td colspan="3" class="colu">{{ number_format($itemadi->valoradicion) }}</td>
             
           </tr>
+          @endif
+            
         @endforeach
          
           <tr>
             <td colspan="2" class="colu">TOTAL</td>
-            <td colspan="4" class="colu">{{ number_format($data->gran_total) }}</td>
+            <td colspan="4" class="colu">{{ number_format($vc) }}</td>
           </tr>
          
           <tr>

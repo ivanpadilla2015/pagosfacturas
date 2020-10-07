@@ -95,6 +95,7 @@ class Informesuministro extends Component
                         'fechaadicion' => $value->fechaadicion,
                         'valoradicion' => $value->valoradicion,
                         'inforsumini_id' => $inform->id,
+                        'tipo' => $value->tipo,
             ]);
         }
         /*****************agregar obligacion****************************** */

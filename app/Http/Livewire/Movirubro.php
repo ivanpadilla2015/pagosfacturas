@@ -14,7 +14,7 @@ class Movirubro extends Component
 {
     public $numcontrato, $data=null, $rubpri, $datosrubro,$valorrubro, $codi_rub, $rubroprin_id;
     public $adi =['valor' => '', "id" => '', 'nombre_rubro' => '', 'rubrocontrato_id' => ''];
-    public $fechaadicion, $registroadicion, $valoradicion, $newplazoejecucion ;
+    public $fechaadicion, $registroadicion, $valoradicion, $newplazoejecucion, $tipo ;
      public $rubs = array();
 
     public function render()
@@ -61,23 +61,34 @@ class Movirubro extends Component
             'fechaadicion' => 'required',
             'registroadicion' => 'required',
             'newplazoejecucion' => 'required',
+            'tipo' => 'required|integer|not_in:0'
         ]);
 
         
         $con = Contrato::findOrFail($this->data->id);
-        $con->saldo = $con->saldo + $this->valoradicion;
-        $con->valoradicion = $con->valoradicion + $this->valoradicion;
-        $con->gran_total = $con->valorcontrato + $con->valoradicion;
-        $con->newplazoejecucion = $this->newplazoejecucion;
-        $con->ejecutado = 100 - round(($con->saldo*100)/$con->gran_total);
-        $con->save();
-
+        if ($this->tipo == '1') {
+            $con->saldo = $con->saldo + $this->valoradicion;
+            $con->valoradicion = $con->valoradicion + $this->valoradicion;
+            $con->gran_total = $con->valorcontrato + $con->valoradicion;
+            $con->newplazoejecucion = $this->newplazoejecucion;
+            $con->ejecutado = 100 - round(($con->saldo*100)/$con->gran_total);
+            $con->save();
+        } else {
+            $con->saldo = $con->saldo - $this->valoradicion;
+            $con->valoradicion = $con->valoradicion - $this->valoradicion;
+            $con->gran_total = $con->valorcontrato - $con->valoradicion;
+            $con->newplazoejecucion = $this->newplazoejecucion;
+            $con->ejecutado = 100 - round(($con->saldo*100)/$con->gran_total);
+            $con->save();
+        }
         Adicion::create([
             'registroadicion' => $this->registroadicion, 
             'fechaadicion' => $this->fechaadicion,
             'valoradicion' => $this->valoradicion,
             'contrato_id' => $this->data->id,
-            'newplazoejecucion' => $this->newplazoejecucion
+            'newplazoejecucion' => $this->newplazoejecucion,
+            'tipo' => $this->tipo
+            
         ]);
         
         foreach ($this->rubs as $key => $value) {

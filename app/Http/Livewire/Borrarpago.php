@@ -9,6 +9,7 @@ Use App\Facturadeta;
 Use App\Factura;
 Use App\Obliga_pago;
 use App\Riesgo_pago;
+use App\Factudetadi;
 
 class Borrarpago extends Component
 {
@@ -33,6 +34,7 @@ class Borrarpago extends Component
     {
             Facturadeta::where('pago_id', $this->pag->id)->delete(); //detalle facturas
             Factura::where('pago_id', $this->pag->id)->delete();  //factura para que no exista
+            Factudetadi::where('pago_id', $this->pag->id)->delete(); // adiciones
             Obliga_pago::where('pago_id', $this->pag->id)->delete(); 
             Riesgo_pago::where('pago_id', $this->pag->id)->delete();
             $con = Contrato::findOrFail($this->pag->contrato_id);

@@ -285,6 +285,12 @@
                 <p>Modificar Adicion </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('veradiciones') }}" class="nav-link">
+                <i class="fas fa-trash-alt nav-icon"></i>
+                <p>Ver Adiones  </p>
+              </a>
+            </li>
         </ul>
       </li>
 

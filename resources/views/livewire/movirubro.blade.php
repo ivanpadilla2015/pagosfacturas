@@ -91,16 +91,27 @@
                                   @enderror
                               </div>
                               <div class="float-right mt-1"><button wire:click="agregar()" class="btn btn-primary btn-sm" >Add</button></div>
-                              
+                             
                               <div class="form-group col mt-1">
-                                <label class="mr-3">Fecha Adicion</label>
+                                <label class="mr-3">Tipo</label>
+                                <select  wire:model="tipo" class="form-control col-sm-10" >
+                                    <option value="0">Seleccione</option>
+                                      <option value="1" >Adicion</option>
+                                      <option value="2" >Reduccion</option>
+                                </select>
+                                 @error('tipo')
+                                      <small class="form-text text-danger">{{ $message }}</small>
+                                  @enderror
+                              </div>
+                              <div class="form-group col mt-1">
+                                <label class="mr-3">Fecha Adicion/Reducción</label>
                                  <input wire:model="fechaadicion" class="form-control col-sm-10" placeholder="" type="date"> 
                                  @error('fechaadicion')
                                       <small class="form-text text-danger">{{ $message }}</small>
                                   @enderror
                               </div>
                               <div class="form-group col mt-1">
-                                <label class="mr-3">Reg. Press Adicion</label>
+                                <label class="mr-3">Reg. Press Adicion/Reducción</label>
                                  <input wire:model="registroadicion" class="form-control col-sm-10" placeholder="" type="text"> 
                                  @error('registroadicion')
                                       <small class="form-text text-danger">{{ $message }}</small>

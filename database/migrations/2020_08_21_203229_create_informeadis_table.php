@@ -18,6 +18,7 @@ class CreateInformeadisTable extends Migration
             $table->string('registroadicion');
             $table->date('fechaadicion');
             $table->double('valoradicion',20,2);
+            $table->string('tipo', 1)->nullable();
             $table->timestamps();
 
             $table->foreignId('inforsumini_id')->constrained();

@@ -111,3 +111,4 @@ Route::post('verctrlpago', 'Report_contratoController@verpagototalcontrato')->na
 
 
 Route::view('modi_adicion', 'contrato.adicion_modificar')->name('modi_adicion')->middleware('auth'); 
+Route::view('veradiciones', 'contrato.veradiciones')->name('veradiciones')->middleware('auth'); // no se utilizo
