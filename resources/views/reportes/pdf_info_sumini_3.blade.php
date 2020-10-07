@@ -81,7 +81,7 @@
           @php
             $canti =  $data->informeadis->count();
           @endphp
-            <td colspan="2" class="colu" align="justify" ><strong>MODIFICACIONES : </strong> SI_{{ $res = ($canti > 0 ? 'x':'_') }}__ No_{{ $res = ($canti = 0 ? 'x':'_') }}_</td>
+            <td colspan="2" class="colu" align="justify" ><strong>MODIFICACIONES : </strong> SI_{{ $res = ($canti > 0 ? 'x':'_') }}__ No_{{ $res = ($canti < 1 ? 'x':'_') }}_</td>
             
         </tr>
         <tr>
