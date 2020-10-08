@@ -238,7 +238,7 @@
           @foreach ($data->informeadis as $itemadi)
           @php  $fe = new DateTime($itemadi->fechaadicion);  $fea = $fe->format('d/m/Y'); $rega =$itemadi->registroadicion @endphp
          
-          @if ($itemadi == '1')
+          @if ($itemadi->tipo == '1')
               @php $vc += $itemadi->valoradicion; $ca += 1; @endphp
             <tr>
               <td colspan="2" class="colu" >{{'Adicion N° '.$ca}}</td>
@@ -247,11 +247,11 @@
             </tr>
           @else
               @php $vc -= $itemadi->valoradicion; $cr += 1; @endphp
-          <tr>
-            <td colspan="2" class="colu" >{{'Reducción N° '.$cr}}</td>
-            <td colspan="3" class="colu">{{ number_format($itemadi->valoradicion) }}</td>
-            
-          </tr>
+              <tr>
+                <td colspan="2" class="colu" >{{'Reducción N° '.$cr}}</td>
+                <td colspan="3" class="colu">{{ number_format($itemadi->valoradicion) }}</td>
+                
+              </tr>
           @endif
             
         @endforeach

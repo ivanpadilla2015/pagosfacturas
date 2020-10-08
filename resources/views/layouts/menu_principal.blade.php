@@ -286,9 +286,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('veradiciones') }}" class="nav-link">
+              <a href="{{ route('verinformes') }}" class="nav-link">
                 <i class="fas fa-trash-alt nav-icon"></i>
-                <p>Ver Adiones  </p>
+                <p>Ver Informes  </p>
               </a>
             </li>
         </ul>

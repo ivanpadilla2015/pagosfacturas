@@ -51,6 +51,10 @@ class Contrato extends Model
         return $this->hasMany('App\Rubrocontrato');
     }
 
+    public function inforsuminis()
+    {
+        return $this->hasMany('App\Inforsumini');
+    }
     
 
 }

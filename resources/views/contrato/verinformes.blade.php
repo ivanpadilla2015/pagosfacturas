@@ -14,22 +14,9 @@
 
 @section('content')
 <div class="container mt-2 ">
-    <div class="row">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-8">
-                    <div class="card">
-                        <h5 class="card-header">Adiciones de Un contrato </h5>
-                      <div class="card-body">
-
-                        <livewire:veradiciones>
-                           
-                      </div> <!-- Fin card-body  -->
-                    </div>
-                  </div>
-            </div>
-        </div>
-    </div>
+    
+    <livewire:verinformes>   
+  
    
 </div>
  @endsection

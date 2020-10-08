@@ -83,7 +83,7 @@ class Contratos extends Component
             'tipocontrato_id' => $this->tipocontrato_id, 'dependencia_id' => $this->dependencia_id,
             'fechacontrato' => $this->fechacontrato, 'valorcontrato' => $this->valorcontrato,
             'registro_pres_inic' => $this->registro_pres_inic, 'plazoejecucion' => $this->plazoejecucion,
-            'objetocontrato' => $this->objetocontrato, 'saldo' => $this->valorcontrato, 
+            'objetocontrato' => $this->objetocontrato, 'saldo' => $this->valorcontrato, 'ejecutado' => 0,
             'concargo_id' => $this->concargo_id, 'gran_total' => $this->valorcontrato, 'suministro' => $this->suministro,
             'sum_conse' => $this->sum_conse, 'newplazoejecucion' => $this->plazoejecucion
         ]);        
