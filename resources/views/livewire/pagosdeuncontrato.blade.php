@@ -47,6 +47,8 @@
            </div>
            <div>
                <button class="btn btn-info btn-sm">Imprimir</button>
+               <p class="text-right">Total: {{ number_format($pagos->sum('total'))}}</p>
+              
            </div>
            <div class="col-9 mx-auto">
                 @foreach ($pagos as $item)

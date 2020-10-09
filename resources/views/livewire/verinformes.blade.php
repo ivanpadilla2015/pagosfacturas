@@ -46,7 +46,8 @@
                                     <th scope="col">valor Informe</th>
                                     <th scope="col">Fecha Informe</th>
                                     <th scope="col">Total Contrato</th>
-                                    <th scope="col">Mes</th>
+                                    <th scope="col">Mes Ejecutado</th>
+                                    <th scope="col">Num Informe</th>
                                     <th scope="col" colspan="2" class="text-center">Acción</th>
                                   </tr>
                                 </thead>
@@ -59,7 +60,8 @@
                                         <td>{{ number_format($item['total_info']) }}</td>
                                         <td class="text-danger">{{ $item['fechainfo']}}</td>
                                         <td>{{ number_format($item['gran_total'])}}</td>
-                                        <td class="text-danger">{{ $item['mes_ejecucion']}}</td>
+                                        <td class="text-danger text-center">{{ $item['mes_ejecucion']}}</td>
+                                        <td class="text-center">{{ $item['sum_conse']}}</td>
                                         <td > 
                                         <button data-toggle="modal" data-target="#updateModal"  wire:click="editdeta({{ $item->id }})" class="btn bg-transparent" title="editar" style="color: #1d68a7;" ><svg width="2em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>

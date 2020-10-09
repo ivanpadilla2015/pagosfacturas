@@ -104,7 +104,7 @@
           <li class="nav-item">
             <a href="{{ route('movirubro') }}" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Adiciones a Rubro
+              <p>Adición/Reducción a Rubro
                 <?php //use App\Rubroprin; $rub_count = Rubroprin::all()->count();  ?>
                 <span class="right badge badge-danger">{{$rub_count}}</span>
               </p>
