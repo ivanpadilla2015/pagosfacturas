@@ -35,7 +35,7 @@
                                 <td >{{$item->proveedor->nombre}}</td>
                                 <td >{{number_format($item->valorcontrato)}}</td>
                                 <td >{{number_format($item->saldo)}}</td>
-                                <td>{{ number_format(100 - (($item->saldo*100)/$item->gran_total), 0).'%'}} </td>
+                                <td>{{ number_format(100 - (($item->saldo*100)/$item->gran_total), 2).'%'}} </td>
                                 <td >{{$item->supervisor}}</td>
                                 <td >
                                     <button class="btn bg-transparent color" wire:click="edit({{ $item->id }})"><svg width="2em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

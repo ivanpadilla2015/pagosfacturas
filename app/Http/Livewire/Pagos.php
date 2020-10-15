@@ -23,7 +23,7 @@ class Pagos extends Component
     public $contra, $contrato_id, $data, $pagos_id, $usos, $depen, $collection;
     public  $verMode = true;
     public $numfac, $proveedor_id, $total, $pago_id, $pago_corresponde_mes, $porcentaje_cumplimiento,
-           $mes_ejecucion, $sal, $vct, $saldo_viene, $feje, $reg;
+           $mes_ejecucion, $sal, $vct, $saldo_viene, $feje, $reg, $v1;
     public $fact = [
         'numfac' => '',
         'fechafac' => '',
@@ -118,8 +118,8 @@ class Pagos extends Component
         'rubro_id' => '', 'nomrub' => '', 'nomdep' => ''];
 
         $this->totalizapago();
-        
-        $this->porcentaje_cumplimiento = 100 - round((($this->sal - $this->total)*100)/$this->vct);
+        //$this->v1 = round((($this->sal - $this->total)*100)/$this->vct, 2);
+        $this->porcentaje_cumplimiento = 100 - round((($this->sal - $this->total)*100)/$this->vct, 2);
 
     }
 

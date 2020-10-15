@@ -42,6 +42,7 @@
         <div class="col text-center">
           <label>Nuevo % Cumplimiento</label><br>
            {{ $porcentaje_cumplimiento.'%' }} 
+           
         </div>
         <form wire:submit.prevent="agregarfact">
             <div class="form-row">

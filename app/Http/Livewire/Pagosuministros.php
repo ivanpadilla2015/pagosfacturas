@@ -111,7 +111,7 @@ class Pagosuministros extends Component
 
         $this->totalizapago();
         
-        $this->porcentaje_cumplimiento = 100 - round((($this->sal - $this->total)*100)/$this->vct);
+        $this->porcentaje_cumplimiento = 100 - round((($this->sal - $this->total)*100)/$this->vct, 2);
 
     }
 
