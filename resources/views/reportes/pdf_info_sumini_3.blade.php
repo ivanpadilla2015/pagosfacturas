@@ -242,7 +242,7 @@
               @php $vc += $itemadi->valoradicion; $ca += 1; @endphp
             <tr>
               <td colspan="2" class="colu" >{{'Adicion N° '.$ca}}</td>
-              <td colspan="3" class="colu">{{ number_format($itemadi->valoradicion) }}</td>
+              <td colspan="4" class="colu">{{ number_format($itemadi->valoradicion) }}</td>
               
             </tr>
           @else
@@ -290,7 +290,22 @@
               <td  class="colu" ></td>
             </tr>
           @endforeach
-     
+          <tr>
+            <td colspan="2" class="colu" style="background-color:  #dedbda " >Subtotal (por Usos) </td>
+            <td  class="colu" style="background-color:  #dedbda " ></td>
+            <td  class="colu" style="background-color:  #dedbda " ></td>
+            <td  class="colu" style="background-color:  #dedbda "></td>
+            <td  class="colu" style="background-color:  #dedbda "></td>
+          </tr>
+          @foreach ($datoUso as $conuso)
+            <tr>
+              <td colspan="2" class="colu" >{{$conuso->nombre_uso}} </td>
+              <td  class="colu" ></td>
+              <td  class="colu" >{{ number_format($conuso->total_fac)}}</td>
+              <td  class="colu" ></td>
+              <td  class="colu" ></td>
+            </tr>
+          @endforeach
       </table>
       
       Nota: El supervisor verificará que el contratista realice el cargue de las facturas en el SECOP II. <br>

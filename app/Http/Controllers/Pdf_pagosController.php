@@ -109,8 +109,14 @@ class Pdf_pagosController extends Controller
         ->join('dependencias', 'dependencias.id', '=', 'facturadetas.dependencia_id')
         ->select('numfac', 'fechafac', 'dependencias.nombredepen',DB::raw('SUM(valorfac) as valorfac'))
         ->groupBy('numfac')->where('sum_conse', $data->sum_conse)->where('contrato_id', $data->contrato_id )->get();
+
+        $datoUso= DB::table('facturadetas')
+        ->join('uso_rubros', 'uso_rubros.id', '=', 'facturadetas.uso_rubro_id')
+        ->select('facturadetas.numfac', 'uso_rubros.nombre_uso', 'facturadetas.uso_rubro_id','uso_rubros.codigo_uso', DB::raw('SUM(facturadetas.valorfac) as total_fac'))
+        ->groupBy('facturadetas.uso_rubro_id')
+        ->where('sum_conse', $data->sum_conse)->where('contrato_id', $data->contrato_id )->get();
         $resp = $request->resp;
-        $pdf= PDF::loadView('reportes.pdf_info_sumini_3', compact('data', 'datofac', 'fec', 'resp', 'dmaestro'));
+        $pdf= PDF::loadView('reportes.pdf_info_sumini_3', compact('data', 'datofac', 'fec', 'resp', 'dmaestro','datoUso'));
         $pdf->setPaper('letter');
         return $pdf->stream();
     }
